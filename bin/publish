@@ -9,3 +9,5 @@ echo "Message is $commitMsg"
 
 git add -A && git commit -a -m "$commitMsg" && git push --all
 
+make github
+
