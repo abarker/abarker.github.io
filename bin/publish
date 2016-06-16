@@ -5,6 +5,7 @@ make html
 
 echo -n "Enter the commit message: "
 read commitMsg
+echo "Message is $commitMsg"
 
 git add -A && git commit -a -m "$commitMsg" && git push --all
 
