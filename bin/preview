@@ -1,0 +1,16 @@
+#!/bin/bash
+# Run as bin/preview
+
+# Note I may not be set up to run the devserver... need to consider docs and
+# answers to pelican-quickstart questions.
+
+#make devserver # note this does `make regenerate` and then starts server...
+(sleep 3; firefox http://localhost:8000/) &
+
+(sleep 5; echo "Hit ^C to exit local web server...") &
+
+make html && make serve
+#read waitvar
+#kill $!
+#./develop_server.sh stop
+

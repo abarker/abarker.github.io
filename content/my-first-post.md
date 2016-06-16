@@ -7,5 +7,5 @@ Slug: My-first-post
 Authors: Allen Barker
 Summary: Short version of my first blog post
 
-This is my **second blog post with pelican**
+This is my **third blog post with pelican**
 
