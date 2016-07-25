@@ -11,3 +11,6 @@ git add -A && git commit -a -m "$commitMsg" && git push --all
 
 make github
 
+sleep 3
+firefox https://abarker.github.io/
+

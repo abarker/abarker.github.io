@@ -1,2 +1,4 @@
 output/
 
+# vim swap
+*.swp
