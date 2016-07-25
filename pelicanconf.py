@@ -4,13 +4,16 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Allen Barker'
 SITENAME = 'Allen Barker'
-SITEURL = '' # Doesn't seem to do much, at least with GitHub host.
+SITEURL = 'http://abarker.github.io' # Doesn't seem to do much, at least with GitHub host.
 
 PATH = 'content'
 
 TIMEZONE = 'America/New_York'
 
 DEFAULT_LANG = 'en'
+
+# Slugs are the names for the web pages, such as abarker.github.io/<slug-string>
+SLUGIFY_SOURCE = 'basename'  # Use file basenames for slugs (instead of creating them).
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -36,7 +39,13 @@ DEFAULT_PAGINATION = 10
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
 
+# Sitemap plugin settings, for more options see
+# https://github.com/getpelican/pelican-plugins/tree/master/sitemap
+SITEMAP = { "format": "xml" }
+
+#
 # ------------ alb modified theme selection stuff below 
+#
 
 use_copied_alb_version = False
 
