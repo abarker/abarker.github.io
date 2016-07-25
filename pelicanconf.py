@@ -87,7 +87,7 @@ details = """
    I am a computer scientist.
    I have many interests.
    """
-LANDING_PAGE_ABOUT = { "title": "Landing page title.",
+LANDING_PAGE_ABOUT = { "title": "Articles on various topics.",
                        "details": details}
 
 # PROJECTS ([{},...])
