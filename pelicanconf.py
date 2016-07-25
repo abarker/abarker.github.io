@@ -23,14 +23,10 @@ AUTHOR_FEED_RSS = None
 LINKS = (
            ('GitHub Repos', 'https://github.com/abarker?tab=repositories'),
            ('GitHub Repos', 'https://github.com/abarker?tab=repositories'),
-           ('GitHub Repos', 'https://github.com/abarker?tab=repositories'),
-           ('GitHub Repos', 'https://github.com/abarker?tab=repositories'),
         )
 
 # Social widget
 SOCIAL = (
-         ('You can add links in pelicanconf.py', '#'),
-         ('You can add links in pelicanconf.py', '#'),
          ('You can add links in pelicanconf.py', '#'),
          ('You can add links in pelicanconf.py', '#'),
          )
