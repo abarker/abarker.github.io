@@ -3,6 +3,8 @@
 
 make html
 
+git checkout content
+
 echo -n "Enter the commit message: "
 read commitMsg
 echo "Message is $commitMsg"
@@ -13,4 +15,6 @@ make github
 
 sleep 3
 firefox https://abarker.github.io/
+
+git checkout master
 
