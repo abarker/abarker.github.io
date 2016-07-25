@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Allen Barker'
 SITENAME = 'Allen Barker'
-SITEURL = 'https://abarker.github.io/'
+SITEURL = '' # Doesn't seem to do much, at least with GitHub host.
 
 PATH = 'content'
 
@@ -27,7 +27,7 @@ LINKS = (
 
 # Social widget
 SOCIAL = (
-         ('You can add links in pelicanconf.py', '#'),
+        ('Social link', 'http://www.yahoo.com'),
          ('You can add links in pelicanconf.py', '#'),
          )
 
