@@ -3,17 +3,18 @@
 from __future__ import unicode_literals
 
 AUTHOR = 'Allen Barker'
-SITENAME = 'Allen Barker'
+SITENAME = "Allen Barker's Site"
 SITEURL = 'http://abarker.github.io' # Doesn't seem to do much, at least with GitHub host.
 
 PATH = 'content'
 
 TIMEZONE = 'America/New_York'
+DEFAULT_DATE_FORMAT = '%m-%d-%Y'
 
 DEFAULT_LANG = 'en'
 
 # Slugs are the names for the web pages, such as abarker.github.io/<slug-string>
-SLUGIFY_SOURCE = 'basename'  # Use file basenames for slugs (instead of creating them).
+SLUGIFY_SOURCE = 'basename'  # Use file basenames for slugs if not specified.
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
@@ -34,18 +35,37 @@ SOCIAL = (
          ('You can add links in pelicanconf.py', '#'),
          )
 
+# URLs for pages, trailing slash to support HTTPS
+PAGE_URL = '{slug}/'
+PAGE_SAVE_AS = '{slug}/index.html'
+# URLs for articles
+ARTICLE_SAVE_AS = '{slug}/index.html'
+ARTICLE_URL = '{slug}/'
+
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = False # Useful when developing, turn off before uploading (to be safe).
 
 # Sitemap plugin settings, for more options see
 # https://github.com/getpelican/pelican-plugins/tree/master/sitemap
-SITEMAP = { "format": "xml" }
+SITEMAP = {
+    'format': 'xml',
+    'priorities': {
+        'articles': 0.5,
+        'indexes': 0.5,
+        'pages': 0.5
+     },
+    'changefreqs': {
+        'articles': 'monthly',
+        'indexes': 'daily',
+        'pages': 'monthly'
+    }
+}
 
-#
-# ------------ alb modified theme selection stuff below 
-#
+# =============================================================================
+# theme stuff below 
+# =============================================================================
 
 use_copied_alb_version = False
 
