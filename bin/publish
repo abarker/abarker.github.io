@@ -9,7 +9,7 @@ echo "Message is $commitMsg"
 
 git add -A && git commit -a -m "$commitMsg" && git push --all
 
-make github
+make github # This uses (depends on) publish settings.
 
 sleep 3
 firefox https://abarker.github.io/
