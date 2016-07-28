@@ -95,7 +95,7 @@ PLUGINPATH_alb = BASEPATH_alb + "pelican-plugins/"
 # Getting search to work:
 # http://stackoverflow.com/questions/24187511/enable-search-function-in-pelican-powered-blog
 
-use_copied_alb_version = True; THEME = "elegant"
+use_copied_alb_version = True; THEME = "cloned_pelican_elegant"
 
 # Some recommended settings from the docs.
 # http://oncrashreboot.com/elegant-best-pelican-theme-features#configuration-variables
