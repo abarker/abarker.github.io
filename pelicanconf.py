@@ -80,15 +80,28 @@ SITEMAP = {
     }
 }
 
+BASEPATH_alb = "/home/alb/programming/python/pelican_blog/"
+THEMEPATH_alb = BASEPATH_alb + "pelican_themes/pelican-themes/"
+PLUGINPATH_alb = BASEPATH_alb + "pelican-plugins/"
+PLUGIN_PATHS = [PLUGINPATH_alb]
+PLUGINS = []
+
+# =============================================================================
+# math stuff
+# =============================================================================
+
+PLUGINS.append("render_math")
+
+#macros = ['/home/user/latex-macros.tex']
+macros = []
+#MATH_JAX = {'color': 'blue', 'align': 'left', 'macros': macros}
+MATH_JAX = {'macros': macros}
+
 # =============================================================================
 # theme stuff below 
 # =============================================================================
 
 use_copied_alb_version = False # Only set true if copy of dir has been made.
-
-BASEPATH_alb = "/home/alb/programming/python/pelican_blog/"
-THEMEPATH_alb = BASEPATH_alb + "pelican_themes/pelican-themes/"
-PLUGINPATH_alb = BASEPATH_alb + "pelican-plugins/"
 
 #===== Elegant theme ===================================================================
 # Top contender if customizable.  Many options listed on this page describing it here:
@@ -102,8 +115,7 @@ use_copied_alb_version = True; THEME = "cloned_pelican_elegant"
 # "Here are the variables that you should set in your configuration to get the
 # most out of Elegant":
 
-PLUGIN_PATHS = [PLUGINPATH_alb]
-PLUGINS = ["sitemap", "render_math"]
+PLUGINS.extend(["sitemap"])
 #PLUGINS = ['sitemap', 'extract_toc', 'tipue_search'] # Use these when TOC set up...
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
 DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
