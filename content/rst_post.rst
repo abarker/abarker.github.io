@@ -27,6 +27,15 @@ Some default inline Python: `import j; print("x")`.
    for f in fruits:
        print("The fruit is", f)
 
+Some Bash code:
+
+.. code-block:: bash
+
+   for i in *
+   do
+      echo "$i
+   done
+
 And some inline math:
 
 .. math::

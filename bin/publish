@@ -1,7 +1,7 @@
 #!/bin/bash
 # Run as bin/publish
 
-make html
+make clean; make html
 
 echo -n "Enter the commit message: "
 read commitMsg
