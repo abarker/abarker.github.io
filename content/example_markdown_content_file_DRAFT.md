@@ -1,6 +1,6 @@
-Title: My first post
-Date: 2016-06-16 14:13
-Modified: 2016-06-16 14:13
+Title: Example markdown content
+Date: 2016-06-15 14:13
+Modified: 2016-06-15 14:13
 Category: misc
 Tags: first, misc
 Slug: My-first-post-slug

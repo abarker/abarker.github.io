@@ -22,3 +22,11 @@ DELETE_OUTPUT_DIRECTORY = True
 
 #DISQUS_SITENAME = ""
 #GOOGLE_ANALYTICS = ""
+
+# =====================================
+# Customizing below.
+# =====================================
+
+# Ignore Vim swap and content with DRAFT in it (patterns passed to Python glob).
+IGNORE_FILES = ["*.swp", "*DRAFT*"]
+

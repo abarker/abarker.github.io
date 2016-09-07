@@ -80,11 +80,22 @@ SITEMAP = {
     }
 }
 
+# =============================================================================
+# Mostly my customizing below.
+# =============================================================================
+
 BASEPATH_alb = "/home/alb/programming/python/pelican_blog/"
 THEMEPATH_alb = BASEPATH_alb + "pelican_themes/pelican-themes/"
 PLUGINPATH_alb = BASEPATH_alb + "pelican-plugins/"
 PLUGIN_PATHS = [PLUGINPATH_alb]
 PLUGINS = []
+
+LOAD_CONTENT_CACHE = False # Turn off caching; use if some mods not showing (esp. metadata)
+
+# Ignore Vim swap files (patterns passed to glob).  Different setting in publishconf.py.
+IGNORE_FILES = ["*.swp"]
+
+#GITHUB_URL = "https://github.com/abarker" # Doesn't seem to do anything.
 
 # =============================================================================
 # math stuff
@@ -103,7 +114,14 @@ MATH_JAX = {'macros': macros}
 
 use_copied_alb_version = False # Only set true if copy of dir has been made.
 
-#===== Elegant theme ===================================================================
+# =============================================================================
+# Elegant theme (CURRENTLY USED)
+# =============================================================================
+
+# Example Elegant config file settings:
+#    File: https://github.com/talha131/onCrashReboot/blob/master/pelicanconf.py
+#    Appears as: http://oncrashreboot.com/
+
 # Top contender if customizable.  Many options listed on this page describing it here:
 # Getting search to work:
 # http://stackoverflow.com/questions/24187511/enable-search-function-in-pelican-powered-blog
@@ -115,8 +133,8 @@ use_copied_alb_version = True; THEME = "cloned_pelican_elegant"
 # "Here are the variables that you should set in your configuration to get the
 # most out of Elegant":
 
-PLUGINS.extend(["sitemap"])
-#PLUGINS = ['sitemap', 'extract_toc', 'tipue_search'] # Use these when TOC set up...
+#PLUGINS.extend(["sitemap", "pelican-toc", "tipue_search"])
+PLUGINS.extend(["sitemap", "extract_toc", "tipue_search"])
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
 DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
 STATIC_PATHS = ['theme/images', 'images']
@@ -141,21 +159,63 @@ SITE_DESCRIPTION = "Site description string."
 # MAILCHIMP_FORM_ACTION ('string')
 # SITESUBTITLE ('string')
 
-# LANDING_PAGE_ABOUT ({})
+# NOTE below is for LANDING_PAGE_ABOUT dict, but I set the values separately
+# first.  Use HTML in the text to get spaces, links, etc.
+title = "Articles on various topics."
 details = """
-   I am a computer scientist.
-   I have many interests.
+
+   I am a computer scientist with interests in machine learning, data analysis,
+   mathematical logic systems, user interfaces for mathematics and data
+   analysis, and quantum computing.  I got my computer science Ph.D. from UVA
+   in 1997.
+   
+   <p>
+
+   Available for remote work; contact me by
+   <a href="mailto:Allen.L.Barker@gmail.com" title="My email address" itemprop="email">
+   email</a>.
+   
+   <p>
+
+   I currently live in the Hampton Roads area of Virgina.
+
    """
-LANDING_PAGE_ABOUT = { "title": "Articles on various topics.",
+
+LANDING_PAGE_ABOUT = { "title": title, 
                        "details": details}
 
-# PROJECTS ([{},...])
 PROJECTS = [
+
+             {"name": "pytest-helper",
+              "url": "https://abarker.github.io/pytest-helper",
+              "description": "Functions to help in using py.test, e.g., making "
+                   "modules self-testing when run as scripts."
+             },
+
              {"name": "set-package-attribute",
-              "url": "https://github.com/abarker/set-package-attribute",
+              "url": "https://abarker.github.io/set-package-attribute",
               "description": "Automatically set the __package__ attribute for a "
-              "Python module run as a script."
-             }
+                  "Python module run as a script."
+
+             },
+             {"name": "Lyx Notebook",
+              "url": "https://github.com/abarker/lyxNotebook",
+              "description": "Use the Lyx word processor as a code-evaluating "
+                   "notebook (similar to Mathematica notebooks or Jupyter notebooks)."
+             },
+
+             {"name": "pdfCropMargins",
+              "url": "https://github.com/abarker/pdfCropMargins",
+              "description": "A command-line utility to crop PDF files.  Like "
+                   "the pdfcrop program on steroids."
+             },
+
+             {"name": "makeSpanningBackground",
+              "url": "https://github.com/abarker/makeSpanningBackground",
+              "description": "Make a background wallpaper from multiple images "
+                   "to display them on multiple monitors."
+             },
+
            ]
 
 # "These are the optional article meta data variables that you can use"
@@ -167,6 +227,10 @@ PROJECTS = [
 #     keywords
 #=======================================================================================
 
+
+# =============================================================================
+# Other themes.
+# =============================================================================
 
 # ==== Tuxlite ZF theme ================================================================
 # Good for mobile, see its style.css for customization details.

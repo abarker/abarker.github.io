@@ -1,20 +1,34 @@
-RST example
-###########
+Example RST content
+###################
 
 :date: 2016-06-16 14:13
 :modified: 2016-06-16 14:13
 :category: misc
-:tags: first, misc
+:tags: misc
 :authors: Allen Barker
-:summary: An rst article.
+:summary: An example rst article.
 
-.. :slug: Another-post
+Examples to look at.
 
-Some math :math:`A_\text{c} = (\pi/4) d^2` and a 
-code example to consider::
+Math
+----
+
+Some math :math:`A_\text{c} = (\pi/4) d^2`.
+
+And some inline math:
+
+.. math::
+
+   x_i = \int_0^{1000} \sin(x) \mathrm{d}x
+
+Inline code
+-----------
+
+A code example to consider::
 
    for f in fruits:
        print("The fruit is", f)
+
 
 Some inline Python: :code:`for i in egg: break i`.
 
@@ -36,14 +50,9 @@ Some Bash code:
       echo "$i
    done
 
-And some inline math:
 
-.. math::
-
-   x_i = \int_0^{1000} \sin(x) \mathrm{d}x
-
-Some links `a relative link, relative to the current file <{filename}./another_post.md>`_
-and `an "absolute" link, relative to the content root <{filename}/another_post.md>`_.
+Images and figures
+------------------
 
 A picture `here is a lovely picture <{filename}/images/oldguitar.jpg>`_
 
@@ -70,3 +79,17 @@ And here is a figure:
 
        for f in fruits: f.eat()
 
+Links
+-----
+
+.. _Python: http://www.python.org/
+
+Some links `a relative link, relative to the current file
+<{filename}./example_markdown_content_file_DRAFT.md>`_ and `an "absolute" link,
+relative to the content root
+<{filename}/example_markdown_content_file_DRAFT.md>`_.
+
+Examples of a URL, one in text and another defined: `Python
+<http://www.python.org/>`_ and Python_.
+
+For more links, see http://docutils.sourceforge.net/docs/user/rst/quickref.html#external-hyperlink-targets
