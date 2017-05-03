@@ -109,7 +109,7 @@ macros = []
 MATH_JAX = {'macros': macros}
 
 # =============================================================================
-# theme stuff below 
+# theme stuff below
 # =============================================================================
 
 use_copied_alb_version = False # Only set true if copy of dir has been made.
@@ -142,10 +142,10 @@ TAG_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
 AUTHOR_SAVE_AS = ''
 
-# 
+#
 # "These are the optional configuration variables that you can define"
-# 
-# RECENT_ARTICLES_COUNT (integer)  
+#
+# RECENT_ARTICLES_COUNT (integer)
 RECENT_ARTICLES_COUNT = 30
 
 # COMMENTS_INTRO ('string')
@@ -168,20 +168,20 @@ details = """
    mathematical logic systems, user interfaces for mathematics and data
    analysis, and quantum computing.  I got my computer science Ph.D. from UVA
    in 1997.
-   
+
    <p>
 
    Available for remote work; contact me by
    <a href="mailto:Allen.L.Barker@gmail.com" title="My email address" itemprop="email">
    email</a>.
-   
+
    <p>
 
    I currently live in the Hampton Roads area of Virgina.
 
    """
 
-LANDING_PAGE_ABOUT = { "title": title, 
+LANDING_PAGE_ABOUT = { "title": title,
                        "details": details}
 
 PROJECTS = [
@@ -216,10 +216,16 @@ PROJECTS = [
                    "to display them on multiple monitors."
              },
 
+             {"name": "camel-snake-pep8",
+              "url": "https://github.com/abarker/camel-snake-pep8",
+              "description": "A tool that uses Rope to help safely refactor "
+                   "Python projects to use PEP-8 naming conventions."
+             },
+
            ]
 
 # "These are the optional article meta data variables that you can use"
-# 
+#
 #     subtitle
 #     summary
 #     disqus_identifier

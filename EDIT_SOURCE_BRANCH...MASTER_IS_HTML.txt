@@ -1,0 +1,5 @@
+#!albNotes
+
+The master branch contains the html files; the source branch contains the
+source files.
+
