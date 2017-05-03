@@ -188,8 +188,8 @@ PROJECTS = [
 
              {"name": "pytest-helper",
               "url": "https://abarker.github.io/pytest-helper",
-              "description": "Functions to help in using py.test, e.g., making "
-                   "modules self-testing when run as scripts."
+              "description": "Functions to help in using py.test (for example, easily"
+                   " make modules self-testing when run as scripts)."
              },
 
              {"name": "set-package-attribute",
