@@ -180,8 +180,7 @@ details = """
 
    I am a computer scientist with interests in machine learning, data analysis,
    mathematical logic systems, user interfaces for mathematics and data
-   analysis, and quantum computing.  I got my computer science Ph.D. from UVA
-   in 1997.
+   analysis, and quantum computing.  Computer science Ph.D. from UVA.
 
    <p>
 
