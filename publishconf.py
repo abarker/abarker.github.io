@@ -28,6 +28,6 @@ DISQUS_SITENAME = 'abarker'
 # =====================================
 
 # Ignore Vim swap and content with DRAFT in it (patterns passed to Python glob).
-#IGNORE_FILES = ["*.swp", "*DRAFT*"]
-IGNORE_FILES = ["*.swp"]
+IGNORE_FILES = ["*.swp", "*DRAFT*"]
+#IGNORE_FILES = ["*.swp"]
 

@@ -12,7 +12,9 @@ from __future__ import unicode_literals
 AUTHOR = 'Allen Barker'
 SITENAME = "Allen Barker's Site"
 SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
+
 DISQUS_SITENAME = 'abarker'
+COMMENTS_INTRO = "Leave any comments below."
 
 PATH = 'content'
 
