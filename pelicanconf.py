@@ -11,8 +11,8 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Allen Barker'
 SITENAME = "Allen Barker's Site"
-SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, at least with GitHub host.
-#SITEURL = ''
+SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
+DISQUS_SITENAME = 'abarker'
 
 PATH = 'content'
 
@@ -81,7 +81,9 @@ SITEMAP = {
 }
 
 # =============================================================================
+# =============================================================================
 # Mostly my customizing below.
+# =============================================================================
 # =============================================================================
 
 BASEPATH_alb = "/home/alb/programming/python/pelican_blog/"
