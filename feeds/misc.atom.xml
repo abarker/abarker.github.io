@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Allen Barker's Site</title><link href="/" rel="alternate"></link><link href="/feeds/all.atom.xml" rel="self"></link><id>/</id><updated>2016-06-16T14:13:00-04:00</updated><entry><title>Example RST content</title><link href="/example_rst_content_file/" rel="alternate"></link><published>2016-06-16T14:13:00-04:00</published><updated>2016-06-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:,2016-06-16:example_rst_content_file/</id><summary type="html">&lt;p&gt;Examples to look&amp;nbsp;at.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Allen Barker's Site</title><link href="/" rel="alternate"></link><link href="/feeds/misc.atom.xml" rel="self"></link><id>/</id><updated>2016-06-16T14:13:00-04:00</updated><entry><title>Example RST content</title><link href="/example_rst_content_file/" rel="alternate"></link><published>2016-06-16T14:13:00-04:00</published><updated>2016-06-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:,2016-06-16:example_rst_content_file/</id><summary type="html">&lt;p&gt;Examples to look&amp;nbsp;at.&lt;/p&gt;
 &lt;div class="section" id="math"&gt;
 &lt;h2&gt;1. Math&lt;/h2&gt;
 &lt;p&gt;Some math &lt;span class="math"&gt;\(A_\text{c} = (\pi/4) d^2\)&lt;/span&gt;.&lt;/p&gt;
