@@ -14,6 +14,7 @@ SITENAME = "Allen Barker's Site"
 SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
 
 DISQUS_SITENAME = 'abarker'
+COMMENTS_INTRO = "&nbsp;\n&nbsp;\nLeave any comments below."
 COMMENTS_INTRO = "Leave any comments below."
 
 PATH = 'content'
