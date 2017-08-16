@@ -151,10 +151,6 @@ use_copied_alb_version = False # Only set true if copy of dir has been made.
 #    File: https://github.com/talha131/onCrashReboot/blob/master/pelicanconf.py
 #    Appears as: http://oncrashreboot.com/
 
-# Top contender if customizable.  Many options listed on this page describing it here:
-# Getting search to work:
-# http://stackoverflow.com/questions/24187511/enable-search-function-in-pelican-powered-blog
-
 use_copied_alb_version = True
 THEME = "cloned_pelican_elegant"
 
@@ -163,8 +159,11 @@ THEME = "cloned_pelican_elegant"
 # "Here are the variables that you should set in your configuration to get the
 # most out of Elegant":
 
-#PLUGINS += ["sitemap", "pelican-toc", "tipue_search"]
-PLUGINS += ["sitemap", "extract_toc", "tipue_search"]
+PLUGINS += ["sitemap"]
+#PLUGINS += ["pelican_toc"] # Alternative to extract_tok below.
+PLUGINS += ["extract_toc"]
+PLUGINS += ["alb_tipue_search"] # For search, note copied dir since bugfix in the code.
+
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'search', '404']
 STATIC_PATHS = ['theme/images', 'images']
@@ -172,7 +171,9 @@ TAG_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
 AUTHOR_SAVE_AS = ''
 
-USE_SHORTCUT_ICONS=True # This is needed to get icons for GitHub, etc., to display.
+# Setting below is needed with Elegant theme to get icons for email, GitHub, etc.,
+# to display on article pages.
+USE_SHORTCUT_ICONS=True
 
 #
 # "These are the optional configuration variables that you can define"
