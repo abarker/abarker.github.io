@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Allen Barker's Site</title><link href="//abarker.github.io/" rel="alternate"></link><link href="//abarker.github.io/feeds/all.atom.xml" rel="self"></link><id>//abarker.github.io/</id><updated>2016-06-16T14:13:00-04:00</updated><entry><title>Example RST content</title><link href="//abarker.github.io/example_rst_content_file/" rel="alternate"></link><published>2016-06-16T14:13:00-04:00</published><updated>2016-06-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2016-06-16:example_rst_content_file/</id><summary type="html">&lt;p&gt;Examples to look&amp;nbsp;at.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Allen Barker's Site</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/all.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2016-06-16T14:13:00-04:00</updated><entry><title>Example RST content</title><link href="https://abarker.github.io/example_rst_content_file/" rel="alternate"></link><published>2016-06-16T14:13:00-04:00</published><updated>2016-06-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2016-06-16:example_rst_content_file/</id><summary type="html">&lt;p&gt;Examples to look&amp;nbsp;at.&lt;/p&gt;
 &lt;div class="section" id="math"&gt;
 &lt;h2&gt;1. Math&lt;/h2&gt;
 &lt;p&gt;Some math &lt;span class="math"&gt;\(A_\text{c} = (\pi/4) d^2\)&lt;/span&gt;.&lt;/p&gt;
@@ -32,12 +32,12 @@ is used.  Using double backtics instead of inline code gives &lt;tt class="docut
 &lt;/div&gt;
 &lt;div class="section" id="images-and-figures"&gt;
 &lt;h2&gt;3. Images and&amp;nbsp;figures&lt;/h2&gt;
-&lt;p&gt;A picture &lt;a class="reference external" href="//abarker.github.io/images/oldguitar.jpg"&gt;here is a lovely&amp;nbsp;picture&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A picture &lt;a class="reference external" href="https://abarker.github.io/images/oldguitar.jpg"&gt;here is a lovely&amp;nbsp;picture&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Here is an inline&amp;nbsp;image:&lt;/p&gt;
-&lt;img alt="alternate text" class="align-center" src="//abarker.github.io/images/oldguitar.jpg" style="width: 200px;" /&gt;
+&lt;img alt="alternate text" class="align-center" src="https://abarker.github.io/images/oldguitar.jpg" style="width: 200px;" /&gt;
 &lt;p&gt;And here is a&amp;nbsp;figure:&lt;/p&gt;
 &lt;div class="align-center figure"&gt;
-&lt;img alt="alternate text" src="//abarker.github.io/images/oldguitar.jpg" style="width: 100px;" /&gt;
+&lt;img alt="alternate text" src="https://abarker.github.io/images/oldguitar.jpg" style="width: 100px;" /&gt;
 &lt;p class="caption"&gt;figure are like images but with a&amp;nbsp;caption&lt;/p&gt;
 &lt;div class="legend"&gt;
 &lt;p&gt;and whatever else you&amp;nbsp;add&lt;/p&gt;
