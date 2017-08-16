@@ -11,8 +11,9 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Allen Barker'
 SITENAME = "Allen Barker's Site"
+# Some set SITEURL = 'http://localhost:8000' in this file and real one in publishconf.py.
 SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
-GITHUB_URL = 'https://github.com/abarker' # may not do anything with theme, some make fork ribbon
+GITHUB_URL = 'https://github.com/abarker' # may not do anything; some themes make fork ribbon
 
 DISQUS_SITENAME = 'abarker' # Should be the shortname.
 ##DISQUS_URL = 'https://abarker.disqus.com' # NOT USED FOR ELEGANT THEME, some themes use...
@@ -87,6 +88,8 @@ SITEMAP = {
     }
 }
 
+DELETE_OUTPUT_DIRECTORY = True # May be useful when testing
+
 # =============================================================================
 # =============================================================================
 # Mostly my customizing below.
@@ -135,6 +138,8 @@ SECTION_NUMBER_MAX = 3
 # theme stuff below
 # =============================================================================
 
+# TODO: This stuff was a kludge to switch back to default themes and try them out.
+# Clean up, just use the cloned elegant theme.
 use_copied_alb_version = False # Only set true if copy of dir has been made.
 
 # =============================================================================
@@ -149,7 +154,8 @@ use_copied_alb_version = False # Only set true if copy of dir has been made.
 # Getting search to work:
 # http://stackoverflow.com/questions/24187511/enable-search-function-in-pelican-powered-blog
 
-use_copied_alb_version = True; THEME = "cloned_pelican_elegant"
+use_copied_alb_version = True
+THEME = "cloned_pelican_elegant"
 
 # Some recommended settings from the docs.
 # http://oncrashreboot.com/elegant-best-pelican-theme-features#configuration-variables
@@ -157,9 +163,9 @@ use_copied_alb_version = True; THEME = "cloned_pelican_elegant"
 # most out of Elegant":
 
 #PLUGINS += ["sitemap", "pelican-toc", "tipue_search"]
-PLUGINS += ["sitemap", "extract_toc", "tipue_search"] #, "disqus_static"]
+PLUGINS += ["sitemap", "extract_toc", "tipue_search"]
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
-DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
+DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'search', '404']
 STATIC_PATHS = ['theme/images', 'images']
 TAG_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
