@@ -16,8 +16,8 @@ GITHUB_URL = 'https://github.com/abarker' # may not do anything with theme, some
 
 DISQUS_SITENAME = 'abarker' # Should be the shortname.
 #DISQUS_URL = 'abarker' # Should be the shortname.
-#DISQUS_SECRET_KEY = u'YOUR_SECRET_KEY' # only for disqus_static plugin, may not need
-#DISQUS_PUBLIC_KEY = u'YOUR_PUBLIC_KEY' # only for disqus_static plugin, may not need
+##DISQUS_SECRET_KEY = u'YOUR_SECRET_KEY' # only for disqus_static plugin, may not need
+##DISQUS_PUBLIC_KEY = u'YOUR_PUBLIC_KEY' # only for disqus_static plugin, may not need
 
 COMMENTS_INTRO = "Leave any comments below." # Appears before the comments at bottom.
 
