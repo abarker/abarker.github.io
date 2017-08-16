@@ -70,7 +70,8 @@ ARTICLE_URL = '{slug}/'
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True # Useful when developing, turn off before uploading (to be safe).
+# Leave off now, since bugs....
+#RELATIVE_URLS = True # Useful when developing, turn off before uploading (to be safe).
 
 # Sitemap plugin settings, for more options see
 # https://github.com/getpelican/pelican-plugins/tree/master/sitemap
