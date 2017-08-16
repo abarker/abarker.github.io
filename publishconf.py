@@ -20,7 +20,7 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 
-DISQUS_SITENAME = 'abarker'
+DISQUS_SITENAME = 'abarker' # should be the shortname
 #GOOGLE_ANALYTICS = ""
 
 # =====================================

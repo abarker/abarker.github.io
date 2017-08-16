@@ -12,12 +12,12 @@ from __future__ import unicode_literals
 AUTHOR = 'Allen Barker'
 SITENAME = "Allen Barker's Site"
 SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
+GITHUB_URL = 'https://github.com/abarker' # may not do anything with theme, some make fork ribbon
 
-DISQUS_SITENAME = 'abarker'
-COMMENTS_INTRO = "&nbsp;\n&nbsp;\nLeave any comments below."
-COMMENTS_INTRO = "Leave any comments below."
+DISQUS_SITENAME = 'abarker' # Should be the shortname.
+COMMENTS_INTRO = "Leave any comments below." # Appears before the comments at bottom.
 
-PATH = 'content'
+PATH = 'content' # Directory for content, relative to main dir.
 
 TIMEZONE = 'America/New_York'
 DEFAULT_DATE_FORMAT = '%m-%d-%Y'
@@ -152,8 +152,8 @@ use_copied_alb_version = True; THEME = "cloned_pelican_elegant"
 # "Here are the variables that you should set in your configuration to get the
 # most out of Elegant":
 
-#PLUGINS.extend(["sitemap", "pelican-toc", "tipue_search"])
-PLUGINS.extend(["sitemap", "extract_toc", "tipue_search"])
+#PLUGINS += ["sitemap", "pelican-toc", "tipue_search"]
+PLUGINS += ["sitemap", "extract_toc", "tipue_search"] #, "disqus_static"]
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
 DIRECT_TEMPLATES = (('index', 'tags', 'categories','archives', 'search', '404'))
 STATIC_PATHS = ['theme/images', 'images']
