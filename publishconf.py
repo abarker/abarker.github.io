@@ -8,9 +8,9 @@ from __future__ import unicode_literals
 import os
 import sys
 sys.path.append(os.curdir)
-from pelicanconf import *
+from pelicanconf import *   # NOTE, we get all of pelicanconf.py unless overwritten.
 
-SITEURL = "https://abarker.github.io"
+#SITEURL = "https://abarker.github.io" # Use pelicanconf version.
 RELATIVE_URLS = False
 
 FEED_ALL_ATOM = 'feeds/all.atom.xml'
@@ -20,7 +20,7 @@ DELETE_OUTPUT_DIRECTORY = True
 
 # Following items are often useful when publishing
 
-DISQUS_SITENAME = 'abarker' # should be the shortname
+#DISQUS_SITENAME = 'abarker' # Use pelicanconf version.
 #GOOGLE_ANALYTICS = ""
 
 # =====================================
