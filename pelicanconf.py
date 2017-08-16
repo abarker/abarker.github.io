@@ -15,7 +15,7 @@ SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, needed for Disq
 GITHUB_URL = 'https://github.com/abarker' # may not do anything with theme, some make fork ribbon
 
 DISQUS_SITENAME = 'abarker' # Should be the shortname.
-#DISQUS_URL = 'abarker' # Should be the shortname.
+DISQUS_URL = '//abarker.disqus.com/embed.js' # NOT USED FOR ELEGANT, some themes use...
 ##DISQUS_SECRET_KEY = u'YOUR_SECRET_KEY' # only for disqus_static plugin, may not need
 ##DISQUS_PUBLIC_KEY = u'YOUR_PUBLIC_KEY' # only for disqus_static plugin, may not need
 
