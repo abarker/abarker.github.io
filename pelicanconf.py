@@ -172,6 +172,8 @@ TAG_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
 AUTHOR_SAVE_AS = ''
 
+USE_SHORTCUT_ICONS=True # This is needed to get icons for GitHub, etc., to display.
+
 #
 # "These are the optional configuration variables that you can define"
 #
