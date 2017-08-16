@@ -12,7 +12,7 @@ from __future__ import unicode_literals
 AUTHOR = 'Allen Barker'
 SITENAME = "Allen Barker's Site"
 # Some set SITEURL = 'http://localhost:8000' in this file and real one in publishconf.py.
-SITEURL = 'http://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
+SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
 GITHUB_URL = 'https://github.com/abarker' # may not do anything; some themes make fork ribbon
 
 DISQUS_SITENAME = 'abarker' # Should be the shortname.
@@ -200,7 +200,7 @@ details = """
 
    <p>
 
-   Available for remote work; contact me by
+   Available for hire; contact me by
    <a href="mailto:Allen.L.Barker@gmail.com" title="My email address" itemprop="email">
    email</a>.
 
