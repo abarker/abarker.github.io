@@ -12,7 +12,7 @@ from __future__ import unicode_literals
 AUTHOR = 'Allen Barker'
 SITENAME = "Allen Barker's Site"
 # Some set SITEURL = 'http://localhost:8000' in this file and real one in publishconf.py.
-SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
+SITEURL = 'http://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
 GITHUB_URL = 'https://github.com/abarker' # may not do anything; some themes make fork ribbon
 
 DISQUS_SITENAME = 'abarker' # Should be the shortname.
@@ -70,8 +70,10 @@ ARTICLE_URL = '{slug}/'
 DEFAULT_PAGINATION = 10
 
 # Uncomment following line if you want document-relative URLs when developing
-# Leave off now, since bugs....
-#RELATIVE_URLS = True # Useful when developing, turn off before uploading (to be safe).
+# Leave off now, since bugs.... docs say "Only set this to True when
+# developing/testing and only if you fully understand the effect it can have on
+# links/feeds."
+RELATIVE_URLS = False
 
 # Sitemap plugin settings, for more options see
 # https://github.com/getpelican/pelican-plugins/tree/master/sitemap
