@@ -166,7 +166,7 @@ PLUGINS += ["extract_toc"]
 
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', '404']
-#DIRECT_TEMPLATES += ['search'] # No longer needed since using Google for search.
+DIRECT_TEMPLATES += ['search'] # No longer needed since using Google for search.
 STATIC_PATHS = ['theme/images', 'images']
 TAG_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
