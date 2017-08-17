@@ -270,6 +270,14 @@ PROJECTS = [
 # Other themes.
 # =============================================================================
 
+# == Fresh theme ======================================================================
+# Responsive HTML5, uses custom Google search, etc. Free license.
+# Look into if get tired of Elegant (though the fonts, etc., would need mods).
+# =====================================================================================
+# https://github.com/jsliang/pelican-fresh/blob/master/README.md
+# http://jsliang.com/pelican-fresh-demo/blog/
+# Note the license is MIT but README says GPL, so might need to enquire.
+
 # ==== Tuxlite ZF theme ================================================================
 # Good for mobile, see its style.css for customization details.
 #use_copied_alb_version = True; THEME = "tuxlite_zf"
