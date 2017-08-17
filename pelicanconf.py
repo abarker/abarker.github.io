@@ -162,10 +162,11 @@ THEME = "cloned_pelican_elegant"
 PLUGINS += ["sitemap"]
 #PLUGINS += ["pelican_toc"] # Alternative to extract_tok below.
 PLUGINS += ["extract_toc"]
-PLUGINS += ["alb_tipue_search"] # For search, note copied dir since bugfix in the code.
+#PLUGINS += ["alb_tipue_search"] # For search, note copied dir since bugfix in the code.
 
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
-DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', 'search', '404']
+DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', '404']
+#DIRECT_TEMPLATES += ['search'] # No longer needed since using Google for search.
 STATIC_PATHS = ['theme/images', 'images']
 TAG_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
