@@ -91,21 +91,20 @@ SITEMAP = {
     }
 }
 
-DELETE_OUTPUT_DIRECTORY = True # This is set True in publishconf.py.  Use for debug.
-
 # =============================================================================
 # =============================================================================
 # Mostly my customizing below.
 # =============================================================================
 # =============================================================================
 
+DELETE_OUTPUT_DIRECTORY = True # This is set True in publishconf.py.  Use for debug.
+LOAD_CONTENT_CACHE = False # Turn off caching; use if some mods not showing (esp. metadata)
+
 BASEPATH_alb = "/home/alb/programming/python/pelican_blog/"
 THEMEPATH_alb = BASEPATH_alb + "pelican_themes/pelican-themes/"
 PLUGINPATH_alb = BASEPATH_alb + "pelican-plugins/"
 PLUGIN_PATHS = [PLUGINPATH_alb]
 PLUGINS = []
-
-LOAD_CONTENT_CACHE = False # Turn off caching; use if some mods not showing (esp. metadata)
 
 # Ignore Vim swap files (patterns passed to glob).  Different setting in publishconf.py.
 IGNORE_FILES = ["*.swp"]
@@ -167,10 +166,14 @@ PLUGINS += ["extract_toc"]
 MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', '404']
 DIRECT_TEMPLATES += ['search'] # No longer needed since using Google for search.
-STATIC_PATHS = ['theme/images', 'images']
 TAG_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
 AUTHOR_SAVE_AS = ''
+
+STATIC_PATHS = ['theme/images', 'images', 'static_html']
+PAGE_EXCLUDES = ['static_html']
+ARTICLE_EXCLUDES = ['static_html']
+#EXTRA_PATH_METADATA = {'static_html/keybase.txt': {'path': 'keybase.txt'},}
 
 # Setting below is needed with Elegant theme to get icons for email, GitHub, etc.,
 # to display on article pages.
