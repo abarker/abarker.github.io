@@ -91,7 +91,7 @@ SITEMAP = {
     }
 }
 
-#DELETE_OUTPUT_DIRECTORY = True # This is set True in publishconf.py.
+DELETE_OUTPUT_DIRECTORY = True # This is set True in publishconf.py.  Use for debug.
 
 # =============================================================================
 # =============================================================================
