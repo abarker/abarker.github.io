@@ -170,9 +170,9 @@ TAG_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
 AUTHOR_SAVE_AS = ''
 
-STATIC_PATHS = ['theme/images', 'images', 'static_html']
-PAGE_EXCLUDES = ['static_html']
-ARTICLE_EXCLUDES = ['static_html']
+STATIC_PATHS = ['theme/images', 'images']
+#PAGE_EXCLUDES = ['static_html']
+ARTICLE_EXCLUDES = ['google72b5c0b1ffefa9ae.html']
 #EXTRA_PATH_METADATA = {'static_html/keybase.txt': {'path': 'keybase.txt'},}
 
 # Setting below is needed with Elegant theme to get icons for email, GitHub, etc.,
