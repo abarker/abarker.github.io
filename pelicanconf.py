@@ -170,12 +170,13 @@ TAG_SAVE_AS = ''
 CATEGORY_SAVE_AS = ''
 AUTHOR_SAVE_AS = ''
 
-STATIC_PATHS = ['theme/images', 'images', 'static_html']
-PAGE_EXCLUDES = ['static_html']
-ARTICLE_EXCLUDES = ['static_html']
-google_file = "google72b5c0b1ffefa9ae.html"
-EXTRA_PATH_METADATA = {'static_html/'+google_file: {'path': google_file},} # rootlevel
+STATIC_PATHS = ['theme/images', 'images'] #, 'static_html']
+#PAGE_EXCLUDES = ['static_html']
+#ARTICLE_EXCLUDES = ['static_html']
+#google_file = "google72b5c0b1ffefa9ae.html"
+#EXTRA_PATH_METADATA = {'static_html/'+google_file: {'path': google_file},} # rootlevel
 READERS = {"html": None} # Don't process content HTML files, just copy over.
+
 # Setting below is needed with Elegant theme to get icons for email, GitHub, etc.,
 # to display on article pages.
 USE_SHORTCUT_ICONS=True
