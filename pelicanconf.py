@@ -178,11 +178,12 @@ ARTICLE_EXCLUDES = ['static']
 # Want google verification file in root dir.  See READMEalb.txt file.
 google_file = "google72b5c0b1ffefa9ae.html"
 READERS = {"html": None} # Don't process content HTML files, just copy over.
-EXTRA_PATH_METADATA = {'static/'+google_file: {'path': google_file},} # rootlevel
+EXTRA_PATH_METADATA = {}
+EXTRA_PATH_METADATA['static/'+google_file] = {'path': google_file}
 
 # Copy favicon.ico to the root dir.
 # TODO: Make a "copy to root dir from static" list and have a fun do it.
-EXTRA_PATH_METADATA = {'static/favicon.ico': {'path': "favicon.ico"},} # rootlevel
+EXTRA_PATH_METADATA['static/favicon.ico'] = {'path': "favicon.ico"} # rootlevel
 
 # Setting below is needed with Elegant theme to get icons for email, GitHub, etc.,
 # to display on article pages.
