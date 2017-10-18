@@ -86,9 +86,9 @@ Links
 .. _Python: http://www.python.org/
 
 Some links `a relative link, relative to the current file
-<{filename}./example_markdown_content_file_DRAFT.md>`_ and `an "absolute" link,
+<{filename}./example_rst_content_file.rst>`_ and `an "absolute" link,
 relative to the content root
-<{filename}/example_markdown_content_file_DRAFT.md>`_.
+<{filename}/example_rst_content_file.rst>`_.
 
 Examples of a URL, one in text and another defined: `Python
 <http://www.python.org/>`_ and Python_.

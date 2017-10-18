@@ -217,9 +217,12 @@ details = """
 
    <p>
 
-   Available for hire; contact me by
-   <a href="mailto:Allen.L.Barker@gmail.com" title="My email address" itemprop="email">
-   email</a>.
+   My <a href=https://github.com/abarker>My GitHub repository.</a>
+
+   <p>
+
+   Hire me!  <a href="mailto:Allen.L.Barker@gmail.com" title="My email address"
+   itemprop=email>My email address.</a>
 
    <p>
 
