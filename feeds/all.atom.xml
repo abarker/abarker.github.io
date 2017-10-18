@@ -48,7 +48,7 @@ is used.  Using double backtics instead of inline code gives &lt;tt class="docut
 &lt;/div&gt;
 &lt;div class="section" id="links"&gt;
 &lt;h2&gt;4. Links&lt;/h2&gt;
-&lt;p&gt;Some links &lt;a class="reference external" href="{filename}./example_markdown_content_file_DRAFT.md"&gt;a relative link, relative to the current file&lt;/a&gt; and &lt;a class="reference external" href="{filename}/example_markdown_content_file_DRAFT.md"&gt;an &amp;#8220;absolute&amp;#8221; link,
+&lt;p&gt;Some links &lt;a class="reference external" href="https://abarker.github.io/example_rst_content_file/"&gt;a relative link, relative to the current file&lt;/a&gt; and &lt;a class="reference external" href="https://abarker.github.io/example_rst_content_file/"&gt;an &amp;#8220;absolute&amp;#8221; link,
 relative to the content root&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Examples of a &lt;span class="caps"&gt;URL&lt;/span&gt;, one in text and another defined: &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt; and &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For more links, see &lt;a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html#external-hyperlink-targets"&gt;http://docutils.sourceforge.net/docs/user/rst/quickref.html#external-hyperlink-targets&lt;/a&gt;&lt;/p&gt;
