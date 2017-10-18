@@ -235,6 +235,12 @@ LANDING_PAGE_ABOUT = { "title": title,
 
 PROJECTS = [
 
+             {"name": "typped",
+              "url": "https://abarker.github.io/typped",
+              "description": "A framework for generalized Pratt parsing with optional"
+                   " type-checking.  Integrated with recursive descent parser generation."
+             },
+
              {"name": "pytest-helper",
               "url": "https://abarker.github.io/pytest-helper",
               "description": "Functions to help in using py.test (for example, easily"
