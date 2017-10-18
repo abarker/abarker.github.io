@@ -217,7 +217,7 @@ details = """
 
    <p>
 
-   My <a href=https://github.com/abarker>My GitHub repository.</a>
+   <a href=https://github.com/abarker>My GitHub repository.</a>
 
    <p>
 
