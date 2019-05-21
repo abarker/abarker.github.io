@@ -211,9 +211,9 @@ SITE_DESCRIPTION = "Site description string."
 title = "Articles on various topics."
 details = """
 
-   I am a computer scientist with interests in machine learning, data analysis,
-   mathematical logic systems, user interfaces for mathematics and data
-   analysis, and quantum computing.  Computer science Ph.D. from UVA.
+   I am a computer scientist (Ph.D., UVA) with interests in machine learning,
+   data analysis, mathematical logic systems, user interfaces for mathematics
+   and data analysis, and quantum computing.
 
    <p>
 
@@ -221,7 +221,7 @@ details = """
 
    <p>
 
-   Hire me!  <a href="mailto:Allen.L.Barker@gmail.com" title="My email address"
+   Contact me at:  <a href="mailto:Allen.L.Barker@gmail.com" title="My email address"
    itemprop=email>My email address.</a>
 
    <p>
