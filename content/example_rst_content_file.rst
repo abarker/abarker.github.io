@@ -55,18 +55,18 @@ Some Bash code:
 Images and figures
 ------------------
 
-A picture `here is a lovely picture <{filename}/images/oldguitar.jpg>`_
+A picture `here is a lovely picture <{static}/images/oldguitar.jpg>`_
 
 Here is an inline image:
 
-.. image:: {filename}/images/oldguitar.jpg
+.. image:: {static}/images/oldguitar.jpg
     :width: 200px
     :align: center
     :alt: alternate text
 
 And here is a figure:
 
-.. figure:: {filename}/images/oldguitar.jpg
+.. figure:: {static}/images/oldguitar.jpg
     :align: center
     :width: 100px
     :alt: alternate text
