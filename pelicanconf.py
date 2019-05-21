@@ -116,6 +116,7 @@ IGNORE_FILES = ["*.swp"]
 # Plugin docs:
 # https://github.com/getpelican/pelican-plugins/tree/master/render_math
 PLUGINS.append("render_math")
+#PLUGINS.append("latex")
 
 #macros = ['/home/user/latex-macros.tex']
 macros = []
