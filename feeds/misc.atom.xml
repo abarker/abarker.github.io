@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Allen Barker's Site</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/misc.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2016-06-16T14:13:00-04:00</updated><entry><title>Example RST content</title><link href="https://abarker.github.io/example_rst_content_file/" rel="alternate"></link><published>2016-06-16T14:13:00-04:00</published><updated>2016-06-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2016-06-16:example_rst_content_file/</id><summary type="html">&lt;p&gt;Examples to look&amp;nbsp;at.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Allen Barker's Site - misc</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/misc.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2017-06-16T14:13:00-04:00</updated><entry><title></title><link href="https://abarker.github.io/latex_in_rst/" rel="alternate"></link><published>2017-06-16T14:13:00-04:00</published><updated>2017-06-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2017-06-16:/latex_in_rst/</id><summary type="html">&lt;p class="first last"&gt;An example latex import&amp;nbsp;raw.&lt;/p&gt;
+</summary><content type="html"></content><category term="misc"></category></entry><entry><title>Example RST content</title><link href="https://abarker.github.io/example_rst_content_file/" rel="alternate"></link><published>2016-06-16T14:13:00-04:00</published><updated>2016-06-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2016-06-16:/example_rst_content_file/</id><summary type="html">&lt;p class="first last"&gt;An example rst&amp;nbsp;article.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;Examples to look&amp;nbsp;at.&lt;/p&gt;
 &lt;div class="section" id="math"&gt;
-&lt;h2&gt;1. Math&lt;/h2&gt;
+&lt;h2&gt;1. . Math&lt;/h2&gt;
 &lt;p&gt;Some math &lt;span class="math"&gt;\(A_\text{c} = (\pi/4) d^2\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;And some inline&amp;nbsp;math:&lt;/p&gt;
 &lt;div class="math"&gt;
@@ -11,7 +13,7 @@ x_i = \int_0^{1000} \sin(x) \mathrm{d}x
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="inline-code"&gt;
-&lt;h2&gt;2. Inline&amp;nbsp;code&lt;/h2&gt;
+&lt;h2&gt;2. . Inline&amp;nbsp;code&lt;/h2&gt;
 &lt;p&gt;A code example to consider, uses only two colons at&amp;nbsp;end:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 for f in fruits:
@@ -20,18 +22,18 @@ for f in fruits:
 &lt;p&gt;Some inline Python: &lt;code&gt;for i in egg: break i&lt;/code&gt;.  Note that variable &lt;code&gt;egg&lt;/code&gt;
 is used.  Using double backtics instead of inline code gives &lt;tt class="docutils literal"&gt;egg&lt;/tt&gt; as the variable&amp;nbsp;name.&lt;/p&gt;
 &lt;p&gt;Some default inline Python with single backtics but after setting code as default role: &lt;code&gt;import j; print(&amp;quot;x&amp;quot;)&lt;/code&gt;.&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fruits&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fruits&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
     &lt;span class="k"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;The fruit is&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Some Bash&amp;nbsp;code:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; i in *
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; i in *
 &lt;span class="k"&gt;do&lt;/span&gt;
-   &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;$&lt;span class="s2"&gt;i&amp;quot;&lt;/span&gt;
+   &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;&lt;span class="nv"&gt;$i&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;&lt;/span&gt;
 &lt;span class="k"&gt;done&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="images-and-figures"&gt;
-&lt;h2&gt;3. Images and&amp;nbsp;figures&lt;/h2&gt;
+&lt;h2&gt;3. . Images and&amp;nbsp;figures&lt;/h2&gt;
 &lt;p&gt;A picture &lt;a class="reference external" href="https://abarker.github.io/images/oldguitar.jpg"&gt;here is a lovely&amp;nbsp;picture&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Here is an inline&amp;nbsp;image:&lt;/p&gt;
 &lt;img alt="alternate text" class="align-center" src="https://abarker.github.io/images/oldguitar.jpg" style="width: 200px;" /&gt;
@@ -41,13 +43,13 @@ is used.  Using double backtics instead of inline code gives &lt;tt class="docut
 &lt;p class="caption"&gt;figure are like images but with a&amp;nbsp;caption&lt;/p&gt;
 &lt;div class="legend"&gt;
 &lt;p&gt;and whatever else you&amp;nbsp;add&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fruits&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eat&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;fruits&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;eat&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="links"&gt;
-&lt;h2&gt;4. Links&lt;/h2&gt;
+&lt;h2&gt;4. . Links&lt;/h2&gt;
 &lt;p&gt;Some links &lt;a class="reference external" href="https://abarker.github.io/example_rst_content_file/"&gt;a relative link, relative to the current file&lt;/a&gt; and &lt;a class="reference external" href="https://abarker.github.io/example_rst_content_file/"&gt;an &amp;#8220;absolute&amp;#8221; link,
 relative to the content root&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Examples of a &lt;span class="caps"&gt;URL&lt;/span&gt;, one in text and another defined: &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt; and &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;.&lt;/p&gt;
@@ -65,15 +67,16 @@ relative to the content root&lt;/a&gt;.&lt;/p&gt;
     }
 
     var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' &amp;&amp; location_protocol !== 'https') location_protocol = 'https:';
     mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
     mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
         "MathJax.Hub.Config({" +
         "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
         "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
         "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
         "    displayAlign: '"+ align +"'," +
@@ -87,6 +90,7 @@ relative to the content root&lt;/a&gt;.&lt;/p&gt;
         "        preview: 'TeX'," +
         "    }, " +
         "    'HTML-CSS': { " +
+        "        fonts: [['STIX', 'TeX']]," +
         "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }," +
         "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
         "    }, " +
@@ -107,6 +111,8 @@ relative to the content root&lt;/a&gt;.&lt;/p&gt;
                 "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
             "});" +
         "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</summary><category term="misc"></category></entry></feed>
+&lt;/script&gt;</content><category term="misc"></category></entry></feed>

@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
     <head>
-        <meta charset="utf-8"> 
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="author" content="Allen Barker" />
-        <meta name="copyright" content="Allen Barker" />
 
         <meta name="description" content="Full archives of Allen Barker&#39;s Site blog.
 " />
@@ -14,7 +13,7 @@
 
 <meta property="og:title" content="All Posts · Allen Barker&#39;s Site"/>
 <meta name="twitter:title" content="All Posts · Allen Barker&#39;s Site">
-<meta property="og:url" content="https://abarker.github.io/archives.html" />
+<meta property="og:url" content="https://abarker.github.io/archives" />
 <meta property="og:description" content="Full archives of Allen Barker&#39;s Site blog" />
 <meta name="twitter:description" content="Full archives of Allen Barker&#39;s Site blog">
 <meta property="og:site_name" content="Allen Barker&#39;s Site" />
@@ -26,12 +25,10 @@
         <link rel="stylesheet" type="text/css" href="https://abarker.github.io/theme/css/pygments.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://abarker.github.io/theme/tipuesearch/tipuesearch.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://abarker.github.io/theme/css/elegant.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="https://abarker.github.io/theme/css/admonition.css" media="screen">
         <link rel="stylesheet" type="text/css" href="https://abarker.github.io/theme/css/custom.css" media="screen">
-        <!-- alb modified below line to put icon in root dir of site. -->
-        <!-- <link rel="shortcut icon" href="https://abarker.github.io/theme/images/favicon.ico" type="image/x-icon" type="image/png" /> -->
-        <link rel="shortcut icon" href="https://abarker.github.io/favicon.ico" type="image/x-icon" />
-        <link rel="icon" href="https://abarker.github.io/favicon.ico" type="image/x-icon" />
-        <!-- <link rel="icon" href="https://abarker.github.io/theme/images/apple-touch-icon-152x152.png" type="image/png" />  -->
+        <link rel="shortcut icon" href="https://abarker.github.io/theme/images/favicon.ico" type="image/x-icon" />
+        <link rel="icon" href="https://abarker.github.io/theme/images/apple-touch-icon-152x152.png" type="image/png" />
         <link rel="apple-touch-icon" href="https://abarker.github.io/theme/images/apple-touch-icon.png"  type="image/png" />
         <link rel="apple-touch-icon" sizes="57x57" href="https://abarker.github.io/theme/images/apple-touch-icon-57x57.png" type="image/png" />
         <link rel="apple-touch-icon" sizes="72x72" href="https://abarker.github.io/theme/images/apple-touch-icon-72x72.png" type="image/png" />
@@ -41,6 +38,9 @@
         <link rel="apple-touch-icon" sizes="144x144" href="https://abarker.github.io/theme/images/apple-touch-icon-144x144.png" type="image/png" />
         <link rel="apple-touch-icon" sizes="152x152" href="https://abarker.github.io/theme/images/apple-touch-icon-152x152.png" type="image/png" />
         <link href="https://abarker.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Allen Barker&#39;s Site - Full Atom Feed" />
+
+
+
     </head>
     <body>
         <div id="content-sans-footer">
@@ -55,11 +55,11 @@
                     <a class="brand" href="https://abarker.github.io/"><span class=site-name>Allen Barker's Site</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
-                            <li ><a href="https://abarker.github.io/">Home/About</a></li>
-                            <li ><a href="https://abarker.github.io/categories.html">Categories</a></li>
-                            <li ><a href="https://abarker.github.io/tags.html">Tags</a></li>
-                            <li  class="active"><a href="https://abarker.github.io/archives.html">Archives</a></li>
-                            <li><form action="https://www.google.com/search" method="get" style="padding-top: 5px;"> <fieldset role="search"> <input type="hidden" name="q" value="site:abarker.github.io" /> <input class="search" type="text" name="q" results="0" placeholder="Search"/> </fieldset> </form> </li>
+                            <li ><a href="https://abarker.github.io">Home</a></li>
+                            <li ><a href="https://abarker.github.io/categories">Categories</a></li>
+                            <li ><a href="https://abarker.github.io/tags">Tags</a></li>
+                            <li  class="active"><a href="https://abarker.github.io/archives">Archives</a></li>
+                            <li><form class="navbar-search" action="https://abarker.github.io/search.html" onsubmit="return validateForm(this.elements['q'].value);"> <input type="text" class="search-query" placeholder="Search" name="q" id="tipue_search_input"></form></li>
                         </ul>
                     </div>
                 </div>
@@ -72,17 +72,27 @@
 
 <div class="row-fluid">
     <header class="page-header span10 offset2">
-    <h1><a href="https://abarker.github.io/archives.html">All Posts</a></h1>
+    <h1><a href="https://abarker.github.io/archives">All Posts</a></h1>
     </header>
 </div>
 <div class="row-fluid">
     <div class="span10 offset2">
         <div class="blog-archives">
-            <h2 id="2016"><a href="#2016">2016</a></h2>
-            <article class="last-entry-of-year">
-            <a href="https://abarker.github.io/example_rst_content_file/">Example <span class="caps">RST</span>&nbsp;content  </a>
-            <time pubdate="pubdate" datetime="2016-06-16T14:13:00-04:00">06-16-2016</time>
-            </article>
+                    <h2 id="2017"><a href="#2017">2017</a></h2>
+
+
+                        <article itemscope class="last-entry-of-year">
+
+                <a href="https://abarker.github.io/latex_in_rst/">  </a>
+                <time itemprop="dateCreated" datetime="2017-06-16T14:13:00-04:00">06-16-2017</time>
+                </article>
+                        <h2 id="2016"><a href="#2016">2016</a></h2>
+
+                    <article itemscope class="last-entry-of-year">
+
+                <a href="https://abarker.github.io/example_rst_content_file/">Example <span class="caps">RST</span>&nbsp;content  </a>
+                <time itemprop="dateCreated" datetime="2016-06-16T14:13:00-04:00">06-16-2016</time>
+                </article>
         </div>
     </div>
 </div>
@@ -96,7 +106,7 @@
 <footer>
 <div id="footer">
     <ul class="footer-content">
-        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="http://oncrashreboot.com/pelican-elegant" title="Theme Elegant Home Page">Elegant</a> by <a href="http://oncrashreboot.com" title="Talha Mansoor Home Page">Talha Mansoor</a></li>
+        <li class="elegant-power">Powered by <a href="http://getpelican.com/" title="Pelican Home Page">Pelican</a>. Theme: <a href="https://github.com/Pelican-Elegant/elegant/" title="Theme Elegant Home Page">Elegant</a></li>
     </ul>
 </div>
 </footer>        <script src="//code.jquery.com/jquery.min.js"></script>
@@ -109,5 +119,5 @@
         </script>
     </body>
     <!-- Theme: Elegant built for Pelican
-    License : http://oncrashreboot.com/pelican-elegant -->
+    License : MIT -->
 </html>
