@@ -3,7 +3,7 @@
 </summary><content type="html"></content><category term="misc"></category></entry><entry><title>Example RST content</title><link href="https://abarker.github.io/example_rst_content_file/" rel="alternate"></link><published>2016-06-16T14:13:00-04:00</published><updated>2016-06-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2016-06-16:/example_rst_content_file/</id><summary type="html">&lt;p class="first last"&gt;An example rst&amp;nbsp;article.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;Examples to look&amp;nbsp;at.&lt;/p&gt;
 &lt;div class="section" id="math"&gt;
-&lt;h2&gt;1. . Math&lt;/h2&gt;
+&lt;h2&gt;1. Math&lt;/h2&gt;
 &lt;p&gt;Some math &lt;span class="math"&gt;\(A_\text{c} = (\pi/4) d^2\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;And some inline&amp;nbsp;math:&lt;/p&gt;
 &lt;div class="math"&gt;
@@ -13,7 +13,7 @@ x_i = \int_0^{1000} \sin(x) \mathrm{d}x
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="inline-code"&gt;
-&lt;h2&gt;2. . Inline&amp;nbsp;code&lt;/h2&gt;
+&lt;h2&gt;2. Inline&amp;nbsp;code&lt;/h2&gt;
 &lt;p&gt;A code example to consider, uses only two colons at&amp;nbsp;end:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 for f in fruits:
@@ -33,7 +33,7 @@ is used.  Using double backtics instead of inline code gives &lt;tt class="docut
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="images-and-figures"&gt;
-&lt;h2&gt;3. . Images and&amp;nbsp;figures&lt;/h2&gt;
+&lt;h2&gt;3. Images and&amp;nbsp;figures&lt;/h2&gt;
 &lt;p&gt;A picture &lt;a class="reference external" href="https://abarker.github.io/images/oldguitar.jpg"&gt;here is a lovely&amp;nbsp;picture&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Here is an inline&amp;nbsp;image:&lt;/p&gt;
 &lt;img alt="alternate text" class="align-center" src="https://abarker.github.io/images/oldguitar.jpg" style="width: 200px;" /&gt;
@@ -49,7 +49,7 @@ is used.  Using double backtics instead of inline code gives &lt;tt class="docut
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="links"&gt;
-&lt;h2&gt;4. . Links&lt;/h2&gt;
+&lt;h2&gt;4. Links&lt;/h2&gt;
 &lt;p&gt;Some links &lt;a class="reference external" href="https://abarker.github.io/example_rst_content_file/"&gt;a relative link, relative to the current file&lt;/a&gt; and &lt;a class="reference external" href="https://abarker.github.io/example_rst_content_file/"&gt;an &amp;#8220;absolute&amp;#8221; link,
 relative to the content root&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Examples of a &lt;span class="caps"&gt;URL&lt;/span&gt;, one in text and another defined: &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt; and &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;.&lt;/p&gt;
