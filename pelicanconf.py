@@ -11,6 +11,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Allen Barker'
 SITENAME = "Allen Barker's Site"
+
 # Some set SITEURL = 'http://localhost:8000' in this file and real one in publishconf.py.
 SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
 GITHUB_URL = 'https://github.com/abarker' # may not do anything; some themes make fork ribbon
@@ -69,11 +70,10 @@ ARTICLE_URL = '{slug}/'
 
 DEFAULT_PAGINATION = 10
 
-# Uncomment following line if you want document-relative URLs when developing
-# Leave off now, since bugs.... docs say "Only set this to True when
-# developing/testing and only if you fully understand the effect it can have on
-# links/feeds."
-RELATIVE_URLS = False
+# Docs say "Only set this to True when developing/testing and only if you fully
+# understand the effect it can have on links/feeds."  But required for
+# local server preview.  It is set False in publishconf.py, though.
+RELATIVE_URLS = True
 
 # Sitemap plugin settings, for more options see
 # https://github.com/getpelican/pelican-plugins/tree/master/sitemap

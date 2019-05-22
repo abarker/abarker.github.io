@@ -3,7 +3,7 @@ Date: 2016-06-15 14:13
 Modified: 2016-06-15 14:13
 Category: misc
 Tags: first, misc
-Slug: My-first-post-slug
+Slug: markdown-example-slug
 Authors: Allen Barker
 Summary: Short version of my first blog post
 
