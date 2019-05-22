@@ -88,12 +88,10 @@
             <p>Examples to look&nbsp;at.</p>
 <div class="section" id="math">
 <h2>1. Math</h2>
-<p>Some math <span class="math">\(A_\text{c} = (\pi/4) d^2\)</span>.</p>
-<p>And some inline&nbsp;math:</p>
-<div class="math">
-\begin{equation*}
-x_i = \int_0^{1000} \sin(x) \mathrm{d}x
-\end{equation*}
+<p>Some inline math <span class="formula"><i>A</i><sub><span class="text">c</span></sub> = (<i>π</i> ⁄ 4)<i>d</i><sup>2</sup></span>.</p>
+<p>And some display&nbsp;math:</p>
+<div class="formula">
+<i>x</i><sub><i>i</i></sub> = <span class="limits"><sup class="limit">1000</sup><span class="limit">⌠</span><span class="limit">⌡</span><sub class="limit">0</sub></span>sin(<i>x</i>)<span class="mathrm">d</span><i>x</i>
 </div>
 </div>
 <div class="section" id="inline-code">
@@ -139,67 +137,7 @@ relative to the content root</a>.</p>
 <p>Examples of a <span class="caps">URL</span>, one in text and another defined: <a class="reference external" href="http://www.python.org/">Python</a> and <a class="reference external" href="http://www.python.org/">Python</a>.</p>
 <p>For more links, see <a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html#external-hyperlink-targets">http://docutils.sourceforge.net/docs/user/rst/quickref.html#external-hyperlink-targets</a></p>
 </div>
-<script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
 
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
-
-    var configscript = document.createElement('script');
-    configscript.type = 'text/x-mathjax-config';
-    configscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        fonts: [['STIX', 'TeX']]," +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script>
             <div>
 </div>
 
