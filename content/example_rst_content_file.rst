@@ -13,9 +13,9 @@ Examples to look at.
 Math
 ----
 
-Some math :math:`A_\text{c} = (\pi/4) d^2`.
+Some inline math :math:`A_\text{c} = (\pi/4) d^2`.
 
-And some inline math:
+And some display math:
 
 .. math::
 

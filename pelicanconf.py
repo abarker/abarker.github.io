@@ -118,18 +118,16 @@ IGNORE_FILES = ["*.swp"]
 # https://github.com/getpelican/pelican-plugins/tree/master/render_math
 # TODO temporarily commented out "render_math" append and MATH_JAX, put back if needed...
 #PLUGINS.append("render_math")
-PLUGINS.append("latex")
+#PLUGINS.append("latex")
 
 #macros = ['/home/user/latex-macros.tex']
 macros = []
 #MATH_JAX = {'color': 'blue', 'align': 'left', 'macros': macros}
-"""
 MATH_JAX = {'macros': macros,
             "color": "black",
             "align": "center",
             "indent": "0em", # Used if align is not "center"
             }
-"""
 
 # =============================================================================
 # section numbers
