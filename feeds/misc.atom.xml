@@ -4,10 +4,12 @@
 </summary><content type="html">&lt;p&gt;Examples to look&amp;nbsp;at.&lt;/p&gt;
 &lt;div class="section" id="math"&gt;
 &lt;h2&gt;1. Math&lt;/h2&gt;
-&lt;p&gt;Some math &lt;span class="formula"&gt;&lt;i&gt;A&lt;/i&gt;&lt;sub&gt;&lt;span class="text"&gt;c&lt;/span&gt;&lt;/sub&gt; = (&lt;i&gt;π&lt;/i&gt; ⁄ 4)&lt;i&gt;d&lt;/i&gt;&lt;sup&gt;2&lt;/sup&gt;&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Some math &lt;span class="math"&gt;\(A_\text{c} = (\pi/4) d^2\)&lt;/span&gt;.&lt;/p&gt;
 &lt;p&gt;And some inline&amp;nbsp;math:&lt;/p&gt;
-&lt;div class="formula"&gt;
-&lt;i&gt;x&lt;/i&gt;&lt;sub&gt;&lt;i&gt;i&lt;/i&gt;&lt;/sub&gt; = &lt;span class="limits"&gt;&lt;sup class="limit"&gt;1000&lt;/sup&gt;&lt;span class="limit"&gt;⌠&lt;/span&gt;&lt;span class="limit"&gt;⌡&lt;/span&gt;&lt;sub class="limit"&gt;0&lt;/sub&gt;&lt;/span&gt;sin(&lt;i&gt;x&lt;/i&gt;)&lt;span class="mathrm"&gt;d&lt;/span&gt;&lt;i&gt;x&lt;/i&gt;
+&lt;div class="math"&gt;
+\begin{equation*}
+x_i = \int_0^{1000} \sin(x) \mathrm{d}x
+\end{equation*}
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="inline-code"&gt;
@@ -53,4 +55,64 @@ relative to the content root&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Examples of a &lt;span class="caps"&gt;URL&lt;/span&gt;, one in text and another defined: &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt; and &lt;a class="reference external" href="http://www.python.org/"&gt;Python&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;For more links, see &lt;a class="reference external" href="http://docutils.sourceforge.net/docs/user/rst/quickref.html#external-hyperlink-targets"&gt;http://docutils.sourceforge.net/docs/user/rst/quickref.html#external-hyperlink-targets&lt;/a&gt;&lt;/p&gt;
 &lt;/div&gt;
-</content><category term="misc"></category></entry></feed>
+&lt;script type='text/javascript'&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width &lt; 768) ? "left" : align;
+        indent = (screen.width &lt; 768) ? "0em" : indent;
+        linebreak = (screen.width &lt; 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        fonts: [['STIX', 'TeX']]," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;</content><category term="misc"></category></entry></feed>
