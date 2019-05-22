@@ -103,7 +103,8 @@ LOAD_CONTENT_CACHE = False # Turn off caching; use if some mods not showing (esp
 BASEPATH_alb = "/home/alb/programming/python/pelican_blog/"
 THEMEPATH_alb = BASEPATH_alb + "pelican_themes/pelican-themes/"
 PLUGINPATH_alb = BASEPATH_alb + "pelican-plugins/"
-PLUGIN_PATHS = [PLUGINPATH_alb]
+EXTRAPLUGINS_alb = BASEPATH_alb + "extra-cloned-pelican-plugins"
+PLUGIN_PATHS = [EXTRAPLUGINS_alb, PLUGINPATH_alb]
 PLUGINS = []
 
 # Ignore Vim swap files (patterns passed to glob).  Different setting in publishconf.py.
@@ -115,18 +116,19 @@ IGNORE_FILES = ["*.swp"]
 
 # Plugin docs:
 # https://github.com/getpelican/pelican-plugins/tree/master/render_math
-PLUGINS.append("render_math")
+#PLUGINS.append("render_math")
 #PLUGINS.append("latex")
 
 #macros = ['/home/user/latex-macros.tex']
 macros = []
 #MATH_JAX = {'color': 'blue', 'align': 'left', 'macros': macros}
+"""
 MATH_JAX = {'macros': macros,
             "color": "black",
             "align": "center",
             "indent": "0em", # Used if align is not "center"
             }
-
+"""
 
 # =============================================================================
 # section numbers
@@ -139,10 +141,6 @@ SECTION_NUMBER_MAX = 3
 # theme stuff below
 # =============================================================================
 
-# TODO: This stuff was a kludge to switch back to default themes and try them out.
-# Clean up, just use the cloned elegant theme.
-use_copied_alb_version = False # Only set true if copy of dir has been made.
-
 # =============================================================================
 # Elegant theme (CURRENTLY USED)
 # =============================================================================
@@ -151,7 +149,7 @@ use_copied_alb_version = False # Only set true if copy of dir has been made.
 #    File: https://github.com/talha131/onCrashReboot/blob/master/pelicanconf.py
 #    Appears as: http://oncrashreboot.com/
 
-use_copied_alb_version = True
+use_copied_alb_version = True # TODO this and whole setup is a kludge to swap themes...
 THEME = "cloned_pelican_elegant"
 
 # Some recommended settings from the docs.
@@ -165,7 +163,19 @@ PLUGINS += ["extract_toc"]
 #PLUGINS += ["tipue_search"] # For search, but now just use Google.
 PLUGINS += ["neighbors"] # Needed for the next and previous article links to work.
 
-MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', 'headerid', 'toc']
+#MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', headerid', 'toc'] # DEPRECATED FOR BELOW MARKDOWN
+# Deprecation fix: https://markus-beuckelmann.de/blog/upgrading-pelican-to-version-3.7.html
+
+MARKDOWN = {
+    'extension_configs' : {
+        'markdown.extensions.codehilite' : {'css_class': 'highlight'},
+        'markdown.extensions.extra' : {},
+        #'markdown.extensions.tables' : {},
+        'markdown.extensions.toc' : {},
+        #'markdown.extensions.fenced_code' : {}
+    }
+}
+
 DIRECT_TEMPLATES = ['index', 'tags', 'categories', 'archives', '404']
 DIRECT_TEMPLATES += ['search'] # No longer needed since using Google for search.
 TAG_SAVE_AS = ''
@@ -212,7 +222,7 @@ SITE_DESCRIPTION = "Site description string."
 title = "Articles on various topics."
 details = """
 
-   I am a computer scientist (Ph.D., UVA) with interests in machine learning,
+   I am a computer scientist (PhD, UVA) with interests in machine learning,
    data analysis, mathematical logic systems, user interfaces for mathematics
    and data analysis, and quantum computing.
 
