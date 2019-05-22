@@ -5,28 +5,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://abarker.github.io/</loc>
-<lastmod>2019-05-21T23:41:08-00:00</lastmod>
+<lastmod>2019-05-22T16:07:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://abarker.github.io/archives.html</loc>
-<lastmod>2019-05-21T23:41:08-00:00</lastmod>
+<lastmod>2019-05-22T16:07:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://abarker.github.io/tags.html</loc>
-<lastmod>2019-05-21T23:41:08-00:00</lastmod>
+<lastmod>2019-05-22T16:07:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://abarker.github.io/categories.html</loc>
-<lastmod>2019-05-21T23:41:08-00:00</lastmod>
+<lastmod>2019-05-22T16:07:11-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -41,6 +41,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>https://abarker.github.io/example_rst_content_file/</loc>
 <lastmod>2016-06-16T14:13:00-04:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://abarker.github.io/markdown-example-slug/</loc>
+<lastmod>2016-06-15T14:13:00-04:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
