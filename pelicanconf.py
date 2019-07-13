@@ -199,7 +199,7 @@ EXTRA_PATH_METADATA['static/'+google_file] = {'path': google_file}
 EXTRA_PATH_METADATA['static/favicon.ico'] = {'path': "favicon.ico"} # rootlevel
 
 # TODO testing separate pygments.css file in static.
-EXTRA_PATH_METADATA['static/pygments.css'] = {'path': "pygments.css"} # rootlevel
+EXTRA_PATH_METADATA['static/alb_pygments.css'] = {'path': "alb_pygments.css"} # rootlevel
 
 # Setting below is needed with Elegant theme to get icons for email, GitHub, etc.,
 # to display on article pages.
