@@ -198,10 +198,6 @@ EXTRA_PATH_METADATA['static/'+google_file] = {'path': google_file}
 # TODO: Make a "copy to root dir from static" list and have a fun do it.
 EXTRA_PATH_METADATA['static/favicon.ico'] = {'path': "favicon.ico"} # rootlevel
 
-# TODO testing separate pygments.css file in static.
-LOAD_CONTENT_CACHE = False # For debugging, experimenting with settings http://docs.getpelican.com/en/stable/settings.html
-EXTRA_PATH_METADATA['static/alb_pygments.css'] = {'path': "alb_pygments.css"} # rootlevel
-
 # Setting below is needed with Elegant theme to get icons for email, GitHub, etc.,
 # to display on article pages.
 USE_SHORTCUT_ICONS=True
