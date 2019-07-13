@@ -9,11 +9,12 @@
 
 (sleep 5; echo "Hit ^C to exit local web server...") &
 
-pelican content
-cd output
-python -m pelican.server
+make clean
+#pelican content
+#cd output
+#python -m pelican.server
 # Below is new way, but it doesn't work right.  May need to re-run pelican-quickstart.
-# pelican --listen -r # -r regenerates
+pelican --listen -r # -r regenerates
 
 # Old below
 #make html && make serve

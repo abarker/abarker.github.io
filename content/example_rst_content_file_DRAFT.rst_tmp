@@ -8,6 +8,9 @@ Example RST content
 :authors: Allen Barker
 :summary: An example rst article.
 
+.. contents::
+    :depth: 2
+
 Examples to look at.
 
 Math
@@ -50,7 +53,6 @@ Some Bash code:
    do
       echo "$i"
    done
-
 
 Images and figures
 ------------------

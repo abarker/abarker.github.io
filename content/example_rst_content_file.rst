@@ -8,6 +8,9 @@ Example RST content
 :authors: Allen Barker
 :summary: An example rst article.
 
+.. contents::
+    :depth: 2
+
 Examples to look at.
 
 Math
@@ -24,12 +27,6 @@ And some display math:
 Inline code
 -----------
 
-A code example to consider, uses only two colons at end::
-
-   for f in fruits:
-       print("The fruit is", f)
-
-
 Some inline Python: :code:`for i in egg: break i`.  Note that variable :code:`egg`
 is used.  Using double backtics instead of inline code gives ``egg`` as the variable name.
 
@@ -39,8 +36,17 @@ Some default inline Python with single backtics but after setting code as defaul
 
 .. code-block:: python
 
-   for f in fruits:
-       print("The fruit is", f)
+   class Test:
+       def __init__(self):
+         for f in fruits:
+             print("The fruit is", f)
+
+         if x == 4 and y != 4 and "key" in d:
+             new_d = {"key" : "value"}
+
+      @staticmethod
+      def stat(arg1, arg2=False):
+          return arg2 - arg1
 
 Some Bash code:
 
@@ -51,6 +57,10 @@ Some Bash code:
       echo "$i"
    done
 
+A code example to consider, uses only two colons at end::
+
+   for f in fruits:
+       print("The fruit is", f)
 
 Images and figures
 ------------------
@@ -85,10 +95,10 @@ Links
 
 .. _Python: http://www.python.org/
 
-Some links `a relative link, relative to the current file
-<{filename}./example_rst_content_file.rst>`_ and `an "absolute" link,
-relative to the content root
-<{filename}/example_rst_content_file.rst>`_.
+Some links, first `a relative link, relative to the current file
+<{filename}./example_rst_content_file.rst>`_  These links just go to the back to the same
+content as an example.  Note the period before the slash.  Here is
+`an "absolute" link, relative to the content root <{filename}/example_rst_content_file.rst>`_.
 
 Examples of a URL, one in text and another defined: `Python
 <http://www.python.org/>`_ and Python_.

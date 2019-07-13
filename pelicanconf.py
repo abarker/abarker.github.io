@@ -101,7 +101,7 @@ DELETE_OUTPUT_DIRECTORY = True # This is set True in publishconf.py.  Use for de
 LOAD_CONTENT_CACHE = False # Turn off caching; use if some mods not showing (esp. metadata)
 
 BASEPATH_alb = "/home/alb/programming/python/pelican_blog/"
-THEMEPATH_alb = BASEPATH_alb + "pelican_themes/pelican-themes/"
+THEMEPATH_alb = BASEPATH_alb + "pelican_themes_options/pelican-themes/"
 PLUGINPATH_alb = BASEPATH_alb + "pelican-plugins/"
 EXTRAPLUGINS_alb = BASEPATH_alb + "extra-cloned-pelican-plugins"
 PLUGIN_PATHS = [EXTRAPLUGINS_alb, PLUGINPATH_alb]
@@ -148,12 +148,15 @@ SECTION_NUMBER_MAX = 3
 #    Appears as: http://oncrashreboot.com/
 
 use_copied_alb_version = True # TODO this and whole setup is a kludge to swap themes...
-THEME = "cloned_pelican_elegant"
+THEME = "cloned_pelican_elegant_alb"
 
 # Some recommended settings from the docs.
 # http://oncrashreboot.com/elegant-best-pelican-theme-features#configuration-variables
 # "Here are the variables that you should set in your configuration to get the
 # most out of Elegant":
+
+# Speed up page loading, https://elegant.oncrashreboot.com/avoid-unnecessary-http-requests
+PLUGINS += ["assets"]
 
 PLUGINS += ["sitemap"]
 #PLUGINS += ["pelican_toc"] # Alternative to extract_tok below.
@@ -170,6 +173,7 @@ MARKDOWN = {
         'markdown.extensions.extra' : {},
         #'markdown.extensions.tables' : {},
         'markdown.extensions.toc' : {},
+        'markdown.extensions.admonition': {},
         #'markdown.extensions.fenced_code' : {}
     }
 }
@@ -193,6 +197,9 @@ EXTRA_PATH_METADATA['static/'+google_file] = {'path': google_file}
 # Copy favicon.ico to the root dir.
 # TODO: Make a "copy to root dir from static" list and have a fun do it.
 EXTRA_PATH_METADATA['static/favicon.ico'] = {'path': "favicon.ico"} # rootlevel
+
+# TODO testing separate pygments.css file in static.
+EXTRA_PATH_METADATA['static/pygments.css'] = {'path': "pygments.css"} # rootlevel
 
 # Setting below is needed with Elegant theme to get icons for email, GitHub, etc.,
 # to display on article pages.
@@ -230,7 +237,7 @@ details = """
 
    <p>
 
-   Contact me at:  <a href="mailto:Allen.L.Barker@gmail.com" title="My email address"
+   Contact me:  <a href="mailto:Allen.L.Barker@gmail.com" title="My email address"
    itemprop=email>My email address.</a>
 
    <p>
@@ -339,7 +346,6 @@ PROJECTS = [
 #PAGINATED_DIRECT_TEMPLATES = ('categories', 'archives')
 
 if use_copied_alb_version:
-    THEMEPATH_alb += "../"
-    THEME += "_alb"
+    THEMEPATH_alb += "../" # NOTE this goes to parent dir (for things not in big repo)!
 THEME = THEMEPATH_alb + THEME
 
