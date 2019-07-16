@@ -120,6 +120,17 @@ pre {
     word-break: normal;
     word-wrap: normal;
 }
+code { /* alb added this code element 3/2/17; sets color and size of inline code */
+       background: inherit;
+       background-color: #F3F0EE;
+       color: #151515;
+       font-family: "DejaVu Sans Mono", "DejaVu LGC Sans Mono", "Source Code Pro", Lucida Console, Andale Mono, "Bitstream Vera Sans Mono", Liberation Mono, Monaco, monospace;
+       font-weight: inherit;
+       font-size: 0.8em;
+       font-style: normal;
+       letter-spacing: 0.015em;
+       text-decoration: inherit;
+   }
 td.code .highlight pre {
     border-radius: 0 3px 3px 0;
 }
@@ -568,9 +579,9 @@ a#allposts:hover {
     background-color: #f7f7f9;
     border-radius: 3px;
     border: 1px solid #e1e1e8;
-    color: #d14;
+    color: #151515;
     font-family: Monaco, Menlo, Consolas, "Courier New", monospace;
-    font-size: 12px;
+    font-size: 14px;
     padding: 2px 4px;
     white-space: nowrap;
 }
