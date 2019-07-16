@@ -116,8 +116,10 @@ IGNORE_FILES = ["*.swp"]
 
 # Plugin docs:
 # https://github.com/getpelican/pelican-plugins/tree/master/render_math
+# https://docs.mathjax.org/en/latest/tex.html#supported-latex-commands
+
 PLUGINS.append("render_math")
-#PLUGINS.append("latex")
+#PLUGINS.append("latex") # Works, too.
 
 #macros = ['/home/user/latex-macros.tex']
 macros = []
@@ -126,6 +128,14 @@ MATH_JAX = {'macros': macros,
             "color": "black",
             "align": "center",
             "indent": "0em", # Used if align is not "center"
+            #"mathjax_font": "sanserif",
+            "responsive": True,
+
+            # Absolute pathnames to files with macros (doesn't work????)
+            "macros": ["/home/alb/programming/python/pelican_blog/alb_pages/latex_macros.tex"],
+
+            # https://docs.mathjax.org/en/latest/tex.html#tex-and-latex-extensions
+            "tex_extensions": ["color.js","AMSmath.js"],
             }
 
 # =============================================================================
@@ -161,7 +171,7 @@ PLUGINS += ["assets"]
 PLUGINS += ["sitemap"]
 #PLUGINS += ["pelican_toc"] # Alternative to extract_tok below.
 PLUGINS += ["extract_toc"]
-#PLUGINS += ["tipue_search"] # For search, but now just use Google.
+PLUGINS += ["tipue_search"] # For search, but now just use Google.
 PLUGINS += ["neighbors"] # Needed for the next and previous article links to work.
 
 #MD_EXTENSIONS = ['codehilite(css_class=highlight)', 'extra', headerid', 'toc'] # DEPRECATED FOR BELOW MARKDOWN
@@ -248,16 +258,22 @@ LANDING_PAGE_ABOUT = { "title": title,
 
 PROJECTS = [
 
-             {"name": "typped",
-              "url": "https://abarker.github.io/typped",
-              "description": "A framework for generalized Pratt parsing with optional"
-                   " type-checking.  Integrated with recursive descent parser generation."
+             {"name": "pdfCropMargins",
+              "url": "https://github.com/abarker/pdfCropMargins",
+              "description": "A command-line utility to crop PDF files.  Like "
+                   "the pdfcrop program on steroids."
              },
 
              {"name": "pytest-helper",
               "url": "https://abarker.github.io/pytest-helper",
               "description": "Functions to help in using py.test (for example, easily"
                    " make modules self-testing when run as scripts)."
+             },
+
+             {"name": "typped",
+              "url": "https://abarker.github.io/typped",
+              "description": "A framework for generalized Pratt parsing with optional"
+                   " type-checking.  Integrated with recursive descent parser generation."
              },
 
              {"name": "set-package-attribute",
@@ -270,12 +286,6 @@ PROJECTS = [
               "url": "https://github.com/abarker/lyxNotebook",
               "description": "Use the Lyx word processor as a code-evaluating "
                    "notebook (similar to Mathematica notebooks or Jupyter notebooks)."
-             },
-
-             {"name": "pdfCropMargins",
-              "url": "https://github.com/abarker/pdfCropMargins",
-              "description": "A command-line utility to crop PDF files.  Like "
-                   "the pdfcrop program on steroids."
              },
 
              {"name": "makeSpanningBackground",
