@@ -16,14 +16,14 @@
 <meta property="og:title" content="Understanding Python Imports "/>
 <meta property="og:url" content="https://abarker.github.io/understanding_python_imports/" />
 <meta property="og:description" content="Description of modern Python imports." />
-<meta property="og:site_name" content="Allen Barker&#39;s Site" />
+<meta property="og:site_name" content="abarker.github.io" />
 <meta property="og:article:author" content="Allen Barker" />
 <meta property="og:article:published_time" content="2019-07-12T14:13:00-04:00" />
 <meta property="og:article:modified_time" content="2019-07-12T14:13:00-04:00" />
 <meta name="twitter:title" content="Understanding Python Imports ">
 <meta name="twitter:description" content="Description of modern Python imports.">
 
-        <title>Understanding Python Imports  · Allen Barker&#39;s Site
+        <title>Understanding Python Imports  · abarker.github.io
 </title>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
         <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css" rel="stylesheet">
@@ -38,7 +38,7 @@
         <link rel="apple-touch-icon" sizes="120x120" href="https://abarker.github.io/theme/images/apple-touch-icon-120x120.png" type="image/png" />
         <link rel="apple-touch-icon" sizes="144x144" href="https://abarker.github.io/theme/images/apple-touch-icon-144x144.png" type="image/png" />
         <link rel="apple-touch-icon" sizes="152x152" href="https://abarker.github.io/theme/images/apple-touch-icon-152x152.png" type="image/png" />
-        <link href="https://abarker.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Allen Barker&#39;s Site - Full Atom Feed" />
+        <link href="https://abarker.github.io/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="abarker.github.io - Full Atom Feed" />
 
 
 
@@ -53,7 +53,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="https://abarker.github.io/"><span class=site-name>Allen Barker's Site</span></a>
+                    <a class="brand" href="https://abarker.github.io/"><span class=site-name>abarker.github.io</span></a>
                     <div class="nav-collapse collapse">
                         <ul class="nav pull-right top-menu">
                             <li ><a href="https://abarker.github.io">Home</a></li>
@@ -116,8 +116,8 @@
 friendly to beginners.  The import system, however, is one part of the
 language which can be confusing.  There are a few possible sources of confusion:</p>
 <ul class="simple">
-<li>Certain import statements which work in modules inside packages do not work
-in modules which are not inside packages, and vice versa.</li>
+<li>Certain import statements which work for modules inside packages do not work
+for modules outside of packages, and vice versa.</li>
 <li>Some of the import syntax does not generalize in the way one might first
 expect it does.</li>
 <li>Modules run as scripts have some special properties which can affect imports.</li>
@@ -137,7 +137,7 @@ briefly reviewed.</p>
 to separate the code into separate files.  In Python those separate files are
 called <strong>modules</strong>.  The use of modules can make the codebase easier to
 understand and, as the name implies, more modular.  Imports are used to allow
-code in one module to use code from another module.</p>
+code in one module to access and use code from other modules.</p>
 <p>The Python module and package system is closely tied to the directories and
 files in the underlying filesystem.  Understanding the correspondence is
 important in understanding the Python import system.  The basic correspondence
@@ -155,17 +155,22 @@ can be summarized as follows:</p>
 </div>
 <p>A file containing Python code is always a module and vice versa.  Such files
 usually have names ending with the <code>.py</code> extension.  All Python programs are
-composed of one or more modules.</p>
-<p><strong>Packages</strong> are collections of modules organized in a certain way.  Any Python
-module/file which is inside a directory containing an <code>__init__.py</code> module
-(which may or may not be an empty file) is by definition part of the package
-associated with that <code>__init__.py</code> file.  If there is no <code>__init__.py</code> in its
-directory then a module is not a part of any package (excepting namespace
-packages, an advanced topic briefly discussed <a class="reference internal" href="#namespace-packages">later</a>).
-Subpackages are defined similarly, as subdirectories of a package directory
-which also contain <code>__init__.py</code> files, and so forth.  (Formally, packages are
-just a special kind of module, but in this context modules and packages will be
-considered to be distinct.)</p>
+composed of one or more modules.  <strong>Packages</strong> are collections of modules
+organized in a certain way:</p>
+<ul class="simple">
+<li>Any Python module which is inside a directory containing an <code>__init__.py</code>
+file (which may or may not be an empty file) is by definition part of the
+package associated with that <code>__init__.py</code> file.  The name of the package is
+the same as the name of the directory.  (Formally, packages are just a
+special kind of module, but in this context packages and modules will be
+considered to be distinct.)</li>
+<li><strong>Subpackages</strong> are defined similarly to packages, as subdirectories of a
+package directory which also contain an <code>__init__.py</code> file.  Subpackages can
+have their own subpackages, and so forth.</li>
+<li>A module with no <code>__init__.py</code> in its directory is not part of any package or
+subpackage (excepting namespace packages, an advanced topic briefly discussed
+<a class="reference internal" href="#namespace-packages">later</a>).</li>
+</ul>
 <p>Consider this example directory structure, which will be used throughout the article:</p>
 <pre class="literal-block">
 my_project
@@ -206,14 +211,14 @@ application-programmer interface (<span class="caps">API</span>).  Names which s
 <p>Subpackages are imported (and their <code>__init__.py</code> files are run) when they are
 either 1) explicitly imported or 2) automatically imported just before a module
 or subpackage contained within that subpackage is imported.  As noted above,
-the <code>module</code> object representing the subpackage module is also added to the
-namespace of the package or subpackage that imports it (under its subpackage name).</p>
+the <code>module</code> object representing the subpackage is also added to the namespace
+of the package or subpackage that imports it (under its subpackage name).</p>
 <p>Python <code>import</code> statements always contain a specifier for a package or module
 to import.  Equivalently, they always contain a specifier for the corresponding
-file or a directory.  While Python’s import statements never use the <code>.py</code> file
-extension for naming modules, other than that the names of modules, packages,
-and subpackages correspond directly with filesystem objects (files and
-directories) and their filesystem names.</p>
+file or a directory in the filesystem.  While Python’s import statements never
+use the <code>.py</code> file extension for naming modules, other than that the names of
+modules, packages, and subpackages correspond directly with filesystem objects
+(files and directories) and their filesystem names.</p>
 </div>
 <div class="section" id="the-python-path-search-list-sys-path">
 <h2>2. <a class="toc-backref" href="#id3">The Python path-search list: <code>sys.path</code></a></h2>
@@ -236,11 +241,11 @@ Python’s current working directory (<span class="caps">CWD</span>).  The <span
 command shell’s notion of current directory (i.e., the directory you are in
 when you invoke the <code>python</code> command), but it can be changed by calls to
 <code>os.setcwd()</code>.</p>
-<p>Directories can also be added to the initial <code>sys.path</code> list from command
-shells like Bash by setting the <code>PYTHONPATH</code> environment variable before
-invoking the <code>python</code> command.  The <code>PYTHONPATH</code> environment variable should
-contain a colon-separated string of the pathnames to be added.  While this has
-its uses it is usually not the recommended way to initialize <code>sys.path</code>.</p>
+<p>Directories can be added to the initial <code>sys.path</code> list from command shells
+like Bash by setting the <code>PYTHONPATH</code> environment variable before invoking the
+<code>python</code> command.  The <code>PYTHONPATH</code> environment variable should contain a
+colon-separated string of the pathnames to be added.  While this has its uses,
+it is usually not the recommended way to initialize <code>sys.path</code>.</p>
 <p>Actually importing a package which is located in a directory on the <code>sys.path</code>
 list is simple: just import the package directory name.  Similarly, to import a
 non-package module located in a directory on <code>sys.path</code> just import the
@@ -262,10 +267,12 @@ For example, if you run <code>str(type(my_package))</code> the result is <code>"
 'module'&gt;"</code>.</p>
 <p>All the names in the namespace of a package or module represented by a <code>module</code>
 object are also attributes of that <code>module</code> object (i.e., they are in its
-<code>__dict__</code>).  This is what allows the attributes to be accessed directly from
-the module object, such as in expressions like <code>my_package.init_var</code> and
-<code>my_standalone_module.my_standalone_module_var</code> (assuming those variable are
-defined in the initialization of the package and module).</p>
+<code>__dict__</code>).  This is what allows those attributes to be accessed directly from
+the imported module objects.  For example, assuming the <code>__init__.py</code> of
+<code>my_package</code> defines the variable <code>init_var</code> and <code>my_standalone_module</code> defines
+<code>my_standalone_module_var</code> expressions like <code>my_package.init_var</code> and
+<code>my_standalone_module.my_standalone_module_var</code> can be used in any module that
+makes the above imports.</p>
 <p>The <code>as</code> keyword can also be used to rename an import under an alias:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package</span> <span class="kn">as</span> <span class="nn">mp</span>
 <span class="kn">import</span> <span class="nn">my_standalone_module</span> <span class="kn">as</span> <span class="nn">msm</span>
@@ -281,13 +288,13 @@ that dict to see if the package or module has previously been imported.  If so
 then it returns the previously-imported object.  Otherwise it tries to import
 from the filesystem.  Re-importing a module requires the explicit use of the
 builtin <code>reload</code> function.</p>
-<p>The <code>from</code> statement can be used to import both subpackages and particular
+<p>The <code>from</code> statement can be used to import subpackages as well as particular
 attributes defined in a package or module:</p>
-<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">my_package_var</span> <span class="k">as</span> <span class="n">mpv</span><span class="p">,</span> <span class="n">my_subpackage</span> <span class="k">as</span> <span class="n">msp</span>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">init_var</span> <span class="k">as</span> <span class="n">iv</span><span class="p">,</span> <span class="n">my_subpackage</span> <span class="k">as</span> <span class="n">msp</span>
 <span class="kn">from</span> <span class="nn">my_standalone_module</span> <span class="kn">import</span> <span class="n">my_standalone_module_var</span>
 </pre></div>
-<p>The first of these statements imports the attribute <code>my_package_var</code> from the
-package namespace of <code>my_package</code>, renaming it as <code>mpv</code>.  It also imports the
+<p>The first of these statements imports the attribute <code>init_var</code> from the
+package namespace of <code>my_package</code>, renaming it as <code>iv</code>.  It also imports the
 subpackage <code>my_subpackage</code>, renamed to <code>msp</code>.  The second statement imports the
 attribute <code>my_standalone_module_var</code> from <code>my_standalone_module</code>.</p>
 <p>Imports using the <code>from</code> keyword will be referred to as <code>from</code> imports, and
@@ -299,7 +306,7 @@ statements.</p>
 <p>We have already seen one kind of absolute import, which is the import of a
 module or package from a directory on the <code>sys.path</code> list.  There is one more
 kind of absolute import which has not yet been covered.  These are used to
-import modules and subpackages which are located inside packages.  This kind of
+import modules and subpackages which are located inside packages.  That kind of
 import cannot be done correctly simply by placing the directory on <code>sys.path</code>
 and then importing the module or subpackage.  (In fact, a package directory or
 subdirectory, i.e., a directory with an <code>__init__.py</code> file, should <em>never</em>
@@ -322,11 +329,11 @@ will be much easier to discuss.</p>
 <h3>3.1. <a class="toc-backref" href="#id5">Absolute dotted paths and the filesystem</a></h3>
 <p>For any package which can be discovered by looking in the directories on the
 <code>sys.path</code> list there is corresponding <strong>dotted path</strong> to specify modules
-(files) and subpackages (subdirectories) located inside the package (i.e.,
-inside the package’s directory subtree).  The slashes in operating-system
-pathnames are essentially replaced with dots.  These dotted paths are always
-relative to the package’s top-level directory (i.e., the top directory
-containing an <code>__init__.py</code> file),</p>
+(files) and subpackages (subdirectories) located inside the package (inside the
+package’s directory subtree).  The slashes in operating-system pathnames are
+essentially replaced with dots.  These dotted paths are always relative to the
+package’s top-level directory (i.e., the highest-level directory containing an
+<code>__init__.py</code> file),</p>
 <p>Here are some examples of the correspondence, based on the project skeleton
 above.  The filesystem pathnames are given on the left (assuming forward
 slashes), and the corresponding dotted paths are on the right:</p>
@@ -342,12 +349,12 @@ slashes), and the corresponding dotted paths are on the right:</p>
 </div>
 <div class="math">
 \begin{align*}
-\scriptstyle\texttt{src/my_package/foo.py/my_subpackage} \;\Longrightarrow\; \texttt{mypackage.foo.my_subpackage} \\
+\scriptstyle\texttt{src/my_package/my_subpackage} \;\Longrightarrow\; \texttt{mypackage.my_subpackage} \\
 \end{align*}
 </div>
 <div class="math">
 \begin{equation*}
-\scriptstyle\texttt{src/my_package/foo.py/my_subpackage/baz.py} \;\Longrightarrow\; \texttt{mypackage.foo.my_subpackage.baz}
+\scriptstyle\texttt{src/my_package/my_subpackage/baz.py} \;\Longrightarrow\; \texttt{mypackage.my_subpackage.baz}
 \end{equation*}
 </div>
 <p>Note that the <code>.py</code> extension is omitted, but other than that the
@@ -407,7 +414,7 @@ discussed further in the next subsection.</p>
 </div>
 <div class="section" id="possible-confusions-in-import-syntax">
 <h3>3.3. <a class="toc-backref" href="#id7">Possible confusions in import syntax</a></h3>
-<p>One possibly confusing aspect of Python imports is that the dot symbol is
+<p>One possibly-confusing aspect of Python imports is that the dot symbol is
 overloaded in Python’s syntax.  In Python expressions the dot is used for
 attribute access, such as in <code>my_class.my_attribute</code>.  But in the dotted paths
 of import statements the dot essentially means “subdirectory” and should be
@@ -422,8 +429,9 @@ assigned in <code>foo.py</code>:</p>
 </pre></div>
 <p>After the second import above the statement <code>my_package.foo</code> is definitely
 usable in Python expressions, as is <code>my_package.foo.foo_var</code>.  The latter is
-valid because the initial module-scope attributes of the <code>module</code> object
-representing <code>foo</code> are defined when it is imported and initialized.</p>
+valid because the initial module-scope attributes of <code>foo</code> are created when it
+is imported and initialized, and they are also attributes of the corresponding
+<code>module</code> object.</p>
 <p>The first import above is essentially the same as the second one except that
 the <code>module</code> object for <code>foo</code> is imported to the name <code>foo</code>.</p>
 <p>Given the apparent pattern above the following may seem like it should work,
@@ -433,13 +441,14 @@ but it is not allowed:</p>
 <span class="kn">import</span> <span class="nn">my_package.foo.foo_var</span> <span class="kn">as</span> <span class="nn">fv</span> <span class="c1"># Also FAILS!</span>
 </pre></div>
 <p>The first import works because <code>from</code> imports are allowed to import attributes
-from the namespaces of packages and modules.  But bare <code>import</code> statements
-cannot be used to import attributes from the namespace of packages and modules;
-they always use dotted paths which correspond to files and directories in the
-filesystem, not things inside modules.  So the second import fails.  Renaming
-doesn’t help, so the third import also fails.  This holds even when the
-expression <code>my_package.foo.foo_var</code> is usable in Python expressions.</p>
-<p>Another thing you cannot do is to assign Python variables as aliases to dotted
+from the namespaces of packages and modules.  But the second import fails
+because bare <code>import</code> statements cannot be used to import attributes from the
+namespace of packages and modules.  Bare <code>import</code> statements can only be passed
+dotted paths, which correspond to files and directories in the filesystem but
+not things inside modules.  Renaming doesn’t change that, so the third import
+also fails.  This holds even when the expression <code>my_package.foo.foo_var</code> is
+usable in Python expressions.</p>
+<p>Another thing you cannot do is assign Python variables as aliases to dotted
 paths.  So, while it seems like it would be convenient, this code does not work:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package.foo</span> <span class="kn">as</span> <span class="nn">mpf</span> <span class="c1"># Works.</span>
 <span class="kn">from</span> <span class="nn">mpf</span> <span class="kn">import</span> <span class="n">foo_var</span> <span class="c1"># FAILS! Only dotted paths directly after from statements.</span>
@@ -447,7 +456,7 @@ paths.  So, while it seems like it would be convenient, this code does not work
 <p>Although the attribute-access pattern of modules mimicks the dotted-path
 syntax, they are not the same thing.  The variable <code>mpf</code> is a reference
 to the <code>module</code> object for <code>foo</code>.  It cannot be substituted for a dotted path.</p>
-<p>Since references to module objects cannot be used in import statements the full
+<p>Since references to module objects cannot be used in import statements, the full
 dotted paths must always be entered.  Relative dotted paths, covered in the
 next section, can simplify some cases of having to write out the full dotted paths.</p>
 <p>To avoid these possible confusions, remember that dotted paths in Python import
@@ -554,10 +563,13 @@ Python expressions as attribute accesses.</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">bar</span>
 <span class="kn">from</span> <span class="nn">..bar</span> <span class="kn">import</span> <span class="n">bar_var</span>
 </pre></div>
-<p>Note that <code>from</code> imports using only-dot paths, such as <code>.</code> and <code>..</code>, can be
-used to import attributes from package and subpackage namespaces (i.e.,
-<code>__init__.py</code> namespaces) in addition to importing modules and subpackages from
-the specified directory.</p>
+<p>In addition to importing modules and subpackages from the specified directory,
+<code>from</code> imports using only-dot paths such as <code>.</code> and <code>..</code> can also be used to
+import attributes from package and subpackage namespaces (i.e., from
+<code>__init__.py</code> namespaces)  For example, this import from module <code>foo</code> would
+import the variable <code>init_var</code> defined in module <code>my_package.__init__.py</code>:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">init_var</span>
+</pre></div>
 </div>
 </div>
 <div class="section" id="imports-in-scripts">
@@ -571,7 +583,7 @@ as a script.</p>
 <ol class="arabic simple">
 <li>The directory containing the script file is automatically inserted to
 <code>sys.path[0]</code> when the script is run by the Python interpreter.   The
-absolute directory path is always added.  The current working directory, in
+absolute directory path is always added; the current working directory, in
 the shell or in Python, has no effect on this.</li>
 <li>The <code>__name__</code> attribute of the script’s module is always set to
 <code>"__main__"</code> when it is run as a script, regardless of the file’s name.</li>
@@ -582,11 +594,11 @@ to be an <code>__init__.py</code> in its directory.</li>
 its directory as an absolute, non-dotted import.  This is helpful if the
 directory contains top-level packages or standalone modules that are intended
 to be imported.  In some situations this can cause problems such as unintended
-imports due to name shadowing and importing modules in packages as if the
+imports due to name shadowing and importing modules inside packages as if they
 were standalone modules.</p>
 <p>Property 2 is what allows the use of this common idiom in Python scripts:</p>
 <div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span> <span class="c1"># A commonly seen example, running function `main`.</span>
+    <span class="n">main</span><span class="p">()</span> <span class="c1"># A commonly-seen example, running function `main`.</span>
 </pre></div>
 <p>Code in that conditional block only executes when the module is directly run as
 a script and not when the module is imported from another Python module (some
@@ -600,37 +612,39 @@ subsection after this one.</p>
 <p>The rule for imports in scripts located outside packages is simple: scripts
 outside packages can only use absolute imports.  Any absolute imports are
 allowed, but of course modules inside packages should almost always be imported
-with using dotted-path syntax relative to their package root rather than adding
-their directory to <code>sys.path</code>.  In some cases it may be necessary to insert
-elements to <code>sys.path[1]</code> (after the current directory at <code>sys.path[0]</code>) in
-order for Python to discover the necessary modules and packages to import.</p>
-<p>If you use a <code>setup.py</code> for your project then scripts outside modules <a class="reference external" href="https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html">can be
+as part of their package, using the dotted-path syntax relative to their
+package root, rather than as a non-dotted import.  In some cases
+it may be necessary to insert elements to <code>sys.path[1]</code> (after the current
+directory at <code>sys.path[0]</code>) in order for Python to discover the necessary
+modules and packages to import.</p>
+<p>If you use a <code>setup.py</code> for your project then scripts outside packages <a class="reference external" href="https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html">can be
 added to a project</a>
 by using the <code>scripts</code> keyword argument.  For development this involves setting
 up the project with a <code>setup.py</code> and then installing the project in development
 mode, such as by running <code>pip install -e .</code> in the directory with <code>setup.py</code>.
 (The <code>setup.py</code> file is usually placed in the project’s root directory, which
-is <code>my_project</code> in the project skeleton given earlier).</p>
-<p>This provides a shell command for running the script which is in the shell
-search path.  To add or remove scripts from the project the <code>setup.py</code> must be
-modified and the package reinstalled.  A similar thing can be done using the
-more-recent <code>pyproject.toml</code> files if you use that method to set up projects
-rather than using a <code>setup.py</code>.</p>
+is <code>my_project</code> in the project skeleton given earlier).  This provides a shell
+command for running the script which is in the shell search path.  To add or
+remove scripts from the project the <code>setup.py</code> must be modified and the package
+reinstalled.  A similar thing can be done using the more-recent
+<code>pyproject.toml</code> files if you use that method to set up projects rather than
+using a <code>setup.py</code>.</p>
 </div>
 <div class="section" id="scripts-inside-packages">
 <h3>5.2. <a class="toc-backref" href="#id13">Scripts inside packages</a></h3>
 <p>Scripts can also be run inside packages, but the special properties of scripts
 listed above have some side-effects which need to be taken into account.</p>
 <p>Property 3 means that the package the script is inside of is not automatically
-imported when the script runs.  Even if the script itself imports the full
+imported when the script runs.  To import modules from the package the script
+can only use non-dotted absolute imports (based on Property 1).  This only
+works correctly in simple cases where the imported modules are essentialy
+standalone modules themselves.  Even if the script itself imports the full
 package in the usual way the running script is still not correctly set up as a
-module of the package.  The script can only use non-dotted absolute imports,
-based on Property 1.  This only works correctly in simple cases where the
-imported modules are essentialy standalone modules themselves.</p>
-<p>If the script explicitly imports its containing package then dotted absolute
-imports from the package can work.  But the script module itself should not be
-imported by any other module in the package since it is cached as the
-<code>__main__</code> module by property 2 and a double import will result.</p>
+module of the package.</p>
+<p>If the script does explicitly import its containing package then dotted
+absolute imports from the package will work.  But the script module itself
+should never be imported by any other module in the package since it is cached
+as the <code>__main__</code> module by Property 2 and a double import will result.</p>
 <p>To get around these problems and correctly run scripts inside packages what is
 needed is a way to automatically import the containing package and then run the
 script as a part of the package.  There are several possible ways to do this:</p>
@@ -659,18 +673,9 @@ shell, under the name specified in <code>setup.py</code>.</li>
 </div>
 <div class="section" id="not-covered">
 <h2>6. <a class="toc-backref" href="#id14">Not covered</a></h2>
-<p>Some important import variations are not covered above.  They tend to occur or
-be used in special or advanced cases.</p>
-<p><strong>pth files</strong>: Pth files are special files which contain the pathnames of
-packages or modules to import.  Using pth files only works in the special
-system <code>site-packages</code> directory.</p>
-<p id="namespace-packages"><strong>Namespace packages</strong>: Namespace packages allow one or more toplevel
-directories having the same directory name, but without <code>__init__.py</code> files, to
-be used like a common namespace for all the modules and packages across all the
-directories (which must all be discoverable on <code>sys.path</code>).  This can be useful
-for large distributions, but there are also drawbacks such as the lack of
-<code>__init__.py</code> files.  Most people should continue to use <code>__init__.py</code> files to
-create single-directory packages.</p>
+<p>This article has covered the basics of the Python import system, but some
+important topics have not been discussed.  They tend to occur or be used in
+special or advanced cases.</p>
 <p><strong>Star imports</strong>: By default, the statement <code>from my_module import *</code> imports
 all the names in the <code>my_module</code> namespace which do not start with the
 underscore character.  If <code>__all__</code> is defined in <code>my_module</code> as a list of
@@ -678,9 +683,21 @@ string variable names then only those names will be imported by <code>*</code> i
 from the module.  Anything else must be imported explicitly.  The <code>__all__</code>
 list can also contain the names of modules and subpackages to import.</p>
 <p><strong>Circular imports.</strong>  This problem can arise when one module imports another
-module which then imports the first module again.  Circular imports are
+module which then imports the first module again.  The usual solution is to
+reorganize the module structure or to put the problematic import inside a
+function so it is not performed on module initialization.  Circular imports are
 discussed in the answer to this Python <span class="caps">FAQ</span> question: “<a class="reference external" href="https://docs.python.org/3/faq/programming.html#what-are-the-best-practices-for-using-import-in-a-module">What are the ‘best
 practices’ for using import in a module?</a>”</p>
+<p id="namespace-packages"><strong>Namespace packages</strong>: Namespace packages allow one or more toplevel
+directories having the same directory name, but without <code>__init__.py</code> files, to
+be used like a common namespace for all the modules and packages across all the
+directories (which must all be discoverable on <code>sys.path</code>).  This can be useful
+for large distributions, but there are also drawbacks such as the lack of
+<code>__init__.py</code> files.  Most people should continue to use <code>__init__.py</code> files to
+create single-directory packages.</p>
+<p><strong>pth files</strong>: Pth files are special files which contain the pathnames of
+packages or modules to import.  Using pth files only works when they are placed
+in the special system <code>site-packages</code> directory.</p>
 <p><strong>Importing from zip files</strong>: Python allows modules to be imported from
 zipfiles, provided the <code>.zip</code> archive file is located on <code>sys.path</code>.   The
 directory structure in the zip file then acts as a regular directory.</p>
@@ -803,13 +820,6 @@ which can arise, by Nick Coghlan.</li>
 </section>
 
             <hr/>
-            <aside>
-            <nav>
-            <ul class="articles-timeline">
-                <li class="previous-article">« <a href="https://abarker.github.io/markdown-example-slug/" title="Previous: Example markdown content">Example markdown content</a></li>
-            </ul>
-            </nav>
-            </aside>
         </div>
         <section>
         <div class="span2" style="float:right;font-size:0.9em;">

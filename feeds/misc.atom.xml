@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Allen Barker's Site - misc</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/misc.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2016-06-15T14:13:00-04:00</updated><entry><title>Example markdown content</title><link href="https://abarker.github.io/markdown-example-slug/" rel="alternate"></link><published>2016-06-15T14:13:00-04:00</published><updated>2016-06-15T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2016-06-15:/markdown-example-slug/</id><summary type="html">&lt;p&gt;Short version of my first blog&amp;nbsp;post&lt;/p&gt;</summary><content type="html">&lt;h1 id="header-1"&gt;Header&amp;nbsp;1&lt;/h1&gt;
-&lt;p&gt;This is my &lt;strong&gt;third blog post with&amp;nbsp;pelican&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id="header-2"&gt;Header&amp;nbsp;2&lt;/h2&gt;
-&lt;p&gt;Test.&lt;/p&gt;
-&lt;h3 id="header-3"&gt;Header&amp;nbsp;3&lt;/h3&gt;
-&lt;p&gt;Test.&lt;/p&gt;</content><category term="first"></category><category term="misc"></category></entry></feed>
