@@ -10,7 +10,7 @@ For Pelican-specific settings, see
 from __future__ import unicode_literals
 
 AUTHOR = 'Allen Barker'
-SITENAME = "Allen Barker's Site"
+SITENAME = "abarker.github.io"
 
 # Some set SITEURL = 'http://localhost:8000' in this file and real one in publishconf.py.
 SITEURL = 'https://abarker.github.io' # Doesn't seem to do much, needed for Disqus comments.
