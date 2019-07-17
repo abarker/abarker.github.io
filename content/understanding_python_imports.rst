@@ -683,7 +683,7 @@ to import: a `*`-import of the corresponding package or subpackage will then
 implicitly perform the imports (which need to be done explicitly for ordinary
 modules).
 
-**Circular imports.**  This problem can arise when one module imports another
+**Circular imports**:  This problem can arise when one module imports another
 module which then imports the first module again.  The usual solution is to
 reorganize the module structure or to put the problematic import inside a
 function so it is not performed on module initialization.  Circular imports are
@@ -709,7 +709,7 @@ in the special system `site-packages` directory.
 zipfiles, provided the `.zip` archive file is located on `sys.path`.   The
 directory structure in the zip file then acts as a regular directory.
 
-**Lower-level APIs of the import system.**  The `full Python import system
+**Lower-level APIs of the import system**:  The `full Python import system
 <https://docs.python.org/3/reference/import.html>`_ is complicated and
 customizable.  There are protocols to allow it to be dynamically modified in
 various ways for special applications.

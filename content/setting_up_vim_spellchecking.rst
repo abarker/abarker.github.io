@@ -41,6 +41,7 @@ commands are available:
   ``zg``                         Add the current "good" word to your local dictionary.
   ``z=``                         Suggest spellings (choose a number or hit enter for none).
   ``zw``                         Mark the current word as wrong.
+  ``zug``                        Remove the word from the local dictionary.
 =====================            ==========================================================
 
 The misspelled words should be highlighted when spellchecking is turned on.
