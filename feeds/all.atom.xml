@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/all.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-16T14:13:00-04:00</updated><entry><title>Setting Up Spellchecking in Vim</title><link href="https://abarker.github.io/setting_up_vim_spellchecking/" rel="alternate"></link><published>2019-07-16T14:13:00-04:00</published><updated>2019-07-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-16:/setting_up_vim_spellchecking/</id><summary type="html">&lt;p class="first last"&gt;Short instructions for setting up vim for&amp;nbsp;spellchecking.&lt;/p&gt;
-</summary><content type="html">&lt;p&gt;These are short instructions for setting up the Vim editor to do spellchecking.
+<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/all.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-16T14:13:00-04:00</updated><entry><title>Setting Up Spellchecking in Vim</title><link href="https://abarker.github.io/setting_up_vim_spellchecking/" rel="alternate"></link><published>2019-07-16T14:13:00-04:00</published><updated>2019-07-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-16:/setting_up_vim_spellchecking/</id><summary type="html">&lt;p class="first last"&gt;Short instructions for setting up Vim for&amp;nbsp;spellchecking.&lt;/p&gt;
+</summary><content type="html">&lt;p&gt;These are short instructions for setting up the Vim or Gvim editor to do spellchecking.
 A Unix-type shell is&amp;nbsp;assumed.&lt;/p&gt;
 &lt;ol class="arabic"&gt;
 &lt;li&gt;&lt;p class="first"&gt;Create a subdirectory of your &lt;tt class="docutils literal"&gt;.vim&lt;/tt&gt; directory to hold the dictionary of new&amp;nbsp;words:&lt;/p&gt;
@@ -15,7 +15,7 @@ set spellfile=$HOME/.vim/spell/en.utf-8.add
 &lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;After these steps vim is set up for spellchecking.  Open a text file in vim.  Now these
+&lt;p&gt;After these steps Vim is set up for spellchecking.  Open a text file in Vim.  Now these
 commands are&amp;nbsp;available:&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
 &lt;colgroup&gt;
