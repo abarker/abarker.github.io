@@ -573,7 +573,7 @@ names.  Anything else would need to be explicitly imported.  The &lt;code&gt;__a
 for an &lt;code&gt;__init__.py&lt;/code&gt; file can also contain the names of modules and subpackages
 to import: a &lt;code&gt;*&lt;/code&gt;-import of the corresponding package or subpackage will then
 implicitly perform the imports (which need to be done explicitly for ordinary modules).&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Circular imports.&lt;/strong&gt;  This problem can arise when one module imports another
+&lt;p&gt;&lt;strong&gt;Circular imports&lt;/strong&gt;:  This problem can arise when one module imports another
 module which then imports the first module again.  The usual solution is to
 reorganize the module structure or to put the problematic import inside a
 function so it is not performed on module initialization.  Circular imports are
@@ -592,7 +592,7 @@ in the special system &lt;code&gt;site-packages&lt;/code&gt; directory.&lt;/p&gt
 &lt;p&gt;&lt;strong&gt;Importing from zip files&lt;/strong&gt;: Python allows modules to be imported from
 zipfiles, provided the &lt;code&gt;.zip&lt;/code&gt; archive file is located on &lt;code&gt;sys.path&lt;/code&gt;.   The
 directory structure in the zip file then acts as a regular directory.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Lower-level APIs of the import system.&lt;/strong&gt;  The &lt;a class="reference external" href="https://docs.python.org/3/reference/import.html"&gt;full Python import system&lt;/a&gt; is complicated and
+&lt;p&gt;&lt;strong&gt;Lower-level APIs of the import system&lt;/strong&gt;:  The &lt;a class="reference external" href="https://docs.python.org/3/reference/import.html"&gt;full Python import system&lt;/a&gt; is complicated and
 customizable.  There are protocols to allow it to be dynamically modified in
 various ways for special applications.&lt;/p&gt;
 &lt;/div&gt;

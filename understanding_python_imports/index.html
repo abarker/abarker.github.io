@@ -684,7 +684,7 @@ names.  Anything else would need to be explicitly imported.  The <code>__all__</
 for an <code>__init__.py</code> file can also contain the names of modules and subpackages
 to import: a <code>*</code>-import of the corresponding package or subpackage will then
 implicitly perform the imports (which need to be done explicitly for ordinary modules).</p>
-<p><strong>Circular imports.</strong>  This problem can arise when one module imports another
+<p><strong>Circular imports</strong>:  This problem can arise when one module imports another
 module which then imports the first module again.  The usual solution is to
 reorganize the module structure or to put the problematic import inside a
 function so it is not performed on module initialization.  Circular imports are
@@ -703,7 +703,7 @@ in the special system <code>site-packages</code> directory.</p>
 <p><strong>Importing from zip files</strong>: Python allows modules to be imported from
 zipfiles, provided the <code>.zip</code> archive file is located on <code>sys.path</code>.   The
 directory structure in the zip file then acts as a regular directory.</p>
-<p><strong>Lower-level APIs of the import system.</strong>  The <a class="reference external" href="https://docs.python.org/3/reference/import.html">full Python import system</a> is complicated and
+<p><strong>Lower-level APIs of the import system</strong>:  The <a class="reference external" href="https://docs.python.org/3/reference/import.html">full Python import system</a> is complicated and
 customizable.  There are protocols to allow it to be dynamically modified in
 various ways for special applications.</p>
 </div>
