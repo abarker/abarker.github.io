@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io - vim</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/vim.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-16T14:13:00-04:00</updated><entry><title>Setting Up Spellchecking in Vim</title><link href="https://abarker.github.io/setting_up_vim_spellchecking/" rel="alternate"></link><published>2019-07-16T14:13:00-04:00</published><updated>2019-07-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-16:/setting_up_vim_spellchecking/</id><summary type="html">&lt;p class="first last"&gt;Short instructions for setting up vim for&amp;nbsp;spellchecking.&lt;/p&gt;
-</summary><content type="html">&lt;ol class="arabic"&gt;
+</summary><content type="html">&lt;p&gt;These are short instructions for setting up the Vim editor to do spellchecking.
+A Unix-type shell is&amp;nbsp;assumed.&lt;/p&gt;
+&lt;ol class="arabic"&gt;
 &lt;li&gt;&lt;p class="first"&gt;Create a subdirectory of your &lt;tt class="docutils literal"&gt;.vim&lt;/tt&gt; directory to hold the dictionary of new&amp;nbsp;words:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p ~/.vim/spell
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Add the following lines to your &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vimrc&lt;/span&gt;&lt;/tt&gt; file.  Change the &lt;tt class="docutils literal"&gt;en&lt;/tt&gt; part if you
+&lt;li&gt;&lt;p class="first"&gt;Add the following lines to your &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vimrc&lt;/span&gt;&lt;/tt&gt; file.  Change the &lt;tt class="docutils literal"&gt;en&lt;/tt&gt; parts if you
 are spellchecking some language other than&amp;nbsp;English:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 set spelllang=en
@@ -50,4 +52,4 @@ commands are&amp;nbsp;available:&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;The misspelled words should be highlighted when spellchecking is turned&amp;nbsp;on.&lt;/p&gt;
-</content><category term="vim"></category><category term="editor"></category></entry></feed>
+</content><category term="vim"></category><category term="editor"></category><category term="linux"></category></entry></feed>

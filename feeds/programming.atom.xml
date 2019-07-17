@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io - programming, python</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/programming-python.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-12T14:13:00-04:00</updated><entry><title>Understanding Python Imports</title><link href="https://abarker.github.io/understanding_python_imports/" rel="alternate"></link><published>2019-07-12T14:13:00-04:00</published><updated>2019-07-12T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-12:/understanding_python_imports/</id><summary type="html">&lt;p class="first last"&gt;Description of modern Python&amp;nbsp;imports.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io - programming</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-12T14:13:00-04:00</updated><entry><title>Understanding Python Imports</title><link href="https://abarker.github.io/understanding_python_imports/" rel="alternate"></link><published>2019-07-12T14:13:00-04:00</published><updated>2019-07-12T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-12:/understanding_python_imports/</id><summary type="html">&lt;p class="first last"&gt;Description of modern Python&amp;nbsp;imports.&lt;/p&gt;
 </summary><content type="html">
 &lt;p&gt;Python has many strong points and tends to have a learning curve that is
 friendly to beginners.  The import system, however, is one part of the
@@ -669,4 +669,4 @@ which can arise, by Nick Coghlan.&lt;/li&gt;
     (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
-&lt;/script&gt;</content><category term="programming"></category><category term="python"></category><category term="imports"></category><category term="packages"></category><category term="scripts"></category></entry></feed>
+&lt;/script&gt;</content><category term="programming"></category><category term="python"></category></entry></feed>
