@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io - vim</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/vim.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-16T14:13:00-04:00</updated><entry><title>Setting Up Spellchecking in Vim</title><link href="https://abarker.github.io/setting_up_vim_spellchecking/" rel="alternate"></link><published>2019-07-16T14:13:00-04:00</published><updated>2019-07-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-16:/setting_up_vim_spellchecking/</id><summary type="html">&lt;p class="first last"&gt;Short instructions for setting up vim for&amp;nbsp;spellchecking.&lt;/p&gt;
+</summary><content type="html">&lt;ol class="arabic"&gt;
+&lt;li&gt;&lt;p class="first"&gt;Create a subdirectory of your &lt;tt class="docutils literal"&gt;.vim&lt;/tt&gt; directory to hold the dictionary of new&amp;nbsp;words:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p ~/.vim/spell
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Add the following lines to your &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vimrc&lt;/span&gt;&lt;/tt&gt; file.  Change the &lt;tt class="docutils literal"&gt;en&lt;/tt&gt; part if you
+are spellchecking some language other than&amp;nbsp;English:&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+set spelllang=en
+set spellfile=$HOME/.vim/spell/en.utf-8.add
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After these steps vim is set up for spellchecking.  Open a text file in vim.  Now these
+commands are&amp;nbsp;available:&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="27%" /&gt;
+&lt;col width="73%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Command&lt;/th&gt;
+&lt;th class="head"&gt;Action&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;:setlocal spell&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;Turn on spellchecking.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;:set nospell&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;Turn off spellchecking.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;]s&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;Goto next misspelled word.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;[s&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;Goto previous misspelled word.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;zg&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;Add the current &amp;#8220;good&amp;#8221; word to your local dictionary.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;z=&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;Suggest spellings (choose a number or hit enter for none).&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;zw&lt;/tt&gt;&lt;/td&gt;
+&lt;td&gt;Mark the current word as wrong.&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;The misspelled words should be highlighted when spellchecking is turned&amp;nbsp;on.&lt;/p&gt;
+</content><category term="vim"></category><category term="editor"></category></entry></feed>
