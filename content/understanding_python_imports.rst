@@ -3,8 +3,8 @@ Understanding Python Imports
 
 :date: 2019-07-12 14:13
 :modified: 2019-07-12 14:13
-:category: programming, python
-:tags: programming, python, imports, packages, scripts
+:category: programming
+:tags: programming, python
 :authors: Allen Barker
 :summary: Description of modern Python imports.
 :slug: understanding_python_imports

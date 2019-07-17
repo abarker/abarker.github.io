@@ -4,12 +4,15 @@ Setting Up Spellchecking in Vim
 :date: 2019-07-16 14:13
 :modified: 2019-07-16 14:13
 :category: vim
-:tags: vim, editor
+:tags: vim, editor, linux
 :authors: Allen Barker
 :summary: Short instructions for setting up vim for spellchecking.
 
 .. contents::
     :depth: 2
+
+These are short instructions for setting up the Vim editor to do spellchecking.
+A Unix-type shell is assumed.
 
 1. Create a subdirectory of your ``.vim`` directory to hold the dictionary of new words:
 
@@ -17,7 +20,7 @@ Setting Up Spellchecking in Vim
 
       mkdir -p ~/.vim/spell
 
-2. Add the following lines to your ``~/.vimrc`` file.  Change the ``en`` part if you
+2. Add the following lines to your ``~/.vimrc`` file.  Change the ``en`` parts if you
    are spellchecking some language other than English:
 
    ::
