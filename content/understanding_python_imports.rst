@@ -426,7 +426,7 @@ work:
     import my_package.foo as mpf # Works.
     from mpf import foo_var # FAILS! Only dotted paths directly after from statements.
 
-Although the attribute-access pattern of modules mimicks the dotted-path
+Although the attribute-access pattern of modules mimics the dotted-path
 syntax, they are not the same thing.  The variable `mpf` is a reference
 to the `module` object for `foo`.  It cannot be substituted for a dotted path.
 
@@ -628,7 +628,7 @@ listed above have some side-effects which need to be taken into account.
 Property 3 means that the package the script is inside of is not automatically
 imported when the script runs.  To import modules from the package the script
 can only use non-dotted absolute imports (based on Property 1).  This only
-works correctly in simple cases where the imported modules are essentialy
+works correctly in simple cases where the imported modules are essentially
 standalone modules themselves.  Even if the script itself imports the full
 package in the usual way the running script is still not correctly set up as a
 module of the package.
@@ -676,9 +676,12 @@ special or advanced cases.
 **Star imports**: By default, the statement `from my_module import *` imports
 all the names in the `my_module` namespace which do not start with the
 underscore character.  If `__all__` is defined in `my_module` as a list of
-string variable names then only those names will be imported by `*` imports
-from the module.  Anything else must be imported explicitly.  The `__all__`
-list can also contain the names of modules and subpackages to import.
+string variable names then `*`-imports from the module will only import those
+names.  Anything else would need to be explicitly imported.  The `__all__` list
+for an `__init__.py` file can also contain the names of modules and subpackages
+to import: a `*`-import of the corresponding package or subpackage will then
+implicitly perform the imports (which need to be done explicitly for ordinary
+modules).
 
 **Circular imports.**  This problem can arise when one module imports another
 module which then imports the first module again.  The usual solution is to
