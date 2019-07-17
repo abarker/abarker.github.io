@@ -342,7 +342,7 @@ paths.  So, while it seems like it would be convenient, this code does not work
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package.foo&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;mpf&lt;/span&gt; &lt;span class="c1"&gt;# Works.&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;mpf&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;foo_var&lt;/span&gt; &lt;span class="c1"&gt;# FAILS! Only dotted paths directly after from statements.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Although the attribute-access pattern of modules mimicks the dotted-path
+&lt;p&gt;Although the attribute-access pattern of modules mimics the dotted-path
 syntax, they are not the same thing.  The variable &lt;code&gt;mpf&lt;/code&gt; is a reference
 to the &lt;code&gt;module&lt;/code&gt; object for &lt;code&gt;foo&lt;/code&gt;.  It cannot be substituted for a dotted path.&lt;/p&gt;
 &lt;p&gt;Since references to module objects cannot be used in import statements, the full
@@ -526,7 +526,7 @@ listed above have some side-effects which need to be taken into account.&lt;/p&
 &lt;p&gt;Property 3 means that the package the script is inside of is not automatically
 imported when the script runs.  To import modules from the package the script
 can only use non-dotted absolute imports (based on Property 1).  This only
-works correctly in simple cases where the imported modules are essentialy
+works correctly in simple cases where the imported modules are essentially
 standalone modules themselves.  Even if the script itself imports the full
 package in the usual way the running script is still not correctly set up as a
 module of the package.&lt;/p&gt;
@@ -568,9 +568,11 @@ special or advanced cases.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Star imports&lt;/strong&gt;: By default, the statement &lt;code&gt;from my_module import *&lt;/code&gt; imports
 all the names in the &lt;code&gt;my_module&lt;/code&gt; namespace which do not start with the
 underscore character.  If &lt;code&gt;__all__&lt;/code&gt; is defined in &lt;code&gt;my_module&lt;/code&gt; as a list of
-string variable names then only those names will be imported by &lt;code&gt;*&lt;/code&gt; imports
-from the module.  Anything else must be imported explicitly.  The &lt;code&gt;__all__&lt;/code&gt;
-list can also contain the names of modules and subpackages to import.&lt;/p&gt;
+string variable names then &lt;code&gt;*&lt;/code&gt;-imports from the module will only import those
+names.  Anything else would need to be explicitly imported.  The &lt;code&gt;__all__&lt;/code&gt; list
+for an &lt;code&gt;__init__.py&lt;/code&gt; file can also contain the names of modules and subpackages
+to import: a &lt;code&gt;*&lt;/code&gt;-import of the corresponding package or subpackage will then
+implicitly perform the imports (which need to be done explicitly for ordinary modules).&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Circular imports.&lt;/strong&gt;  This problem can arise when one module imports another
 module which then imports the first module again.  The usual solution is to
 reorganize the module structure or to put the problematic import inside a

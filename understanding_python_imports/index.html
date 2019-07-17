@@ -453,7 +453,7 @@ paths.  So, while it seems like it would be convenient, this code does not work
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package.foo</span> <span class="kn">as</span> <span class="nn">mpf</span> <span class="c1"># Works.</span>
 <span class="kn">from</span> <span class="nn">mpf</span> <span class="kn">import</span> <span class="n">foo_var</span> <span class="c1"># FAILS! Only dotted paths directly after from statements.</span>
 </pre></div>
-<p>Although the attribute-access pattern of modules mimicks the dotted-path
+<p>Although the attribute-access pattern of modules mimics the dotted-path
 syntax, they are not the same thing.  The variable <code>mpf</code> is a reference
 to the <code>module</code> object for <code>foo</code>.  It cannot be substituted for a dotted path.</p>
 <p>Since references to module objects cannot be used in import statements, the full
@@ -637,7 +637,7 @@ listed above have some side-effects which need to be taken into account.</p>
 <p>Property 3 means that the package the script is inside of is not automatically
 imported when the script runs.  To import modules from the package the script
 can only use non-dotted absolute imports (based on Property 1).  This only
-works correctly in simple cases where the imported modules are essentialy
+works correctly in simple cases where the imported modules are essentially
 standalone modules themselves.  Even if the script itself imports the full
 package in the usual way the running script is still not correctly set up as a
 module of the package.</p>
@@ -679,9 +679,11 @@ special or advanced cases.</p>
 <p><strong>Star imports</strong>: By default, the statement <code>from my_module import *</code> imports
 all the names in the <code>my_module</code> namespace which do not start with the
 underscore character.  If <code>__all__</code> is defined in <code>my_module</code> as a list of
-string variable names then only those names will be imported by <code>*</code> imports
-from the module.  Anything else must be imported explicitly.  The <code>__all__</code>
-list can also contain the names of modules and subpackages to import.</p>
+string variable names then <code>*</code>-imports from the module will only import those
+names.  Anything else would need to be explicitly imported.  The <code>__all__</code> list
+for an <code>__init__.py</code> file can also contain the names of modules and subpackages
+to import: a <code>*</code>-import of the corresponding package or subpackage will then
+implicitly perform the imports (which need to be done explicitly for ordinary modules).</p>
 <p><strong>Circular imports.</strong>  This problem can arise when one module imports another
 module which then imports the first module again.  The usual solution is to
 reorganize the module structure or to put the problematic import inside a
