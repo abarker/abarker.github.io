@@ -197,8 +197,8 @@ statement, though that style is not generally recommended:
 
 What is actually being imported here are two `module` objects, one representing
 the package `my_package` and the other representing the module `my_module`.
-For example, if you run `str(type(my_package))` the result is `"<class
-'module'>"`.
+For example, if you run `str(type(my_package))` after the above import the
+result is `"<class 'module'>"`.
 
 All the names in the namespace of a package or module represented by a `module`
 object are also attributes of that `module` object (i.e., they are in its
@@ -700,6 +700,13 @@ directories (which must all be discoverable on `sys.path`).  This can be useful
 for large distributions, but there are also drawbacks such as the lack of
 `__init__.py` files.  Most people should continue to use `__init__.py` files to
 create single-directory packages.
+
+**Dynamic import calls.**:  Suppose you want do perform an import but you do
+not know the name of the module to import until runtime.  The functional
+interface to the import command is called `__import__`.  It can take a string
+argument, e.g., `module_found_at_runtime =
+__import__(runtime_calculated_name)`, where `runtime_calculated_name` is a
+string.
 
 **pth files**: Pth files are special files which contain the pathnames of
 packages or modules to import.  Using pth files only works when they are placed

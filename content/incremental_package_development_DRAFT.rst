@@ -3,8 +3,8 @@ Incremental Package Development
 
 :date: 2019-08-16 14:13
 :modified: 2019-08-16 14:13
-:category: programming, python
-:tags: programming, python, imports, packages, scripts
+:category: programming
+:tags: programming, python
 :authors: Allen Barker
 :summary: Developing packages incrementally.
 :slug: incremental_development

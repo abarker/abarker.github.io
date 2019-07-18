@@ -14,7 +14,8 @@ Setting Up Spellchecking in Vim
 These are short instructions for setting up the Vim or Gvim editor to do spellchecking.
 A Unix-type shell is assumed.
 
-1. Create a subdirectory of your ``.vim`` directory to hold the dictionary of new words:
+1. Create a subdirectory of your ``.vim`` directory to hold the local
+   dictionary of new words:
 
    .. code-block:: bash
 
@@ -41,7 +42,7 @@ commands are available:
   ``zg``                         Add the current "good" word to your local dictionary.
   ``z=``                         Suggest spellings (choose a number or hit enter for none).
   ``zw``                         Mark the current word as wrong.
-  ``zug``                        Remove the word from the local dictionary.
+  ``zug``                        Remove the current word from your local dictionary.
 =====================            ==========================================================
 
 The misspelled words should be highlighted when spellchecking is turned on.
