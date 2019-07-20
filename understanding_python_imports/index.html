@@ -378,7 +378,6 @@ these are all valid bare <code>import</code> statements:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package</span>
 <span class="kn">import</span> <span class="nn">my_package.foo</span>
 <span class="kn">import</span> <span class="nn">my_package.my_subpackage</span>
-<span class="kn">import</span> <span class="nn">my_package.my_subpackage</span> <span class="kn">as</span> <span class="nn">msp</span>
 <span class="kn">import</span> <span class="nn">my_package.my_subpackage.baz</span>
 </pre></div>
 <p>Each of these imports results in a <code>module</code> object in the namespace which, when
@@ -386,27 +385,25 @@ used in an expression, syntactically matches the dotted path in the import
 statement.  The syntax looks the same but in an expression the dots are
 attribute accesses on <code>module</code> objects.  For example, the second import does
 not actually add anything to the namespace of the module doing the import.  The
-module for <code>my_package</code> is already in the namespace; the second import just
-adds the module attribute <code>foo</code> to the <code>my_package</code> namespace so that
-<code>my_package.foo</code> works in expressions.</p>
+module for <code>my_package</code> is already in the namespace after the first import.
+The second import just adds the module attribute <code>foo</code> to the <code>my_package</code>
+namespace so that <code>my_package.foo</code> works in expressions.</p>
 <p>This is a general property of bare <code>import</code> statements: After a bare <code>import</code>
-the dotted-path used to make the import is always usable in Python expressions
-in the importing module.  But in those expressions the dot symbol represents
-attribute access, unlike in the import statement itself.  This will be
-discussed further in the next subsection.</p>
+without an <code>as</code> the dotted-path used to make the import is always usable in
+Python expressions in the importing module.  But in those expressions the dot
+symbol represents attribute access, unlike in the import statement itself.
+This will be discussed further in the next subsection.</p>
 <p>Python uses its <code>sys.modules</code> cache for dotted-path imports, too.  It goes down
 the names on the dotted path and if it finds one that has not previously been
 imported then it imports the remainder of the dotted path from the filesystem.
 Any previously-imported packages or modules are taken from the cache.</p>
 <p>Imports using <code>from</code> also work for dotted paths.  The imports below are all
 valid imports for package <code>my_package</code>.  They correspond to the imports above
-(except for the first one, which has no corresponding <code>from</code> import).  After
-the import, though, only the package or module following the <code>import</code> keyword
-is added to the namespace of the importing module (as <code>module</code> objects,
-renamed in the third case):</p>
+(except the first one above, which has no corresponding <code>from</code> import).  After
+a <code>from</code> import, though, only the package or module following the <code>import</code> keyword
+is added to the namespace of the importing module (as a <code>module</code> object):</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">foo</span>
 <span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">my_subpackage</span>
-<span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">my_subpackage</span> <span class="k">as</span> <span class="n">msp</span>
 <span class="kn">from</span> <span class="nn">my_package.my_subpackage</span> <span class="kn">import</span> <span class="n">baz</span>
 </pre></div>
 <p>Imports using <code>from</code> can also be used to import particular attributes from the
@@ -434,13 +431,13 @@ assigned in <code>foo.py</code>:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">foo</span> <span class="c1"># Works.</span>
 <span class="kn">import</span> <span class="nn">my_package.foo</span> <span class="c1"># Works.</span>
 </pre></div>
-<p>After the second import above the statement <code>my_package.foo</code> is definitely
-usable in Python expressions, as is <code>my_package.foo.foo_var</code>.  The latter is
-valid because the initial module-scope attributes of <code>foo</code> are created when it
-is imported and initialized, and they are also attributes of the corresponding
-<code>module</code> object.</p>
+<p>After the second import above the subexpression <code>my_package.foo</code> is definitely
+usable in Python expressions.  The subexpression <code>my_package.foo.foo_var</code> is
+too, because the initial module-scope attributes of <code>foo</code> are created when it
+is imported and initialized.  The name <code>foo_var</code> is then an attribute of the
+<code>module</code> object for <code>foo</code>.</p>
 <p>The first import above is essentially the same as the second one except that
-the <code>module</code> object for <code>foo</code> is imported to the name <code>foo</code>.</p>
+in the second one the <code>module</code> object for <code>foo</code> is imported under the name <code>foo</code>.</p>
 <p>Given the apparent pattern above the following may seem like it should work,
 but it is not allowed:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package.foo</span> <span class="kn">import</span> <span class="n">foo_var</span> <span class="c1"># Works.</span>
@@ -450,11 +447,11 @@ but it is not allowed:</p>
 <p>The first import works because <code>from</code> imports are allowed to import attributes
 from the namespaces of packages and modules.  But the second import fails
 because bare <code>import</code> statements cannot be used to import attributes from the
-namespace of packages and modules.  Bare <code>import</code> statements can only be passed
-dotted paths, which correspond to files and directories in the filesystem but
-not things inside modules.  Renaming doesn’t change that, so the third import
-also fails.  This holds even when the expression <code>my_package.foo.foo_var</code> is
-usable in Python expressions.</p>
+namespaces of packages and modules.  Bare <code>import</code> statements can only be
+passed dotted paths, and dotted paths correspond to files and directories in
+the filesystem, not to attributes inside modules.  Renaming doesn’t change
+that, so the third import also fails.  This holds even when the expression
+<code>my_package.foo.foo_var</code> is usable in Python expressions.</p>
 <p>Another thing you cannot do is assign Python variables as aliases to dotted
 paths.  So, while it seems like it would be convenient, this code does not work:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package.foo</span> <span class="kn">as</span> <span class="nn">mpf</span> <span class="c1"># Works.</span>
@@ -474,12 +471,12 @@ files).  <strong>The first specifier in any import statement, whether a bare</st
 </div>
 <div class="section" id="relative-imports">
 <h2>4. <a class="toc-backref" href="#id8">Relative imports</a></h2>
-<p>We saw in the previous section that dotted paths in absolute import statements
-must always be typed out in full.  In the case of <strong>intra-package imports</strong>,
-i.e., imports from subpackages and modules inside the same package, relative
+<p>In the previous section we saw that dotted paths in absolute import statements
+must always be typed out in full.  In the case of <strong>intra-package imports</strong> —
+imports from subpackages and modules inside the same package — relative
 imports can often be used to simplify the dotted-path expressions.  Keep in
 mind that relative imports are <em>only</em> allowed for intra-package imports; all
-other imports must use absolute imports.</p>
+other imports must be absolute imports.</p>
 <p>Relative imports are to absolute imports as relative filename paths are to
 absolute filename paths.  They allow for shortened expressions relative to
 another directory.  First we will extend the definition of dotted paths to
@@ -487,20 +484,20 @@ allow for relative dotted paths.</p>
 <div class="section" id="relative-dotted-paths">
 <h3>4.1. <a class="toc-backref" href="#id9">Relative dotted paths</a></h3>
 <p>A <strong>relative dotted path</strong> is similar to an absolute dotted path except that it
-always starts with a dot symbol.</p>
+always starts with a dot symbol.  If you are familiar with relative paths in a
+shell such as Bash the syntax is similar.</p>
 <p>Relative dotted paths have different meanings depending on the location of the
 module in which they occur.  They are interpreted relative to the directory
-containing the module in which they occur.  (If you are familiar with relative
-paths in a Unix-style shell such as Bash, the syntax is similar.)</p>
+containing the module in which they occur:</p>
 <ul class="simple">
 <li>A single dot refers to the directory containing the module.  It can occur
-alone or at the beginning of a longer dotted path.  As an example, the
+alone or at the beginning of a longer dotted path.  As examples, the
 following correspondences hold inside the <code>foo</code> module (located in directory
-<code>my_package</code>).  The first two are equivalent filesystem paths relative to
-directory <code>src/my_package</code>, and the last one is the Python dotted path.
-(Note in the second line that while <code>bar</code> without the dot is also an
-equivalent relative pathname in a shell, as a dotted path it is <em>only</em>
-allowed as a top-level absolute import from <code>sys.path</code>.)</li>
+<code>my_package</code>).  The first two components on a line are equivalent filesystem
+paths relative to directory <code>src/my_package</code>, and the final one is the Python
+dotted path.  (Note in the second line that while <code>bar</code> without the dot would
+be an equivalent relative pathname in a shell, as a relative dotted path the
+leading dot is required.)</li>
 </ul>
 <div class="math">
 \begin{align*}
@@ -519,11 +516,11 @@ allowed as a top-level absolute import from <code>sys.path</code>.)</li>
 </div>
 <ul class="simple">
 <li>Two dots refer to the parent directory of the directory containing the
-module.  They can occur alone or at the beginning of a longer dotted path.
-The following correspondence holds inside the <code>baz</code> module (which is located
-in directory <code>my_subpackage</code>).  The first two are equivalent filesystem paths
-relative to directory <code>src/my_package/my_subpackage</code> and the last one is the
-Python dotted path:</li>
+module.  The two dots can occur alone or at the beginning of a longer dotted
+path.  The following correspondences hold inside the <code>baz</code> module (which is
+located in directory <code>my_subpackage</code>).  The first two components on a line are
+equivalent filesystem paths relative to directory
+<code>src/my_package/my_subpackage</code> and the final one is the Python dotted path:</li>
 </ul>
 <div class="math">
 \begin{align*}
@@ -553,13 +550,13 @@ going up and then down as follows:</p>
 straightforward: just use a relative dotted path instead of an absolute dotted
 path (but remember that they are only allowed for intra-package imports).</p>
 <p>There is another important restriction on relative imports: <strong>A relative dotted
-path can only appear after a</strong> <code>from</code> <strong>statement.</strong>  It seems like you should
-be able to write imports such as <code>import .bar</code> from the <code>foo</code> module and
+path can only appear after a</strong> <code>from</code> <strong>statement.</strong>  It might seem like you
+should be able to write imports such as <code>import .bar</code> from the <code>foo</code> module and
 <code>import ..bar</code> from <code>baz</code> module, but those are syntax errors.  The reason this
-is not allowed is that the relative dotted paths (such as <code>.bar</code>) after bare
+is not allowed is that the relative dotted paths (such as <code>.bar</code>) after the bare
 <code>import</code> statements are not valid Python names and therefore cannot be used in
-Python expressions as attribute accesses.</p>
-<p>The following are valid relative imports from the <code>foo</code> module:</p>
+Python expressions.</p>
+<p>The following are all valid relative imports from the <code>foo</code> module:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">bar</span>
 <span class="kn">from</span> <span class="nn">.bar</span> <span class="kn">import</span> <span class="n">bar_var</span>
 <span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">my_subpackage</span>
@@ -570,11 +567,11 @@ Python expressions as attribute accesses.</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">..</span> <span class="kn">import</span> <span class="n">bar</span>
 <span class="kn">from</span> <span class="nn">..bar</span> <span class="kn">import</span> <span class="n">bar_var</span>
 </pre></div>
-<p>In addition to importing modules and subpackages from the specified directory,
-<code>from</code> imports using only-dot paths such as <code>.</code> and <code>..</code> can also be used to
-import attributes from package and subpackage namespaces (i.e., from
-<code>__init__.py</code> namespaces)  For example, this import from module <code>foo</code> would
-import the variable <code>init_var</code> defined in module <code>my_package.__init__.py</code>:</p>
+<p>In addition to importing modules and subpackages, <code>from</code> imports using only-dot
+paths such as <code>.</code> and <code>..</code> can also be used to import attributes from package
+and subpackage namespaces (i.e., from <code>__init__.py</code> namespaces)  For example,
+this import in module <code>foo</code> would import the variable <code>init_var</code> defined in
+module <code>my_package.__init__.py</code>:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">.</span> <span class="kn">import</span> <span class="n">init_var</span>
 </pre></div>
 </div>
@@ -601,8 +598,8 @@ to be an <code>__init__.py</code> in its directory.</li>
 its directory as an absolute, non-dotted import.  This is helpful if the
 directory contains top-level packages or standalone modules that are intended
 to be imported.  In some situations this can cause problems such as unintended
-imports due to name shadowing and importing modules inside packages as if they
-were standalone modules.</p>
+imports due to name shadowing or modules inside packages being imported as if
+they were standalone modules.</p>
 <p>Property 2 is what allows the use of this common idiom in Python scripts:</p>
 <div class="highlight"><pre><span></span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
     <span class="n">main</span><span class="p">()</span> <span class="c1"># A commonly-seen example, running function `main`.</span>
@@ -620,20 +617,19 @@ subsection after this one.</p>
 outside packages can only use absolute imports.  Any absolute imports are
 allowed, but of course modules inside packages should almost always be imported
 as part of their package, using the dotted-path syntax relative to their
-package root, rather than as a non-dotted import.  In some cases
-it may be necessary to insert elements to <code>sys.path[1]</code> (after the current
-directory at <code>sys.path[0]</code>) in order for Python to discover the necessary
-modules and packages to import.</p>
+package root.  In some cases it may be necessary to insert paths to
+<code>sys.path[1]</code> (after the current directory at <code>sys.path[0]</code>) in order for
+Python to discover the necessary modules and packages to import.</p>
 <p>If you use a <code>setup.py</code> for your project then scripts outside packages <a class="reference external" href="https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html">can be
 added to a project</a>
-by using the <code>scripts</code> keyword argument.  For development this involves setting
-up the project with a <code>setup.py</code> and then installing the project in development
-mode, such as by running <code>pip install -e .</code> in the directory with <code>setup.py</code>.
-(The <code>setup.py</code> file is usually placed in the project’s root directory, which
-is <code>my_project</code> in the project skeleton given earlier).  This provides a shell
-command for running the script which is in the shell search path.  To add or
-remove scripts from the project the <code>setup.py</code> must be modified and the package
-reinstalled.  A similar thing can be done using the more-recent
+by using the <code>scripts</code> keyword argument.  For development this would involve
+setting up the project with a <code>setup.py</code> and then installing the project in
+development mode, such as by running <code>pip install -e .</code> in the directory with
+<code>setup.py</code>.  (The <code>setup.py</code> file is usually placed in the project’s root
+directory, which is <code>my_project</code> in the project skeleton given earlier).  This
+provides a shell command in the shell’s search path to run the script.  To add
+or remove scripts from the project the <code>setup.py</code> would have to be modified and
+the package reinstalled.  A similar thing can be done using the more-recent
 <code>pyproject.toml</code> files if you use that method to set up projects rather than
 using a <code>setup.py</code>.</p>
 </div>
@@ -658,7 +654,7 @@ script as a part of the package.  There are several possible ways to do this:</
 <ol class="arabic simple">
 <li>Invoke the script using <code>python -m &lt;fullyQualifiedName&gt;</code>, where
 <code>&lt;fullyQualifiedName&gt;</code> is the fully-qualified name of the module inside the
-package (i.e., the absolute dotted path).  Note that the directory
+package (i.e., its absolute dotted path).  Note that the directory
 containing the top-level package directory must be in <code>sys.path</code> or the
 command will fail.  You could write a shell script wrapper for the <code>python</code>
 command to modify <code>PYTHONPATH</code>, calculate the qualified name, and then
@@ -670,11 +666,11 @@ you might expect, but fortunately there is a <a class="reference external" href=
 you automatically (and optionally also remove the directory’s <code>sys.path</code>
 entry).</li>
 <li>Create a <code>setup.py</code> file and <a class="reference external" href="http://www.python.org/">create an entry point</a> for the script via the <code>console_scripts</code> keyword.
-(This is similar to the <code>scripts</code> keyword described above, but it allows
-modules inside packages to be run via an entry-point function.)  To add or
-remove entry points the <code>setup.py</code> file must be modified and the package
-reinstalled.  This creates commands which are directly executable in the
-shell, under the name specified in <code>setup.py</code>.</li>
+This is similar to the <code>scripts</code> keyword described above, but it allows
+modules inside packages to be run via an entry-point function.  To add or
+remove entry points the <code>setup.py</code> file would have to be modified and the
+package reinstalled.  This creates commands which are directly executable in
+the shell, under the command name specified in <code>setup.py</code>.</li>
 </ol>
 </div>
 </div>
@@ -690,7 +686,8 @@ string variable names then <code>*</code>-imports from the module will only impo
 names.  Anything else would need to be explicitly imported.  The <code>__all__</code> list
 for an <code>__init__.py</code> file can also contain the names of modules and subpackages
 to import: a <code>*</code>-import of the corresponding package or subpackage will then
-implicitly perform the imports (which need to be done explicitly for ordinary modules).</p>
+implicitly perform the imports (which would need to be done explicitly in an
+ordinary module).</p>
 <p><strong>Circular imports</strong>:  This problem can arise when one module imports another
 module which then imports the first module again.  The usual solution is to
 reorganize the module structure or to put the problematic import inside a
@@ -699,8 +696,8 @@ discussed in the answer to this Python <span class="caps">FAQ</span> question: �
 practices’ for using import in a module?</a>”</p>
 <p id="namespace-packages"><strong>Namespace packages</strong>: Namespace packages allow one or more toplevel
 directories having the same directory name, but without <code>__init__.py</code> files, to
-be used like a common namespace for all the modules and packages across all the
-directories (which must all be discoverable on <code>sys.path</code>).  This can be useful
+function like a common namespace for all the modules and packages in all of those
+directories which are discoverable on <code>sys.path</code>.  This can be useful
 for large distributions, but there are also drawbacks such as the lack of
 <code>__init__.py</code> files.  Most people should continue to use <code>__init__.py</code> files to
 create single-directory packages.</p>
