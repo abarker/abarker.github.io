@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io - programming</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-12T14:13:00-04:00</updated><entry><title>Understanding Python Imports</title><link href="https://abarker.github.io/understanding_python_imports/" rel="alternate"></link><published>2019-07-12T14:13:00-04:00</published><updated>2019-07-12T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-12:/understanding_python_imports/</id><summary type="html">&lt;p class="first last"&gt;Description of modern Python&amp;nbsp;imports.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io - programming</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-20T12:13:00-04:00</updated><entry><title>Understanding Python Imports</title><link href="https://abarker.github.io/understanding_python_imports/" rel="alternate"></link><published>2019-07-12T14:13:00-04:00</published><updated>2019-07-20T12:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-12:/understanding_python_imports/</id><summary type="html">&lt;p class="first last"&gt;Description of modern Python&amp;nbsp;imports.&lt;/p&gt;
 </summary><content type="html">
 &lt;p&gt;Python has many strong points and tends to have a learning curve that is
 friendly to beginners.  The import system, however, is one part of the
@@ -42,10 +42,12 @@ can be summarized as follows:&lt;/p&gt;
 \textrm{directory has an}\; \texttt{__init__.py}\; \textrm{file}} \;\Longrightarrow\; \textrm{python packages} \\
 \end{align*}
 &lt;/div&gt;
-&lt;p&gt;A file containing Python code is always a module and vice versa.  Such files
-usually have names ending with the &lt;code&gt;.py&lt;/code&gt; extension.  All Python programs are
-composed of one or more modules.  The name of a Python module is the same as
-the filename without the &lt;code&gt;.py&lt;/code&gt; extension.&lt;/p&gt;
+&lt;p&gt;A file containing Python code is always a module and vice versa. The filename
+of a module should end with the &lt;code&gt;.py&lt;/code&gt; extension.  The name of a Python module
+is the same as the filename without the &lt;code&gt;.py&lt;/code&gt; extension (except for modules run
+directly as scripts, which are generally not imported and are always named
+&lt;code&gt;__main__&lt;/code&gt;, see &lt;a class="reference internal" href="#section5"&gt;Section 5&lt;/a&gt;).  All Python programs are composed of
+one or more modules.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Packages&lt;/strong&gt; are collections of modules organized in a certain way:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Any Python module which is inside a directory containing an &lt;code&gt;__init__.py&lt;/code&gt;
@@ -108,8 +110,8 @@ into the &lt;code&gt;__init__.py&lt;/code&gt; file.&lt;/p&gt;
 to import.  Equivalently, they always contain a specifier for the corresponding
 file or a directory in the filesystem.  Remember that while Python’s import
 statements never use the &lt;code&gt;.py&lt;/code&gt; file extension for naming modules, other than
-that the names of modules, packages, and subpackages correspond directly with
-filesystem objects (files and directories) and their filesystem names.&lt;/p&gt;
+that the names of modules, packages, and subpackages generally correspond
+directly with filesystem objects (files and directories) and their filesystem names.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="the-python-path-search-list-sys-path"&gt;
 &lt;h2&gt;2. &lt;a class="toc-backref" href="#id3"&gt;The Python path-search list: &lt;code&gt;sys.path&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
@@ -172,15 +174,15 @@ be used to access those variables in any module that makes the above imports.&l
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;mp&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;my_standalone_module&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;msm&lt;/span&gt; &lt;span class="c1"&gt;# Same as above two.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The &lt;code&gt;as&lt;/code&gt; keyword can be used anywhere in an import statement where a name in
-the local namespace is being assigned a value.  It simply renames the variable
-under which that package or module is imported.&lt;/p&gt;
+the local namespace is being assigned a value.  It renames the variable under
+which that package or module is imported, not the actual name of the module.&lt;/p&gt;
 &lt;p&gt;Python always keeps a cache of imported packages and modules as &lt;code&gt;module&lt;/code&gt;
 objects in the &lt;code&gt;sys.modules&lt;/code&gt; dict, keyed by the fully-qualified name of the
 package or module.  When an import statement is executed Python first looks in
 that dict to see if the package or module has previously been imported.  If so
-then it returns the previously-imported object.  Otherwise it tries to import
-from the filesystem.  Re-importing a module requires the explicit use of the
-builtin &lt;code&gt;reload&lt;/code&gt; function.&lt;/p&gt;
+it returns the previously-imported object.  Otherwise it tries to import from
+the filesystem.  Re-importing a module requires the explicit use of the builtin
+&lt;code&gt;reload&lt;/code&gt; function.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;from&lt;/code&gt; statement can be used to import subpackages as well as to import
 particular attributes defined in a package or module:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;init_var&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;iv&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;my_subpackage&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;msp&lt;/span&gt;
@@ -466,7 +468,7 @@ module &lt;code&gt;my_package.__init__.py&lt;/code&gt;:&lt;/p&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="section" id="imports-in-scripts"&gt;
-&lt;h2&gt;5. &lt;a class="toc-backref" href="#id11"&gt;Imports in scripts&lt;/a&gt;&lt;/h2&gt;
+&lt;span id="section5"&gt;&lt;/span&gt;&lt;h2&gt;5. &lt;a class="toc-backref" href="#id11"&gt;Imports in scripts&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;A &lt;strong&gt;script&lt;/strong&gt; is any Python module which is directly run by the Python
 interpreter.  This can be done from the command line with the &lt;code&gt;python&lt;/code&gt; command,
 by clicking an icon, or via some other invocation method such as from a menu.
@@ -585,12 +587,12 @@ discussed in the answer to this Python &lt;span class="caps"&gt;FAQ&lt;/span&gt;
 practices’ for using import in a module?&lt;/a&gt;”&lt;/p&gt;
 &lt;p id="namespace-packages"&gt;&lt;strong&gt;Namespace packages&lt;/strong&gt;: Namespace packages allow one or more toplevel
 directories having the same directory name, but without &lt;code&gt;__init__.py&lt;/code&gt; files, to
-function like a common namespace for all the modules and packages in all of those
-directories which are discoverable on &lt;code&gt;sys.path&lt;/code&gt;.  This can be useful
-for large distributions, but there are also drawbacks such as the lack of
-&lt;code&gt;__init__.py&lt;/code&gt; files.  Most people should continue to use &lt;code&gt;__init__.py&lt;/code&gt; files to
-create single-directory packages.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Dynamic import calls.&lt;/strong&gt;:  Suppose you want do perform an import but you do
+function like a common namespace for all the modules and packages in all of
+those directories which are discoverable on &lt;code&gt;sys.path&lt;/code&gt;.  This can be useful for
+large distributions, but there are also drawbacks such as the lack of
+&lt;code&gt;__init__.py&lt;/code&gt; files.  Most people should continue to use &lt;code&gt;__init__.py&lt;/code&gt; files
+and create packages with a single top-level directory.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dynamic import calls&lt;/strong&gt;:  Suppose you want do perform an import but you do
 not know the name of the module to import until runtime.  The functional
 interface to the import command is called &lt;code&gt;__import__&lt;/code&gt;.  It can take a string
 argument, e.g., &lt;code&gt;module_found_at_runtime =

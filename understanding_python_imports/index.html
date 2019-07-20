@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="abarker.github.io" />
 <meta property="og:article:author" content="Allen Barker" />
 <meta property="og:article:published_time" content="2019-07-12T14:13:00-04:00" />
-<meta property="og:article:modified_time" content="2019-07-12T14:13:00-04:00" />
+<meta property="og:article:modified_time" content="2019-07-20T12:13:00-04:00" />
 <meta name="twitter:title" content="Understanding Python Imports ">
 <meta name="twitter:description" content="Description of modern Python imports.">
 
@@ -153,10 +153,12 @@ can be summarized as follows:</p>
 \textrm{directory has an}\; \texttt{__init__.py}\; \textrm{file}} \;\Longrightarrow\; \textrm{python packages} \\
 \end{align*}
 </div>
-<p>A file containing Python code is always a module and vice versa.  Such files
-usually have names ending with the <code>.py</code> extension.  All Python programs are
-composed of one or more modules.  The name of a Python module is the same as
-the filename without the <code>.py</code> extension.</p>
+<p>A file containing Python code is always a module and vice versa. The filename
+of a module should end with the <code>.py</code> extension.  The name of a Python module
+is the same as the filename without the <code>.py</code> extension (except for modules run
+directly as scripts, which are generally not imported and are always named
+<code>__main__</code>, see <a class="reference internal" href="#section5">Section 5</a>).  All Python programs are composed of
+one or more modules.</p>
 <p><strong>Packages</strong> are collections of modules organized in a certain way:</p>
 <ul class="simple">
 <li>Any Python module which is inside a directory containing an <code>__init__.py</code>
@@ -219,8 +221,8 @@ into the <code>__init__.py</code> file.</p>
 to import.  Equivalently, they always contain a specifier for the corresponding
 file or a directory in the filesystem.  Remember that while Python’s import
 statements never use the <code>.py</code> file extension for naming modules, other than
-that the names of modules, packages, and subpackages correspond directly with
-filesystem objects (files and directories) and their filesystem names.</p>
+that the names of modules, packages, and subpackages generally correspond
+directly with filesystem objects (files and directories) and their filesystem names.</p>
 </div>
 <div class="section" id="the-python-path-search-list-sys-path">
 <h2>2. <a class="toc-backref" href="#id3">The Python path-search list: <code>sys.path</code></a></h2>
@@ -283,15 +285,15 @@ be used to access those variables in any module that makes the above imports.</
 <span class="kn">import</span> <span class="nn">my_package</span> <span class="kn">as</span> <span class="nn">mp</span><span class="o">,</span> <span class="nn">my_standalone_module</span> <span class="kn">as</span> <span class="nn">msm</span> <span class="c1"># Same as above two.</span>
 </pre></div>
 <p>The <code>as</code> keyword can be used anywhere in an import statement where a name in
-the local namespace is being assigned a value.  It simply renames the variable
-under which that package or module is imported.</p>
+the local namespace is being assigned a value.  It renames the variable under
+which that package or module is imported, not the actual name of the module.</p>
 <p>Python always keeps a cache of imported packages and modules as <code>module</code>
 objects in the <code>sys.modules</code> dict, keyed by the fully-qualified name of the
 package or module.  When an import statement is executed Python first looks in
 that dict to see if the package or module has previously been imported.  If so
-then it returns the previously-imported object.  Otherwise it tries to import
-from the filesystem.  Re-importing a module requires the explicit use of the
-builtin <code>reload</code> function.</p>
+it returns the previously-imported object.  Otherwise it tries to import from
+the filesystem.  Re-importing a module requires the explicit use of the builtin
+<code>reload</code> function.</p>
 <p>The <code>from</code> statement can be used to import subpackages as well as to import
 particular attributes defined in a package or module:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">init_var</span> <span class="k">as</span> <span class="n">iv</span><span class="p">,</span> <span class="n">my_subpackage</span> <span class="k">as</span> <span class="n">msp</span>
@@ -577,7 +579,7 @@ module <code>my_package.__init__.py</code>:</p>
 </div>
 </div>
 <div class="section" id="imports-in-scripts">
-<h2>5. <a class="toc-backref" href="#id11">Imports in scripts</a></h2>
+<span id="section5"></span><h2>5. <a class="toc-backref" href="#id11">Imports in scripts</a></h2>
 <p>A <strong>script</strong> is any Python module which is directly run by the Python
 interpreter.  This can be done from the command line with the <code>python</code> command,
 by clicking an icon, or via some other invocation method such as from a menu.
@@ -696,12 +698,12 @@ discussed in the answer to this Python <span class="caps">FAQ</span> question: �
 practices’ for using import in a module?</a>”</p>
 <p id="namespace-packages"><strong>Namespace packages</strong>: Namespace packages allow one or more toplevel
 directories having the same directory name, but without <code>__init__.py</code> files, to
-function like a common namespace for all the modules and packages in all of those
-directories which are discoverable on <code>sys.path</code>.  This can be useful
-for large distributions, but there are also drawbacks such as the lack of
-<code>__init__.py</code> files.  Most people should continue to use <code>__init__.py</code> files to
-create single-directory packages.</p>
-<p><strong>Dynamic import calls.</strong>:  Suppose you want do perform an import but you do
+function like a common namespace for all the modules and packages in all of
+those directories which are discoverable on <code>sys.path</code>.  This can be useful for
+large distributions, but there are also drawbacks such as the lack of
+<code>__init__.py</code> files.  Most people should continue to use <code>__init__.py</code> files
+and create packages with a single top-level directory.</p>
+<p><strong>Dynamic import calls</strong>:  Suppose you want do perform an import but you do
 not know the name of the module to import until runtime.  The functional
 interface to the import command is called <code>__import__</code>.  It can take a string
 argument, e.g., <code>module_found_at_runtime =
@@ -845,7 +847,7 @@ which can arise, by Nick Coghlan.</li>
             <time itemprop="dateCreated" datetime="2019-07-12T14:13:00-04:00">Jul 12, 2019</time>
 
 <h4>Last Updated</h4>
-<time datetime="2019-07-12T14:13:00-04:00">Jul 12, 2019</time>
+<time datetime="2019-07-20T12:13:00-04:00">Jul 20, 2019</time>
 
             <h4>Category</h4>
             <a class="category-link" href="https://abarker.github.io/categories.html#programming-ref">programming</a>
