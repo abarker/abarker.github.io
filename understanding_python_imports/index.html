@@ -233,9 +233,9 @@ represented as strings.</p>
 standalone module cannot be imported if its containing directory is not on
 the</strong> <code>sys.path</code> <strong>list, and a package cannot be imported if the parent
 directory of its top-level directory (the top directory containing an</strong>
-<code>__init__.py</code>) <strong>is not on the</strong> <code>sys.path</code> <strong>list.</strong> Note that when external
-packages are installed with <code>pip</code> or similar programs they are placed in the
-system <code>site-packages</code> directory, which is on <code>sys.path</code> by default.</p>
+<code>__init__.py</code>) <strong>file is not on the</strong> <code>sys.path</code> <strong>list.</strong> Note that when
+external packages are installed with <code>pip</code> or similar programs they are placed
+in the system <code>site-packages</code> directory, which is on <code>sys.path</code> by default.</p>
 <p>Ordering in the <code>sys.path</code> list is important: The first match found in the list
 is the one that is used.  The paths themselves are strings which can represent
 relative or absolute pathnames for the underlying operating system.  Any
@@ -254,8 +254,8 @@ it is usually not the recommended way to initialize <code>sys.path</code>.</p>
 its top-level directory).  Similarly, to import a non-package module located in
 a directory on <code>sys.path</code> just import the module’s name (which is the filename
 leaving off the <code>.py</code> extension).  For example, suppose the path to directory
-<code>my_project/src</code> in the skeletion project above is in the <code>sys.path</code> list.
-Then the following imports work:</p>
+<code>my_project/src</code> in the skeleton project above is in the <code>sys.path</code> list.  Then
+the following imports work:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package</span>
 <span class="kn">import</span> <span class="nn">my_standalone_module</span>
 </pre></div>
@@ -315,20 +315,22 @@ import cannot be done correctly simply by placing the directory on <code>sys.pat
 and then importing the module or subpackage.  (In fact, a package directory or
 subdirectory, i.e., a directory with an <code>__init__.py</code> file, should <em>never</em>
 appear in the <code>sys.path</code> list.  Doing that can introduce subtle bugs which can
-be difficult to find.  Only the <em>parent</em> directory of the package should ever
-appear in <code>sys.path</code>.)</p>
-<p>Absolute imports <em>require</em> that the directory containing either the top-level
-package directory or the non-package module being imported be discoverable on
-the <code>sys.path</code> list.  Absolute imports can always be used, in any Python
-module, regardless of whether it is inside a package or outside of a package.</p>
-<p>Absolute imports for modules inside packages use a dotted-path syntax, e.g.,</p>
+be difficult to find.  Only the <em>parent</em> directory of the top-level package
+directory should ever appear in <code>sys.path</code>.)</p>
+<p>Absolute imports can always be used, in any Python module, regardless of
+whether it is inside a package or outside of a package.  Absolute imports
+<em>require</em> that the directory containing either the top-level package directory
+or the non-package module being imported be discoverable on the <code>sys.path</code>
+list.</p>
+<p>Absolute imports for modules inside packages use a dotted-path syntax.  For example:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package.foo</span>
 </pre></div>
-<p>This statement would import the module <code>foo</code> located in the <code>foo.py</code> file under
-the name <code>my_package.foo</code> (an <code>as</code> keyword could be used to create an alias if
-desired).  The next subsection covers the relation of these dotted paths to the
-filesystem objects.  Once these dotted paths are understood absolute imports
-will be much easier to discuss.</p>
+<p>This statement imports the module <code>foo</code>, located in the <code>foo.py</code> file.  The
+<code>foo</code> module is accessible under the name <code>my_package.foo</code>.  An <code>as</code> keyword
+could have been used to create an alias if desired.  The next subsection covers
+the syntax of these dotted paths and their relation to the files and
+directories of the filesystem.  Once dotted paths are understood absolute
+imports will be much easier to discuss.</p>
 <div class="section" id="absolute-dotted-paths-and-the-filesystem">
 <h3>3.1. <a class="toc-backref" href="#id5">Absolute dotted paths and the filesystem</a></h3>
 <p>For any package which can be discovered by looking in the directories on the
@@ -371,21 +373,22 @@ correspondence is fairly simple.  In an import statement these dotted paths
 that are inside packages is fairly simple: just put the dotted path after the
 import statement.  The first component of the dotted path is <em>always</em> the
 top-level package name (i.e., the name of the directory which is the root of
-the package subtree).  For package <code>my_package</code> as given above these are
-all valid imports using <code>import</code> directly:</p>
+the package subtree).  For package <code>my_package</code> in the skeleton given earlier
+these are all valid bare <code>import</code> statements:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package</span>
 <span class="kn">import</span> <span class="nn">my_package.foo</span>
 <span class="kn">import</span> <span class="nn">my_package.my_subpackage</span>
 <span class="kn">import</span> <span class="nn">my_package.my_subpackage</span> <span class="kn">as</span> <span class="nn">msp</span>
 <span class="kn">import</span> <span class="nn">my_package.my_subpackage.baz</span>
 </pre></div>
-<p>All these imports result in a <code>module</code> object in the namespace which, when used
-in an expression, syntactically matches the dotted path (except that the dots
-are attribute accesses on <code>module</code> objects).  For example, the last import does
-not actually add anything to the namespace of the module doing the import.
-Instead, it adds the module attribute <code>baz</code> to the <code>my_subspace</code> namespace.
-(At that point the <code>my_package</code> object is already in the namespace, and it
-already has the attribute <code>my_subpackage</code>.)</p>
+<p>Each of these imports results in a <code>module</code> object in the namespace which, when
+used in an expression, syntactically matches the dotted path in the import
+statement.  The syntax looks the same but in an expression the dots are
+attribute accesses on <code>module</code> objects.  For example, the second import does
+not actually add anything to the namespace of the module doing the import.  The
+module for <code>my_package</code> is already in the namespace; the second import just
+adds the module attribute <code>foo</code> to the <code>my_package</code> namespace so that
+<code>my_package.foo</code> works in expressions.</p>
 <p>This is a general property of bare <code>import</code> statements: After a bare <code>import</code>
 the dotted-path used to make the import is always usable in Python expressions
 in the importing module.  But in those expressions the dot symbol represents
