@@ -160,9 +160,9 @@ All standard, non-library imports have the `sys.path` list at their root:  **A
 standalone module cannot be imported if its containing directory is not on
 the** `sys.path` **list, and a package cannot be imported if the parent
 directory of its top-level directory (the top directory containing an**
-`__init__.py`) **is not on the** `sys.path` **list.** Note that when external
-packages are installed with `pip` or similar programs they are placed in the
-system `site-packages` directory, which is on `sys.path` by default.
+`__init__.py`) **file is not on the** `sys.path` **list.** Note that when
+external packages are installed with `pip` or similar programs they are placed
+in the system `site-packages` directory, which is on `sys.path` by default.
 
 Ordering in the `sys.path` list is important: The first match found in the list
 is the one that is used.  The paths themselves are strings which can represent
@@ -184,8 +184,8 @@ The command to import a package which is located in a directory on the
 its top-level directory).  Similarly, to import a non-package module located in
 a directory on `sys.path` just import the module's name (which is the filename
 leaving off the `.py` extension).  For example, suppose the path to directory
-`my_project/src` in the skeletion project above is in the `sys.path` list.
-Then the following imports work:
+`my_project/src` in the skeleton project above is in the `sys.path` list.  Then
+the following imports work:
 
 .. code-block:: python
 
@@ -264,25 +264,28 @@ import cannot be done correctly simply by placing the directory on `sys.path`
 and then importing the module or subpackage.  (In fact, a package directory or
 subdirectory, i.e., a directory with an `__init__.py` file, should *never*
 appear in the `sys.path` list.  Doing that can introduce subtle bugs which can
-be difficult to find.  Only the *parent* directory of the package should ever
-appear in `sys.path`.)
+be difficult to find.  Only the *parent* directory of the top-level package
+directory should ever appear in `sys.path`.)
 
-Absolute imports *require* that the directory containing either the top-level
-package directory or the non-package module being imported be discoverable on
-the `sys.path` list.  Absolute imports can always be used, in any Python
-module, regardless of whether it is inside a package or outside of a package.
+Absolute imports can always be used, in any Python module, regardless of
+whether it is inside a package or outside of a package.  Absolute imports
+*require* that the directory containing either the top-level package directory
+or the non-package module being imported be discoverable on the `sys.path`
+list.
 
-Absolute imports for modules inside packages use a dotted-path syntax, e.g.,
+Absolute imports for modules inside packages use a dotted-path syntax.  For
+example:
 
 .. code-block:: python
 
    import my_package.foo
 
-This statement would import the module `foo` located in the `foo.py` file under
-the name `my_package.foo` (an `as` keyword could be used to create an alias if
-desired).  The next subsection covers the relation of these dotted paths to the
-filesystem objects.  Once these dotted paths are understood absolute imports
-will be much easier to discuss.
+This statement imports the module `foo`, located in the `foo.py` file.  The
+`foo` module is accessible under the name `my_package.foo`.  An `as` keyword
+could have been used to create an alias if desired.  The next subsection covers
+the syntax of these dotted paths and their relation to the files and
+directories of the filesystem.  Once dotted paths are understood absolute
+imports will be much easier to discuss.
 
 Absolute dotted paths and the filesystem
 ----------------------------------------
@@ -320,8 +323,8 @@ Now that dotted paths have been covered the discussion of importing modules
 that are inside packages is fairly simple: just put the dotted path after the
 import statement.  The first component of the dotted path is *always* the
 top-level package name (i.e., the name of the directory which is the root of
-the package subtree).  For package `my_package` as given above these are
-all valid imports using `import` directly:
+the package subtree).  For package `my_package` in the skeleton given earlier
+these are all valid bare `import` statements:
 
 .. code-block:: python
 
@@ -331,13 +334,14 @@ all valid imports using `import` directly:
    import my_package.my_subpackage as msp
    import my_package.my_subpackage.baz
 
-All these imports result in a `module` object in the namespace which, when used
-in an expression, syntactically matches the dotted path (except that the dots
-are attribute accesses on `module` objects).  For example, the last import does
-not actually add anything to the namespace of the module doing the import.
-Instead, it adds the module attribute `baz` to the `my_subspace` namespace.
-(At that point the `my_package` object is already in the namespace, and it
-already has the attribute `my_subpackage`.)
+Each of these imports results in a `module` object in the namespace which, when
+used in an expression, syntactically matches the dotted path in the import
+statement.  The syntax looks the same but in an expression the dots are
+attribute accesses on `module` objects.  For example, the second import does
+not actually add anything to the namespace of the module doing the import.  The
+module for `my_package` is already in the namespace; the second import just
+adds the module attribute `foo` to the `my_package` namespace so that
+`my_package.foo` works in expressions.
 
 This is a general property of bare `import` statements: After a bare `import`
 the dotted-path used to make the import is always usable in Python expressions
