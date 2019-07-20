@@ -179,7 +179,7 @@ represented as strings.&lt;/p&gt;
 standalone module cannot be imported if its containing directory is not on
 the&lt;/strong&gt; &lt;code&gt;sys.path&lt;/code&gt; &lt;strong&gt;list, and a package cannot be imported if the parent
 directory of its top-level directory (the top directory containing an&lt;/strong&gt;
-&lt;code&gt;__init__.py&lt;/code&gt;) &lt;strong&gt;file is not on the&lt;/strong&gt; &lt;code&gt;sys.path&lt;/code&gt; &lt;strong&gt;list.&lt;/strong&gt; Note that when
+&lt;code&gt;__init__.py&lt;/code&gt; &lt;strong&gt;file) is not on the&lt;/strong&gt; &lt;code&gt;sys.path&lt;/code&gt; &lt;strong&gt;list.&lt;/strong&gt; Note that when
 external packages are installed with &lt;code&gt;pip&lt;/code&gt; or similar programs they are placed
 in the system &lt;code&gt;site-packages&lt;/code&gt; directory, which is on &lt;code&gt;sys.path&lt;/code&gt; by default.&lt;/p&gt;
 &lt;p&gt;Ordering in the &lt;code&gt;sys.path&lt;/code&gt; list is important: The first match found in the list
