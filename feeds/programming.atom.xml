@@ -7,10 +7,10 @@ language which can be confusing.  There are a few possible sources of confusion
 &lt;ul class="simple"&gt;
 &lt;li&gt;Certain import statements which work for modules inside packages do not work
 for modules outside of packages, and vice versa.&lt;/li&gt;
-&lt;li&gt;Some of the import syntax does not generalize in the way one might first
-expect it does.&lt;/li&gt;
 &lt;li&gt;Modules run as scripts have some special properties which can affect imports.&lt;/li&gt;
 &lt;li&gt;Lack of familiarity with the Python package mechanism in general.&lt;/li&gt;
+&lt;li&gt;Some of the import syntax does not generalize in the way one might first
+expect it does.&lt;/li&gt;
 &lt;li&gt;Old documentation can come up in searches.  (For example, Python 2 had
 something called implicit relative import which Python 3 does not have.  If
 you’re still using Python 2, disable implicit relative imports by using &lt;code&gt;from
@@ -44,8 +44,9 @@ can be summarized as follows:&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;A file containing Python code is always a module and vice versa.  Such files
 usually have names ending with the &lt;code&gt;.py&lt;/code&gt; extension.  All Python programs are
-composed of one or more modules.  &lt;strong&gt;Packages&lt;/strong&gt; are collections of modules
-organized in a certain way:&lt;/p&gt;
+composed of one or more modules.  The name of a Python module is the same as
+the filename without the &lt;code&gt;.py&lt;/code&gt; extension.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Packages&lt;/strong&gt; are collections of modules organized in a certain way:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Any Python module which is inside a directory containing an &lt;code&gt;__init__.py&lt;/code&gt;
 file (which may or may not be an empty file) is by definition part of the
@@ -87,27 +88,28 @@ is also a module named &lt;code&gt;my_standalone_module&lt;/code&gt; in the &lt;
 &lt;p&gt;The &lt;code&gt;__init__.py&lt;/code&gt; files in the directories are essentially the modules for the
 corresponding packages or subpackages.  When a module is imported its code
 is run to initialize it.  When a package or subpackage is
-imported its &lt;code&gt;__init__.py&lt;/code&gt; is implicitly imported and run.  It is easy to
-underestimate &lt;code&gt;__init__.py&lt;/code&gt; files, since they are often empty files, but they
-are quite important as far as how Python packages work.&lt;/p&gt;
+imported its &lt;code&gt;__init__.py&lt;/code&gt; is implicitly imported and run.&lt;/p&gt;
 &lt;p&gt;A package’s namespace is by definition the namespace of the &lt;code&gt;__init__.py&lt;/code&gt;
 module in its directory.  This includes any names which are explicitly imported
-into the &lt;code&gt;__init__.py&lt;/code&gt; file.  Whenever a subpackage is imported its name is
-automatically added to the namespace of &lt;code&gt;__init__.py&lt;/code&gt; (and hence to the package
-namespace).  The top-level namespace of a package constitutes its main
-application-programmer interface (&lt;span class="caps"&gt;API&lt;/span&gt;).  Names which should be exposed by that
-&lt;span class="caps"&gt;API&lt;/span&gt; must be imported into the &lt;code&gt;__init__.py&lt;/code&gt; file.&lt;/p&gt;
+into the &lt;code&gt;__init__.py&lt;/code&gt; file.  Whenever a subpackage of a package is imported
+its name is automatically added to the namespace of the parent package (i.e. to
+the namespace of that package’s &lt;code&gt;__init__.py&lt;/code&gt;).&lt;/p&gt;
 &lt;p&gt;Subpackages are imported (and their &lt;code&gt;__init__.py&lt;/code&gt; files are run) when they are
 either 1) explicitly imported or 2) automatically imported just before a module
 or subpackage contained within that subpackage is imported.  As noted above,
 the &lt;code&gt;module&lt;/code&gt; object representing the subpackage is also added to the namespace
 of the package or subpackage that imports it (under its subpackage name).&lt;/p&gt;
+&lt;p&gt;It is easy to underestimate &lt;code&gt;__init__.py&lt;/code&gt; files, since they are often empty
+files, but they are quite important as far as how Python packages work.  The
+top-level namespace of a package constitutes its main application-programmer
+interface (&lt;span class="caps"&gt;API&lt;/span&gt;).  Names which should be exposed by that &lt;span class="caps"&gt;API&lt;/span&gt; need to be imported
+into the &lt;code&gt;__init__.py&lt;/code&gt; file.&lt;/p&gt;
 &lt;p&gt;Python &lt;code&gt;import&lt;/code&gt; statements always contain a specifier for a package or module
 to import.  Equivalently, they always contain a specifier for the corresponding
-file or a directory in the filesystem.  While Python’s import statements never
-use the &lt;code&gt;.py&lt;/code&gt; file extension for naming modules, other than that the names of
-modules, packages, and subpackages correspond directly with filesystem objects
-(files and directories) and their filesystem names.&lt;/p&gt;
+file or a directory in the filesystem.  Remember that while Python’s import
+statements never use the &lt;code&gt;.py&lt;/code&gt; file extension for naming modules, other than
+that the names of modules, packages, and subpackages correspond directly with
+filesystem objects (files and directories) and their filesystem names.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div class="section" id="the-python-path-search-list-sys-path"&gt;
 &lt;h2&gt;2. &lt;a class="toc-backref" href="#id3"&gt;The Python path-search list: &lt;code&gt;sys.path&lt;/code&gt;&lt;/a&gt;&lt;/h2&gt;
@@ -116,53 +118,55 @@ library modules such as &lt;code&gt;math&lt;/code&gt;, which are always found in
 location).  This list tells the Python import system where to look for packages
 and modules to import.  It is just a list containing directory pathnames,
 represented as strings.&lt;/p&gt;
-&lt;p&gt;Understanding &lt;code&gt;sys.path&lt;/code&gt; is important in understanding Python imports.  &lt;strong&gt;If
-the pathname of the directory containing a module’s file or else containing the
-package directory is not on the&lt;/strong&gt; &lt;code&gt;sys.path&lt;/code&gt; &lt;strong&gt;list then Python will not be
-able to import the respective module or package.&lt;/strong&gt;  Note that when external
+&lt;p&gt;All standard, non-library imports have the &lt;code&gt;sys.path&lt;/code&gt; list at their root:  &lt;strong&gt;A
+standalone module cannot be imported if its containing directory is not on
+the&lt;/strong&gt; &lt;code&gt;sys.path&lt;/code&gt; &lt;strong&gt;list, and a package cannot be imported if the parent
+directory of its top-level directory (the top directory containing an&lt;/strong&gt;
+&lt;code&gt;__init__.py&lt;/code&gt;) &lt;strong&gt;is not on the&lt;/strong&gt; &lt;code&gt;sys.path&lt;/code&gt; &lt;strong&gt;list.&lt;/strong&gt; Note that when external
 packages are installed with &lt;code&gt;pip&lt;/code&gt; or similar programs they are placed in the
-system &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;site-packages&lt;/span&gt;&lt;/tt&gt; directory, which is on &lt;code&gt;sys.path&lt;/code&gt; by default.&lt;/p&gt;
+system &lt;code&gt;site-packages&lt;/code&gt; directory, which is on &lt;code&gt;sys.path&lt;/code&gt; by default.&lt;/p&gt;
 &lt;p&gt;Ordering in the &lt;code&gt;sys.path&lt;/code&gt; list is important: The first match found in the list
 is the one that is used.  The paths themselves are strings which can represent
 relative or absolute pathnames for the underlying operating system.  Any
 relative pathnames in &lt;code&gt;sys.path&lt;/code&gt; (such as &lt;code&gt;".."&lt;/code&gt;) are interpreted relative to
 Python’s current working directory (&lt;span class="caps"&gt;CWD&lt;/span&gt;).  The &lt;span class="caps"&gt;CWD&lt;/span&gt; is initially set to the
-command shell’s notion of current directory (i.e., the directory you are in
-when you invoke the &lt;code&gt;python&lt;/code&gt; command), but it can be changed by calls to
+command shell’s notion of current directory, i.e., the directory you are in
+when you invoke the &lt;code&gt;python&lt;/code&gt; command.  The Python &lt;span class="caps"&gt;CWD&lt;/span&gt; can be changed by calls to
 &lt;code&gt;os.setcwd()&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Directories can be added to the initial &lt;code&gt;sys.path&lt;/code&gt; list from command shells
 like Bash by setting the &lt;code&gt;PYTHONPATH&lt;/code&gt; environment variable before invoking the
 &lt;code&gt;python&lt;/code&gt; command.  The &lt;code&gt;PYTHONPATH&lt;/code&gt; environment variable should contain a
 colon-separated string of the pathnames to be added.  While this has its uses,
 it is usually not the recommended way to initialize &lt;code&gt;sys.path&lt;/code&gt;.&lt;/p&gt;
-&lt;p&gt;Actually importing a package which is located in a directory on the &lt;code&gt;sys.path&lt;/code&gt;
-list is simple: just import the package directory name.  Similarly, to import a
-non-package module located in a directory on &lt;code&gt;sys.path&lt;/code&gt; just import the
-module’s file name leaving off the &lt;code&gt;.py&lt;/code&gt; extension.  For example, suppose the path
-to directory &lt;code&gt;my_project/src&lt;/code&gt; is in the &lt;code&gt;sys.path&lt;/code&gt; list.  Then the following
-imports work for the project skeleton given above:&lt;/p&gt;
+&lt;p&gt;The command to import a package which is located in a directory on the
+&lt;code&gt;sys.path&lt;/code&gt; list is simple: just import the package name (which is the name of
+its top-level directory).  Similarly, to import a non-package module located in
+a directory on &lt;code&gt;sys.path&lt;/code&gt; just import the module’s name (which is the filename
+leaving off the &lt;code&gt;.py&lt;/code&gt; extension).  For example, suppose the path to directory
+&lt;code&gt;my_project/src&lt;/code&gt; in the skeletion project above is in the &lt;code&gt;sys.path&lt;/code&gt; list.
+Then the following imports work:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_standalone_module&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;These statements import the package &lt;code&gt;my_package&lt;/code&gt; in the directory of that same
-name and then import the module &lt;code&gt;my_standalone_module&lt;/code&gt; with code located in the
-file &lt;code&gt;my_standalone_module.py&lt;/code&gt;.  The same imports can be done with a single
-statement, though that style is not generally recommended:&lt;/p&gt;
+&lt;p&gt;The first statement imports the package &lt;code&gt;my_package&lt;/code&gt; in the directory of that
+same name, and the second statement import the module &lt;code&gt;my_standalone_module&lt;/code&gt;
+with code located in the file &lt;code&gt;my_standalone_module.py&lt;/code&gt;.  The same imports can
+be done with a single statement, although that style of import is not generally recommended:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;my_standalone_module&lt;/span&gt; &lt;span class="c1"&gt;# Same as above two imports.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;What is actually being imported here are two &lt;code&gt;module&lt;/code&gt; objects, one representing
 the package &lt;code&gt;my_package&lt;/code&gt; and the other representing the module &lt;code&gt;my_module&lt;/code&gt;.
-For example, if you run &lt;code&gt;str(type(my_package))&lt;/code&gt; the result is &lt;code&gt;"&amp;lt;class
-'module'&amp;gt;"&lt;/code&gt;.&lt;/p&gt;
+For example, if you run &lt;code&gt;str(type(my_package))&lt;/code&gt; after the above import the
+result is &lt;code&gt;"&amp;lt;class 'module'&amp;gt;"&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;All the names in the namespace of a package or module represented by a &lt;code&gt;module&lt;/code&gt;
 object are also attributes of that &lt;code&gt;module&lt;/code&gt; object (i.e., they are in its
 &lt;code&gt;__dict__&lt;/code&gt;).  This is what allows those attributes to be accessed directly from
-the imported module objects.  For example, assuming the &lt;code&gt;__init__.py&lt;/code&gt; of
+the imported module objects.  For example, suppose the &lt;code&gt;__init__.py&lt;/code&gt; of
 &lt;code&gt;my_package&lt;/code&gt; defines the variable &lt;code&gt;init_var&lt;/code&gt; and &lt;code&gt;my_standalone_module&lt;/code&gt; defines
-&lt;code&gt;my_standalone_module_var&lt;/code&gt; expressions like &lt;code&gt;my_package.init_var&lt;/code&gt; and
-&lt;code&gt;my_standalone_module.my_standalone_module_var&lt;/code&gt; can be used in any module that
-makes the above imports.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;as&lt;/code&gt; keyword can also be used to rename an import under an alias:&lt;/p&gt;
+the variable &lt;code&gt;my_standalone_module_var&lt;/code&gt;.  Then expressions like
+&lt;code&gt;my_package.init_var&lt;/code&gt; and &lt;code&gt;my_standalone_module.my_standalone_module_var&lt;/code&gt; can
+be used to access those variables in any module that makes the above imports.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;as&lt;/code&gt; keyword can optionally be used to rename an import under an alias:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;mp&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_standalone_module&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;msm&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;mp&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;my_standalone_module&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;msm&lt;/span&gt; &lt;span class="c1"&gt;# Same as above two.&lt;/span&gt;
@@ -171,21 +175,21 @@ makes the above imports.&lt;/p&gt;
 the local namespace is being assigned a value.  It simply renames the variable
 under which that package or module is imported.&lt;/p&gt;
 &lt;p&gt;Python always keeps a cache of imported packages and modules as &lt;code&gt;module&lt;/code&gt;
-objects, in the &lt;code&gt;sys.modules&lt;/code&gt; dict, keyed by the fully-qualified name of the
+objects in the &lt;code&gt;sys.modules&lt;/code&gt; dict, keyed by the fully-qualified name of the
 package or module.  When an import statement is executed Python first looks in
 that dict to see if the package or module has previously been imported.  If so
 then it returns the previously-imported object.  Otherwise it tries to import
 from the filesystem.  Re-importing a module requires the explicit use of the
 builtin &lt;code&gt;reload&lt;/code&gt; function.&lt;/p&gt;
-&lt;p&gt;The &lt;code&gt;from&lt;/code&gt; statement can be used to import subpackages as well as particular
-attributes defined in a package or module:&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;from&lt;/code&gt; statement can be used to import subpackages as well as to import
+particular attributes defined in a package or module:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;init_var&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;iv&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;my_subpackage&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;msp&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_standalone_module&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;my_standalone_module_var&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The first of these statements imports the attribute &lt;code&gt;init_var&lt;/code&gt; from the
-package namespace of &lt;code&gt;my_package&lt;/code&gt;, renaming it as &lt;code&gt;iv&lt;/code&gt;.  It also imports the
-subpackage &lt;code&gt;my_subpackage&lt;/code&gt;, renamed to &lt;code&gt;msp&lt;/code&gt;.  The second statement imports the
-attribute &lt;code&gt;my_standalone_module_var&lt;/code&gt; from &lt;code&gt;my_standalone_module&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;The first of these statements imports the attribute &lt;code&gt;init_var&lt;/code&gt; from the package
+namespace of &lt;code&gt;my_package&lt;/code&gt;, renaming it as &lt;code&gt;iv&lt;/code&gt;.  It also imports the subpackage
+&lt;code&gt;my_subpackage&lt;/code&gt;, renamed to &lt;code&gt;msp&lt;/code&gt;.  The second statement imports the attribute
+&lt;code&gt;my_standalone_module_var&lt;/code&gt; from &lt;code&gt;my_standalone_module&lt;/code&gt; with no renaming.&lt;/p&gt;
 &lt;p&gt;Imports using the &lt;code&gt;from&lt;/code&gt; keyword will be referred to as &lt;code&gt;from&lt;/code&gt; imports, and
 imports without the &lt;code&gt;from&lt;/code&gt; keyword will be referred to as bare &lt;code&gt;import&lt;/code&gt;
 statements.&lt;/p&gt;
@@ -586,6 +590,11 @@ directories (which must all be discoverable on &lt;code&gt;sys.path&lt;/code&gt;
 for large distributions, but there are also drawbacks such as the lack of
 &lt;code&gt;__init__.py&lt;/code&gt; files.  Most people should continue to use &lt;code&gt;__init__.py&lt;/code&gt; files to
 create single-directory packages.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Dynamic import calls.&lt;/strong&gt;:  Suppose you want do perform an import but you do
+not know the name of the module to import until runtime.  The functional
+interface to the import command is called &lt;code&gt;__import__&lt;/code&gt;.  It can take a string
+argument, e.g., &lt;code&gt;module_found_at_runtime =
+__import__(runtime_calculated_name)&lt;/code&gt;, where &lt;code&gt;runtime_calculated_name&lt;/code&gt; is a string.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;pth files&lt;/strong&gt;: Pth files are special files which contain the pathnames of
 packages or modules to import.  Using pth files only works when they are placed
 in the special system &lt;code&gt;site-packages&lt;/code&gt; directory.&lt;/p&gt;

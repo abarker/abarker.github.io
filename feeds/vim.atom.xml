@@ -3,7 +3,8 @@
 </summary><content type="html">&lt;p&gt;These are short instructions for setting up the Vim or Gvim editor to do spellchecking.
 A Unix-type shell is&amp;nbsp;assumed.&lt;/p&gt;
 &lt;ol class="arabic"&gt;
-&lt;li&gt;&lt;p class="first"&gt;Create a subdirectory of your &lt;tt class="docutils literal"&gt;.vim&lt;/tt&gt; directory to hold the dictionary of new&amp;nbsp;words:&lt;/p&gt;
+&lt;li&gt;&lt;p class="first"&gt;Create a subdirectory of your &lt;tt class="docutils literal"&gt;.vim&lt;/tt&gt; directory to hold the local
+dictionary of new&amp;nbsp;words:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;mkdir -p ~/.vim/spell
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/li&gt;
@@ -50,7 +51,7 @@ commands are&amp;nbsp;available:&lt;/p&gt;
 &lt;td&gt;Mark the current word as wrong.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;tr&gt;&lt;td&gt;&lt;tt class="docutils literal"&gt;zug&lt;/tt&gt;&lt;/td&gt;
-&lt;td&gt;Remove the word from the local dictionary.&lt;/td&gt;
+&lt;td&gt;Remove the current word from your local dictionary.&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
