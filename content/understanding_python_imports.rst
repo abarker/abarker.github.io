@@ -160,7 +160,7 @@ All standard, non-library imports have the `sys.path` list at their root:  **A
 standalone module cannot be imported if its containing directory is not on
 the** `sys.path` **list, and a package cannot be imported if the parent
 directory of its top-level directory (the top directory containing an**
-`__init__.py`) **file is not on the** `sys.path` **list.** Note that when
+`__init__.py` **file) is not on the** `sys.path` **list.** Note that when
 external packages are installed with `pip` or similar programs they are placed
 in the system `site-packages` directory, which is on `sys.path` by default.
 
