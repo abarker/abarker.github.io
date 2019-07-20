@@ -27,13 +27,13 @@ confusion:
 * Certain import statements which work for modules inside packages do not work
   for modules outside of packages, and vice versa.
 
-* Some of the import syntax does not generalize in the way one might first
-  expect it does.
-
 * Modules run as scripts have some special properties which can affect imports.
 
 * Lack of familiarity with the Python package mechanism in general.
- 
+
+* Some of the import syntax does not generalize in the way one might first
+  expect it does.
+
 * Old documentation can come up in searches.  (For example, Python 2 had
   something called implicit relative import which Python 3 does not have.  If
   you're still using Python 2, disable implicit relative imports by using `from
@@ -67,8 +67,10 @@ can be summarized as follows:
 
 A file containing Python code is always a module and vice versa.  Such files
 usually have names ending with the `.py` extension.  All Python programs are
-composed of one or more modules.  **Packages** are collections of modules
-organized in a certain way:
+composed of one or more modules.  The name of a Python module is the same as
+the filename without the `.py` extension.
+
+**Packages** are collections of modules organized in a certain way:
   
 * Any Python module which is inside a directory containing an `__init__.py`
   file (which may or may not be an empty file) is by definition part of the
@@ -118,17 +120,13 @@ is also a module named `my_standalone_module` in the `src` directory.
 The `__init__.py` files in the directories are essentially the modules for the
 corresponding packages or subpackages.  When a module is imported its code
 is run to initialize it.  When a package or subpackage is
-imported its `__init__.py` is implicitly imported and run.  It is easy to
-underestimate `__init__.py` files, since they are often empty files, but they
-are quite important as far as how Python packages work.
+imported its `__init__.py` is implicitly imported and run.
 
 A package's namespace is by definition the namespace of the `__init__.py`
 module in its directory.  This includes any names which are explicitly imported
-into the `__init__.py` file.  Whenever a subpackage is imported its name is
-automatically added to the namespace of `__init__.py` (and hence to the package
-namespace).  The top-level namespace of a package constitutes its main
-application-programmer interface (API).  Names which should be exposed by that
-API must be imported into the `__init__.py` file.
+into the `__init__.py` file.  Whenever a subpackage of a package is imported
+its name is automatically added to the namespace of the parent package (i.e. to
+the namespace of that package's `__init__.py`).
 
 Subpackages are imported (and their `__init__.py` files are run) when they are
 either 1) explicitly imported or 2) automatically imported just before a module
@@ -136,12 +134,18 @@ or subpackage contained within that subpackage is imported.  As noted above,
 the `module` object representing the subpackage is also added to the namespace
 of the package or subpackage that imports it (under its subpackage name).
 
+It is easy to underestimate `__init__.py` files, since they are often empty
+files, but they are quite important as far as how Python packages work.  The
+top-level namespace of a package constitutes its main application-programmer
+interface (API).  Names which should be exposed by that API need to be imported
+into the `__init__.py` file.
+
 Python `import` statements always contain a specifier for a package or module
 to import.  Equivalently, they always contain a specifier for the corresponding
-file or a directory in the filesystem.  While Python's import statements never
-use the `.py` file extension for naming modules, other than that the names of
-modules, packages, and subpackages correspond directly with filesystem objects
-(files and directories) and their filesystem names.
+file or a directory in the filesystem.  Remember that while Python's import
+statements never use the `.py` file extension for naming modules, other than
+that the names of modules, packages, and subpackages correspond directly with
+filesystem objects (files and directories) and their filesystem names.
 
 The Python path-search list: `sys.path`
 =======================================
@@ -152,20 +156,21 @@ location).  This list tells the Python import system where to look for packages
 and modules to import.  It is just a list containing directory pathnames,
 represented as strings.
 
-Understanding `sys.path` is important in understanding Python imports.  **If
-the pathname of the directory containing a module's file or else containing the
-package directory is not on the** `sys.path` **list then Python will not be
-able to import the respective module or package.**  Note that when external
+All standard, non-library imports have the `sys.path` list at their root:  **A
+standalone module cannot be imported if its containing directory is not on
+the** `sys.path` **list, and a package cannot be imported if the parent
+directory of its top-level directory (the top directory containing an**
+`__init__.py`) **is not on the** `sys.path` **list.** Note that when external
 packages are installed with `pip` or similar programs they are placed in the
-system ``site-packages`` directory, which is on `sys.path` by default.
+system `site-packages` directory, which is on `sys.path` by default.
 
 Ordering in the `sys.path` list is important: The first match found in the list
 is the one that is used.  The paths themselves are strings which can represent
 relative or absolute pathnames for the underlying operating system.  Any
 relative pathnames in `sys.path` (such as `".."`) are interpreted relative to
 Python's current working directory (CWD).  The CWD is initially set to the
-command shell's notion of current directory (i.e., the directory you are in
-when you invoke the `python` command), but it can be changed by calls to
+command shell's notion of current directory, i.e., the directory you are in
+when you invoke the `python` command.  The Python CWD can be changed by calls to
 `os.setcwd()`.
 
 Directories can be added to the initial `sys.path` list from command shells
@@ -174,22 +179,24 @@ like Bash by setting the `PYTHONPATH` environment variable before invoking the
 colon-separated string of the pathnames to be added.  While this has its uses,
 it is usually not the recommended way to initialize `sys.path`.
 
-Actually importing a package which is located in a directory on the `sys.path`
-list is simple: just import the package directory name.  Similarly, to import a
-non-package module located in a directory on `sys.path` just import the
-module's file name leaving off the `.py` extension.  For example, suppose the path
-to directory `my_project/src` is in the `sys.path` list.  Then the following
-imports work for the project skeleton given above:
+The command to import a package which is located in a directory on the
+`sys.path` list is simple: just import the package name (which is the name of
+its top-level directory).  Similarly, to import a non-package module located in
+a directory on `sys.path` just import the module's name (which is the filename
+leaving off the `.py` extension).  For example, suppose the path to directory
+`my_project/src` in the skeletion project above is in the `sys.path` list.
+Then the following imports work:
 
 .. code-block:: python
 
    import my_package
    import my_standalone_module
 
-These statements import the package `my_package` in the directory of that same
-name and then import the module `my_standalone_module` with code located in the
-file `my_standalone_module.py`.  The same imports can be done with a single
-statement, though that style is not generally recommended:
+The first statement imports the package `my_package` in the directory of that
+same name, and the second statement import the module `my_standalone_module`
+with code located in the file `my_standalone_module.py`.  The same imports can
+be done with a single statement, although that style of import is not generally
+recommended:
 
 .. code-block:: python
 
@@ -203,13 +210,13 @@ result is `"<class 'module'>"`.
 All the names in the namespace of a package or module represented by a `module`
 object are also attributes of that `module` object (i.e., they are in its
 `__dict__`).  This is what allows those attributes to be accessed directly from
-the imported module objects.  For example, assuming the `__init__.py` of
+the imported module objects.  For example, suppose the `__init__.py` of
 `my_package` defines the variable `init_var` and `my_standalone_module` defines
-`my_standalone_module_var` expressions like `my_package.init_var` and
-`my_standalone_module.my_standalone_module_var` can be used in any module that
-makes the above imports.
+the variable `my_standalone_module_var`.  Then expressions like
+`my_package.init_var` and `my_standalone_module.my_standalone_module_var` can
+be used to access those variables in any module that makes the above imports.
 
-The `as` keyword can also be used to rename an import under an alias:
+The `as` keyword can optionally be used to rename an import under an alias:
 
 .. code-block:: python
 
@@ -222,25 +229,25 @@ the local namespace is being assigned a value.  It simply renames the variable
 under which that package or module is imported.
 
 Python always keeps a cache of imported packages and modules as `module`
-objects, in the `sys.modules` dict, keyed by the fully-qualified name of the
+objects in the `sys.modules` dict, keyed by the fully-qualified name of the
 package or module.  When an import statement is executed Python first looks in
 that dict to see if the package or module has previously been imported.  If so
 then it returns the previously-imported object.  Otherwise it tries to import
 from the filesystem.  Re-importing a module requires the explicit use of the
 builtin `reload` function.
 
-The `from` statement can be used to import subpackages as well as particular
-attributes defined in a package or module:
+The `from` statement can be used to import subpackages as well as to import
+particular attributes defined in a package or module:
 
 .. code-block:: python
 
    from my_package import init_var as iv, my_subpackage as msp
    from my_standalone_module import my_standalone_module_var
 
-The first of these statements imports the attribute `init_var` from the
-package namespace of `my_package`, renaming it as `iv`.  It also imports the
-subpackage `my_subpackage`, renamed to `msp`.  The second statement imports the
-attribute `my_standalone_module_var` from `my_standalone_module`.
+The first of these statements imports the attribute `init_var` from the package
+namespace of `my_package`, renaming it as `iv`.  It also imports the subpackage
+`my_subpackage`, renamed to `msp`.  The second statement imports the attribute
+`my_standalone_module_var` from `my_standalone_module` with no renaming.
 
 Imports using the `from` keyword will be referred to as `from` imports, and
 imports without the `from` keyword will be referred to as bare `import`
