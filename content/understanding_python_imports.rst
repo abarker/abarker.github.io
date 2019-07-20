@@ -2,7 +2,7 @@ Understanding Python Imports
 ############################
 
 :date: 2019-07-12 14:13
-:modified: 2019-07-12 14:13
+:modified: 2019-07-20 12:13
 :category: programming
 :tags: programming, python
 :authors: Allen Barker
@@ -65,10 +65,12 @@ can be summarized as follows:
    \substack{\textrm{directory subtrees where each} \\
    \textrm{directory has an}\; \texttt{__init__.py}\; \textrm{file}} \;\Longrightarrow\; \textrm{python packages} \\
 
-A file containing Python code is always a module and vice versa.  Such files
-usually have names ending with the `.py` extension.  All Python programs are
-composed of one or more modules.  The name of a Python module is the same as
-the filename without the `.py` extension.
+A file containing Python code is always a module and vice versa. The filename
+of a module should end with the `.py` extension.  The name of a Python module
+is the same as the filename without the `.py` extension (except for modules run
+directly as scripts, which are generally not imported and are always named
+`__main__`, see `Section 5 <section5_>`_).  All Python programs are composed of
+one or more modules.  
 
 **Packages** are collections of modules organized in a certain way:
   
@@ -144,8 +146,9 @@ Python `import` statements always contain a specifier for a package or module
 to import.  Equivalently, they always contain a specifier for the corresponding
 file or a directory in the filesystem.  Remember that while Python's import
 statements never use the `.py` file extension for naming modules, other than
-that the names of modules, packages, and subpackages correspond directly with
-filesystem objects (files and directories) and their filesystem names.
+that the names of modules, packages, and subpackages generally correspond
+directly with filesystem objects (files and directories) and their filesystem
+names.
 
 The Python path-search list: `sys.path`
 =======================================
@@ -225,16 +228,16 @@ The `as` keyword can optionally be used to rename an import under an alias:
    import my_package as mp, my_standalone_module as msm # Same as above two.
 
 The `as` keyword can be used anywhere in an import statement where a name in
-the local namespace is being assigned a value.  It simply renames the variable
-under which that package or module is imported.
+the local namespace is being assigned a value.  It renames the variable under
+which that package or module is imported, not the actual name of the module.
 
 Python always keeps a cache of imported packages and modules as `module`
 objects in the `sys.modules` dict, keyed by the fully-qualified name of the
 package or module.  When an import statement is executed Python first looks in
 that dict to see if the package or module has previously been imported.  If so
-then it returns the previously-imported object.  Otherwise it tries to import
-from the filesystem.  Re-importing a module requires the explicit use of the
-builtin `reload` function.
+it returns the previously-imported object.  Otherwise it tries to import from
+the filesystem.  Re-importing a module requires the explicit use of the builtin
+`reload` function.
 
 The `from` statement can be used to import subpackages as well as to import
 particular attributes defined in a package or module:
@@ -556,6 +559,8 @@ module `my_package.__init__.py`:
 
     from . import init_var
 
+.. _section5:
+
 Imports in scripts
 ==================
 
@@ -702,13 +707,13 @@ practices' for using import in a module?
  
 **Namespace packages**: Namespace packages allow one or more toplevel
 directories having the same directory name, but without `__init__.py` files, to
-function like a common namespace for all the modules and packages in all of those
-directories which are discoverable on `sys.path`.  This can be useful
-for large distributions, but there are also drawbacks such as the lack of
-`__init__.py` files.  Most people should continue to use `__init__.py` files to
-create single-directory packages.
+function like a common namespace for all the modules and packages in all of
+those directories which are discoverable on `sys.path`.  This can be useful for
+large distributions, but there are also drawbacks such as the lack of
+`__init__.py` files.  Most people should continue to use `__init__.py` files
+and create packages with a single top-level directory.
 
-**Dynamic import calls.**:  Suppose you want do perform an import but you do
+**Dynamic import calls**:  Suppose you want do perform an import but you do
 not know the name of the module to import until runtime.  The functional
 interface to the import command is called `__import__`.  It can take a string
 argument, e.g., `module_found_at_runtime =
