@@ -67,8 +67,8 @@ can be summarized as follows:
 
 A file containing Python code is always a module and vice versa. The filename
 of a module should end with the `.py` extension.  The name of a Python module
-is the same as the filename without the `.py` extension (except for modules run
-directly as scripts, which are generally not imported and are always named
+is the same as its filename without the `.py` extension (except for modules run
+directly as scripts; those are generally not imported and are always named
 `__main__`, see `Section 5 <section5_>`_).  All Python programs are composed of
 one or more modules.  
 
