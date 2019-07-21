@@ -44,8 +44,8 @@ can be summarized as follows:&lt;/p&gt;
 &lt;/div&gt;
 &lt;p&gt;A file containing Python code is always a module and vice versa. The filename
 of a module should end with the &lt;code&gt;.py&lt;/code&gt; extension.  The name of a Python module
-is the same as the filename without the &lt;code&gt;.py&lt;/code&gt; extension (except for modules run
-directly as scripts, which are generally not imported and are always named
+is the same as its filename without the &lt;code&gt;.py&lt;/code&gt; extension (except for modules run
+directly as scripts; those are generally not imported and are always named
 &lt;code&gt;__main__&lt;/code&gt;, see &lt;a class="reference internal" href="#section5"&gt;Section 5&lt;/a&gt;).  All Python programs are composed of
 one or more modules.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Packages&lt;/strong&gt; are collections of modules organized in a certain way:&lt;/p&gt;
