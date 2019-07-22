@@ -227,9 +227,9 @@ The `as` keyword can optionally be used to rename an import under an alias:
    import my_standalone_module as msm
    import my_package as mp, my_standalone_module as msm # Same as above two.
 
-The `as` keyword can be used anywhere in an import statement where a name in
-the local namespace is being assigned a value.  It renames the variable under
-which that package or module is imported, not the actual name of the module.
+The `as` keyword can be used in any import statement to change the name under
+which the import is saved in the local namespace.  It only renames the local
+reference, not the actual name of the module.
 
 Python always keeps a cache of imported packages and modules as `module`
 objects in the `sys.modules` dict, keyed by the fully-qualified name of the
