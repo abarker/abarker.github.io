@@ -173,9 +173,9 @@ be used to access those variables in any module that makes the above imports.&l
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_standalone_module&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;msm&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;mp&lt;/span&gt;&lt;span class="o"&gt;,&lt;/span&gt; &lt;span class="nn"&gt;my_standalone_module&lt;/span&gt; &lt;span class="kn"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;msm&lt;/span&gt; &lt;span class="c1"&gt;# Same as above two.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;The &lt;code&gt;as&lt;/code&gt; keyword can be used anywhere in an import statement where a name in
-the local namespace is being assigned a value.  It renames the variable under
-which that package or module is imported, not the actual name of the module.&lt;/p&gt;
+&lt;p&gt;The &lt;code&gt;as&lt;/code&gt; keyword can be used in any import statement to change the name under
+which the import is saved in the local namespace.  It only renames the local
+reference, not the actual name of the module.&lt;/p&gt;
 &lt;p&gt;Python always keeps a cache of imported packages and modules as &lt;code&gt;module&lt;/code&gt;
 objects in the &lt;code&gt;sys.modules&lt;/code&gt; dict, keyed by the fully-qualified name of the
 package or module.  When an import statement is executed Python first looks in
