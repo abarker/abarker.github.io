@@ -59,10 +59,10 @@ considered to be distinct.)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Subpackages&lt;/strong&gt; are defined similarly to packages, as subdirectories of a
 package directory which also contain an &lt;code&gt;__init__.py&lt;/code&gt; file.  Subpackages can
 have their own subpackages, and so forth.&lt;/li&gt;
-&lt;li&gt;A module with no &lt;code&gt;__init__.py&lt;/code&gt; in its directory is not part of any package or
-subpackage (excepting namespace packages, an advanced topic briefly discussed
-&lt;a class="reference internal" href="#namespace-packages"&gt;later&lt;/a&gt;).&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;A module with no &lt;code&gt;__init__.py&lt;/code&gt; in its directory is not part of any package or
+subpackage (excepting namespace packages, an advanced topic which is briefly
+discussed &lt;a class="reference internal" href="#namespace-packages"&gt;later&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;Consider this example directory structure, which will be used throughout the article:&lt;/p&gt;
 &lt;pre class="literal-block"&gt;
 my_project
