@@ -108,14 +108,16 @@ one or more modules.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Packages&lt;/strong&gt; are collections of modules organized in a certain way:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;Any Python module which is inside a directory containing an &lt;code&gt;__init__.py&lt;/code&gt;
-file (which may or may not be an empty file) is by definition part of the
-package associated with that &lt;code&gt;__init__.py&lt;/code&gt; file.  The name of the package is
-the same as the name of the directory.  (Formally, packages are just a
-special kind of module, but in this context packages and modules will be
-considered to be distinct.)&lt;/li&gt;
+file, and whose parent directory does not, is by definition part of the
+package associated with that &lt;code&gt;__init__.py&lt;/code&gt; file.  The &lt;code&gt;__init__.py&lt;/code&gt; file may
+or may not be an empty file.  The name of the package is the same as the name
+of the directory.  (Formally, packages are just a special kind of module, but
+in this context packages and modules will be considered to be distinct.)&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Subpackages&lt;/strong&gt; are defined similarly to packages, as subdirectories of a
 package directory which also contain an &lt;code&gt;__init__.py&lt;/code&gt; file.  Subpackages can
-have their own subpackages, and so forth.&lt;/li&gt;
+have their own subpackages, and so forth.  They are members of the package
+corresponding to the top-level directory of the subtree of directories
+containing &lt;code&gt;__init__.py&lt;/code&gt; files.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A module with no &lt;code&gt;__init__.py&lt;/code&gt; in its directory is not part of any package or
 subpackage (excepting namespace packages, an advanced topic which is briefly

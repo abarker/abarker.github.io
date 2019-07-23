@@ -162,14 +162,16 @@ one or more modules.</p>
 <p><strong>Packages</strong> are collections of modules organized in a certain way:</p>
 <ul class="simple">
 <li>Any Python module which is inside a directory containing an <code>__init__.py</code>
-file (which may or may not be an empty file) is by definition part of the
-package associated with that <code>__init__.py</code> file.  The name of the package is
-the same as the name of the directory.  (Formally, packages are just a
-special kind of module, but in this context packages and modules will be
-considered to be distinct.)</li>
+file, and whose parent directory does not, is by definition part of the
+package associated with that <code>__init__.py</code> file.  The <code>__init__.py</code> file may
+or may not be an empty file.  The name of the package is the same as the name
+of the directory.  (Formally, packages are just a special kind of module, but
+in this context packages and modules will be considered to be distinct.)</li>
 <li><strong>Subpackages</strong> are defined similarly to packages, as subdirectories of a
 package directory which also contain an <code>__init__.py</code> file.  Subpackages can
-have their own subpackages, and so forth.</li>
+have their own subpackages, and so forth.  They are members of the package
+corresponding to the top-level directory of the subtree of directories
+containing <code>__init__.py</code> files.</li>
 </ul>
 <p>A module with no <code>__init__.py</code> in its directory is not part of any package or
 subpackage (excepting namespace packages, an advanced topic which is briefly
