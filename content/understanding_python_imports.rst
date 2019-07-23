@@ -2,7 +2,7 @@ Understanding Python Imports
 ############################
 
 :date: 2019-07-12 14:13
-:modified: 2019-07-20 12:13
+:modified: 2019-07-22 12:13
 :category: programming
 :tags: programming, python
 :authors: Allen Barker
@@ -162,10 +162,11 @@ represented as strings.
 All standard, non-library imports have the `sys.path` list at their root:  **A
 standalone module cannot be imported if its containing directory is not on
 the** `sys.path` **list, and a package cannot be imported if the parent
-directory of its top-level directory (the top directory containing an**
-`__init__.py` **file) is not on the** `sys.path` **list.** Note that when
-external packages are installed with `pip` or similar programs they are placed
-in the system `site-packages` directory, which is on `sys.path` by default.
+directory of its top-level directory (the parent of the top directory
+containing an** `__init__.py` **file) is not on the** `sys.path` **list.** Note
+that when external packages are installed with `pip` or similar programs they
+are placed in the system `site-packages` directory, which is on `sys.path` by
+default.  That is what allows them to be discovered and imported.
 
 Ordering in the `sys.path` list is important: The first match found in the list
 is the one that is used.  The paths themselves are strings which can represent
@@ -283,18 +284,18 @@ example:
 
    import my_package.foo
 
-This statement imports the module `foo`, located in the `foo.py` file.  The
-`foo` module is accessible under the name `my_package.foo`.  An `as` keyword
-could have been used to create an alias if desired.  The next subsection covers
-the syntax of these dotted paths and their relation to the files and
-directories of the filesystem.  Once dotted paths are understood absolute
-imports will be much easier to discuss.
+This statement imports the module `foo`, located in the file
+`my_package/foo.py`.  After this import the `foo` module is accessible under
+the name `my_package.foo`.  An `as` keyword could have been used to create an
+alias, if desired.  The next subsection covers the syntax of these dotted paths
+and their relation to the files and directories of the filesystem.  Once dotted
+paths are understood absolute imports will be much easier to discuss.
 
 Absolute dotted paths and the filesystem
 ----------------------------------------
 
 For any package which can be discovered by looking in the directories on the
-`sys.path` list there is corresponding **dotted path** to specify modules
+`sys.path` list there is a corresponding **dotted path** to specify modules
 (files) and subpackages (subdirectories) located inside the package (inside the
 package's directory subtree).  The slashes in operating-system pathnames are
 essentially replaced with dots.  These dotted paths are always relative to the
@@ -324,10 +325,12 @@ Absolute imports of subpackages and modules in packages
 
 Now that dotted paths have been covered the discussion of importing modules
 that are inside packages is fairly simple: just put the dotted path after the
-import statement.  The first component of the dotted path is *always* the
-top-level package name (i.e., the name of the directory which is the root of
-the package subtree).  For package `my_package` in the skeleton given earlier
-these are all valid bare `import` statements:
+`import` or `from` statement.  The first component of the dotted path for an
+absolute import is *always* the top-level package name (i.e., the name of the
+top-level directory of the package subtree).
+
+For package `my_package` in the skeleton given earlier these are all valid bare
+`import` statements:
 
 .. code-block:: python
 
@@ -341,7 +344,7 @@ used in an expression, syntactically matches the dotted path in the import
 statement.  The syntax looks the same but in an expression the dots are
 attribute accesses on `module` objects.  For example, the second import does
 not actually add anything to the namespace of the module doing the import.  The
-module for `my_package` is already in the namespace after the first import.
+module for `my_package` is already in the namespace due to the first import.
 The second import just adds the module attribute `foo` to the `my_package`
 namespace so that `my_package.foo` works in expressions.
 
@@ -357,10 +360,11 @@ imported then it imports the remainder of the dotted path from the filesystem.
 Any previously-imported packages or modules are taken from the cache.
 
 Imports using `from` also work for dotted paths.  The imports below are all
-valid imports for package `my_package`.  They correspond to the imports above
-(except the first one above, which has no corresponding `from` import).  After
-a `from` import, though, only the package or module following the `import` keyword
-is added to the namespace of the importing module (as a `module` object):
+valid imports from the example package `my_package`.  They correspond to the
+imports above (except the first one above, which has no corresponding `from`
+import).  After a `from` import, though, only the package or module following
+the `import` keyword is added to the namespace of the importing module (as a
+reference to a `module` object):
 
 .. code-block:: python
 
@@ -368,10 +372,10 @@ is added to the namespace of the importing module (as a `module` object):
    from my_package import my_subpackage
    from my_package.my_subpackage import baz
 
-Imports using `from` can also be used to import particular attributes from the
-namespaces of packages and modules.  For example, if the namespace of module
-`foo` contains a variable `foo_var` then that variable can be imported with
-this statement:
+Imports using `from` can also be used to import particular attributes from
+inside the namespaces of packages and modules.  For example, if the namespace
+of module `foo` contains a variable `foo_var` then that variable can be
+imported with this statement:
 
 .. code-block:: python
 
@@ -394,7 +398,7 @@ something other than attribute access.  In import statements the dot can *only*
 be part of a dotted path.
 
 Consider these valid import statements, assuming that `foo_var` is a variable
-assigned in `foo.py`:
+assigned in module `foo.py`:
 
 .. code-block:: python
 
@@ -622,12 +626,12 @@ added to a project
 <https://python-packaging.readthedocs.io/en/latest/command-line-scripts.html>`_
 by using the `scripts` keyword argument.  For development this would involve
 setting up the project with a `setup.py` and then installing the project in
-development mode, such as by running `pip install -e .` in the directory with
+editable mode, such as by running `pip install -e .` in the directory with
 `setup.py`.  (The `setup.py` file is usually placed in the project's root
 directory, which is `my_project` in the project skeleton given earlier).  This
-provides a shell command in the shell's search path to run the script.  To add
-or remove scripts from the project the `setup.py` would have to be modified and
-the package reinstalled.  A similar thing can be done using the more-recent
+provides a shell command, in the shell's search path, to run the script.  To
+add or remove scripts from the project the `setup.py` would have to be modified
+and the package reinstalled.  A similar thing can be done using the more-recent
 `pyproject.toml` files if you use that method to set up projects rather than
 using a `setup.py`.
 
@@ -639,11 +643,11 @@ listed above have some side-effects which need to be taken into account.
 
 Property 3 means that the package the script is inside of is not automatically
 imported when the script runs.  To import modules from the package the script
-can only use non-dotted absolute imports (based on Property 1).  This only
-works correctly in simple cases where the imported modules are essentially
-standalone modules themselves.  Even if the script itself imports the full
-package in the usual way the running script is still not correctly set up as a
-module of the package.
+will by default use non-dotted absolute imports (based on Property 1, that the
+directory is added to `sys.path`).  This only works correctly in simple cases
+where the imported modules are essentially standalone modules themselves.  Even
+if the script itself imports the full package in the usual way, the running
+script is still not correctly set up as a module of the package.
 
 If the script does explicitly import its containing package then dotted
 absolute imports from the package will work.  But the script module itself
@@ -659,16 +663,16 @@ script as a part of the package.  There are several possible ways to do this:
    package (i.e., its absolute dotted path).  Note that the directory
    containing the top-level package directory must be in `sys.path` or the
    command will fail.  You could write a shell script wrapper for the `python`
-   command to modify `PYTHONPATH`, calculate the qualified name, and then
-   invoke `python -m`.  Generally, though, the invocation differs from that of
+   command to calculate a `PYTHONPATH` and qualified name and then invoke
+   `python -m`.  Generally, though, the invocation method differs from that of
    other Python scripts.
 
-2. Set the `__package__` attribute of the script to the fully-qualified name
-   and then import the package in the correct way.  This is more complex than
-   you might expect, but fortunately there is a `package on PyPI
-   <https://abarker.github.io/set-package-attribute/>`_ which can do this for
-   you automatically (and optionally also remove the directory's `sys.path`
-   entry).
+2. Set the `__package__` attribute of the script, in the script, to the
+   fully-qualified name and then import the package in the correct way.  This
+   is more complex than you might expect, but fortunately there is a `package
+   on PyPI <https://abarker.github.io/set-package-attribute/>`_ which can do
+   this for you automatically (and optionally also remove the directory's
+   `sys.path` entry).
 
 3. Create a `setup.py` file and `create an entry point
    <http://www.python.org/>`_ for the script via the `console_scripts` keyword.
