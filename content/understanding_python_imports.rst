@@ -85,9 +85,9 @@ one or more modules.
   package directory which also contain an `__init__.py` file.  Subpackages can
   have their own subpackages, and so forth.
 
-* A module with no `__init__.py` in its directory is not part of any package or
-  subpackage (excepting namespace packages, an advanced topic briefly discussed
-  `later <namespace-packages_>`_).
+A module with no `__init__.py` in its directory is not part of any package or
+subpackage (excepting namespace packages, an advanced topic which is briefly
+discussed `later <namespace-packages_>`_).
 
 Consider this example directory structure, which will be used throughout the
 article:
