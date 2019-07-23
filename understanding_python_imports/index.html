@@ -394,7 +394,7 @@ namespace so that <code>my_package.foo</code> works in expressions.</p>
 without an <code>as</code> the dotted-path used to make the import is always usable in
 Python expressions in the importing module.  But in those expressions the dot
 symbol represents attribute access, unlike in the import statement itself.
-This will be discussed further in the next subsection.</p>
+This is discussed further in the next subsection.</p>
 <p>Python uses its <code>sys.modules</code> cache for dotted-path imports, too.  It goes down
 the names on the dotted path and if it finds one that has not previously been
 imported then it imports the remainder of the dotted path from the filesystem.
