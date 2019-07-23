@@ -349,7 +349,7 @@ This is a general property of bare `import` statements: After a bare `import`
 without an `as` the dotted-path used to make the import is always usable in
 Python expressions in the importing module.  But in those expressions the dot
 symbol represents attribute access, unlike in the import statement itself.
-This will be discussed further in the next subsection.
+This is discussed further in the next subsection.
 
 Python uses its `sys.modules` cache for dotted-path imports, too.  It goes down
 the names on the dotted path and if it finds one that has not previously been
