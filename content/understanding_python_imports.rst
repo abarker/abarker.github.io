@@ -607,7 +607,7 @@ Scripts outside of packages
 The standard idiom for Python scripts is that they should be located outside of
 packages.  The script can then load any packages or modules it needs.  There
 are some use cases for scripts inside packages, which will be covered in the
-subsection after this one.
+subsection following this one.
 
 The rule for imports in scripts located outside packages is simple: scripts
 outside packages can only use absolute imports.  Any absolute imports are
