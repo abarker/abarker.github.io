@@ -19,7 +19,7 @@
 <meta property="og:site_name" content="abarker.github.io" />
 <meta property="og:article:author" content="Allen Barker" />
 <meta property="og:article:published_time" content="2019-07-12T14:13:00-04:00" />
-<meta property="og:article:modified_time" content="2019-07-20T12:13:00-04:00" />
+<meta property="og:article:modified_time" content="2019-07-22T12:13:00-04:00" />
 <meta name="twitter:title" content="Understanding Python Imports ">
 <meta name="twitter:description" content="Description of modern Python imports.">
 
@@ -234,10 +234,11 @@ represented as strings.</p>
 <p>All standard, non-library imports have the <code>sys.path</code> list at their root:  <strong>A
 standalone module cannot be imported if its containing directory is not on
 the</strong> <code>sys.path</code> <strong>list, and a package cannot be imported if the parent
-directory of its top-level directory (the top directory containing an</strong>
-<code>__init__.py</code> <strong>file) is not on the</strong> <code>sys.path</code> <strong>list.</strong> Note that when
-external packages are installed with <code>pip</code> or similar programs they are placed
-in the system <code>site-packages</code> directory, which is on <code>sys.path</code> by default.</p>
+directory of its top-level directory (the parent of the top directory
+containing an</strong> <code>__init__.py</code> <strong>file) is not on the</strong> <code>sys.path</code> <strong>list.</strong> Note
+that when external packages are installed with <code>pip</code> or similar programs they
+are placed in the system <code>site-packages</code> directory, which is on <code>sys.path</code> by
+default.  That is what allows them to be discovered and imported.</p>
 <p>Ordering in the <code>sys.path</code> list is important: The first match found in the list
 is the one that is used.  The paths themselves are strings which can represent
 relative or absolute pathnames for the underlying operating system.  Any
@@ -327,16 +328,16 @@ list.</p>
 <p>Absolute imports for modules inside packages use a dotted-path syntax.  For example:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package.foo</span>
 </pre></div>
-<p>This statement imports the module <code>foo</code>, located in the <code>foo.py</code> file.  The
-<code>foo</code> module is accessible under the name <code>my_package.foo</code>.  An <code>as</code> keyword
-could have been used to create an alias if desired.  The next subsection covers
-the syntax of these dotted paths and their relation to the files and
-directories of the filesystem.  Once dotted paths are understood absolute
-imports will be much easier to discuss.</p>
+<p>This statement imports the module <code>foo</code>, located in the file
+<code>my_package/foo.py</code>.  After this import the <code>foo</code> module is accessible under
+the name <code>my_package.foo</code>.  An <code>as</code> keyword could have been used to create an
+alias, if desired.  The next subsection covers the syntax of these dotted paths
+and their relation to the files and directories of the filesystem.  Once dotted
+paths are understood absolute imports will be much easier to discuss.</p>
 <div class="section" id="absolute-dotted-paths-and-the-filesystem">
 <h3>3.1. <a class="toc-backref" href="#id5">Absolute dotted paths and the filesystem</a></h3>
 <p>For any package which can be discovered by looking in the directories on the
-<code>sys.path</code> list there is corresponding <strong>dotted path</strong> to specify modules
+<code>sys.path</code> list there is a corresponding <strong>dotted path</strong> to specify modules
 (files) and subpackages (subdirectories) located inside the package (inside the
 package’s directory subtree).  The slashes in operating-system pathnames are
 essentially replaced with dots.  These dotted paths are always relative to the
@@ -373,10 +374,11 @@ correspondence is fairly simple.  In an import statement these dotted paths
 <h3>3.2. <a class="toc-backref" href="#id6">Absolute imports of subpackages and modules in packages</a></h3>
 <p>Now that dotted paths have been covered the discussion of importing modules
 that are inside packages is fairly simple: just put the dotted path after the
-import statement.  The first component of the dotted path is <em>always</em> the
-top-level package name (i.e., the name of the directory which is the root of
-the package subtree).  For package <code>my_package</code> in the skeleton given earlier
-these are all valid bare <code>import</code> statements:</p>
+<code>import</code> or <code>from</code> statement.  The first component of the dotted path for an
+absolute import is <em>always</em> the top-level package name (i.e., the name of the
+top-level directory of the package subtree).</p>
+<p>For package <code>my_package</code> in the skeleton given earlier these are all valid bare
+<code>import</code> statements:</p>
 <div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">my_package</span>
 <span class="kn">import</span> <span class="nn">my_package.foo</span>
 <span class="kn">import</span> <span class="nn">my_package.my_subpackage</span>
@@ -387,7 +389,7 @@ used in an expression, syntactically matches the dotted path in the import
 statement.  The syntax looks the same but in an expression the dots are
 attribute accesses on <code>module</code> objects.  For example, the second import does
 not actually add anything to the namespace of the module doing the import.  The
-module for <code>my_package</code> is already in the namespace after the first import.
+module for <code>my_package</code> is already in the namespace due to the first import.
 The second import just adds the module attribute <code>foo</code> to the <code>my_package</code>
 namespace so that <code>my_package.foo</code> works in expressions.</p>
 <p>This is a general property of bare <code>import</code> statements: After a bare <code>import</code>
@@ -400,18 +402,19 @@ the names on the dotted path and if it finds one that has not previously been
 imported then it imports the remainder of the dotted path from the filesystem.
 Any previously-imported packages or modules are taken from the cache.</p>
 <p>Imports using <code>from</code> also work for dotted paths.  The imports below are all
-valid imports for package <code>my_package</code>.  They correspond to the imports above
-(except the first one above, which has no corresponding <code>from</code> import).  After
-a <code>from</code> import, though, only the package or module following the <code>import</code> keyword
-is added to the namespace of the importing module (as a <code>module</code> object):</p>
+valid imports from the example package <code>my_package</code>.  They correspond to the
+imports above (except the first one above, which has no corresponding <code>from</code>
+import).  After a <code>from</code> import, though, only the package or module following
+the <code>import</code> keyword is added to the namespace of the importing module (as a
+reference to a <code>module</code> object):</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">foo</span>
 <span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">my_subpackage</span>
 <span class="kn">from</span> <span class="nn">my_package.my_subpackage</span> <span class="kn">import</span> <span class="n">baz</span>
 </pre></div>
-<p>Imports using <code>from</code> can also be used to import particular attributes from the
-namespaces of packages and modules.  For example, if the namespace of module
-<code>foo</code> contains a variable <code>foo_var</code> then that variable can be imported with
-this statement:</p>
+<p>Imports using <code>from</code> can also be used to import particular attributes from
+inside the namespaces of packages and modules.  For example, if the namespace
+of module <code>foo</code> contains a variable <code>foo_var</code> then that variable can be
+imported with this statement:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package.foo</span> <span class="kn">import</span> <span class="n">foo_var</span>
 </pre></div>
 <p>In fact, attributes inside package and module namespaces can <em>only</em> be imported
@@ -429,7 +432,7 @@ exception in that they are the only statements where the dot syntax means
 something other than attribute access.  In import statements the dot can <em>only</em>
 be part of a dotted path.</p>
 <p>Consider these valid import statements, assuming that <code>foo_var</code> is a variable
-assigned in <code>foo.py</code>:</p>
+assigned in module <code>foo.py</code>:</p>
 <div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">my_package</span> <span class="kn">import</span> <span class="n">foo</span> <span class="c1"># Works.</span>
 <span class="kn">import</span> <span class="nn">my_package.foo</span> <span class="c1"># Works.</span>
 </pre></div>
@@ -626,12 +629,12 @@ Python to discover the necessary modules and packages to import.</p>
 added to a project</a>
 by using the <code>scripts</code> keyword argument.  For development this would involve
 setting up the project with a <code>setup.py</code> and then installing the project in
-development mode, such as by running <code>pip install -e .</code> in the directory with
+editable mode, such as by running <code>pip install -e .</code> in the directory with
 <code>setup.py</code>.  (The <code>setup.py</code> file is usually placed in the project’s root
 directory, which is <code>my_project</code> in the project skeleton given earlier).  This
-provides a shell command in the shell’s search path to run the script.  To add
-or remove scripts from the project the <code>setup.py</code> would have to be modified and
-the package reinstalled.  A similar thing can be done using the more-recent
+provides a shell command, in the shell’s search path, to run the script.  To
+add or remove scripts from the project the <code>setup.py</code> would have to be modified
+and the package reinstalled.  A similar thing can be done using the more-recent
 <code>pyproject.toml</code> files if you use that method to set up projects rather than
 using a <code>setup.py</code>.</p>
 </div>
@@ -641,11 +644,11 @@ using a <code>setup.py</code>.</p>
 listed above have some side-effects which need to be taken into account.</p>
 <p>Property 3 means that the package the script is inside of is not automatically
 imported when the script runs.  To import modules from the package the script
-can only use non-dotted absolute imports (based on Property 1).  This only
-works correctly in simple cases where the imported modules are essentially
-standalone modules themselves.  Even if the script itself imports the full
-package in the usual way the running script is still not correctly set up as a
-module of the package.</p>
+will by default use non-dotted absolute imports (based on Property 1, that the
+directory is added to <code>sys.path</code>).  This only works correctly in simple cases
+where the imported modules are essentially standalone modules themselves.  Even
+if the script itself imports the full package in the usual way, the running
+script is still not correctly set up as a module of the package.</p>
 <p>If the script does explicitly import its containing package then dotted
 absolute imports from the package will work.  But the script module itself
 should never be imported by any other module in the package since it is cached
@@ -659,14 +662,15 @@ script as a part of the package.  There are several possible ways to do this:</
 package (i.e., its absolute dotted path).  Note that the directory
 containing the top-level package directory must be in <code>sys.path</code> or the
 command will fail.  You could write a shell script wrapper for the <code>python</code>
-command to modify <code>PYTHONPATH</code>, calculate the qualified name, and then
-invoke <code>python -m</code>.  Generally, though, the invocation differs from that of
+command to calculate a <code>PYTHONPATH</code> and qualified name and then invoke
+<code>python -m</code>.  Generally, though, the invocation method differs from that of
 other Python scripts.</li>
-<li>Set the <code>__package__</code> attribute of the script to the fully-qualified name
-and then import the package in the correct way.  This is more complex than
-you might expect, but fortunately there is a <a class="reference external" href="https://abarker.github.io/set-package-attribute/">package on PyPI</a> which can do this for
-you automatically (and optionally also remove the directory’s <code>sys.path</code>
-entry).</li>
+<li>Set the <code>__package__</code> attribute of the script, in the script, to the
+fully-qualified name and then import the package in the correct way.  This
+is more complex than you might expect, but fortunately there is a <a class="reference external" href="https://abarker.github.io/set-package-attribute/">package
+on PyPI</a> which can do
+this for you automatically (and optionally also remove the directory’s
+<code>sys.path</code> entry).</li>
 <li>Create a <code>setup.py</code> file and <a class="reference external" href="http://www.python.org/">create an entry point</a> for the script via the <code>console_scripts</code> keyword.
 This is similar to the <code>scripts</code> keyword described above, but it allows
 modules inside packages to be run via an entry-point function.  To add or
@@ -847,7 +851,7 @@ which can arise, by Nick Coghlan.</li>
             <time itemprop="dateCreated" datetime="2019-07-12T14:13:00-04:00">Jul 12, 2019</time>
 
 <h4>Last Updated</h4>
-<time datetime="2019-07-20T12:13:00-04:00">Jul 20, 2019</time>
+<time datetime="2019-07-22T12:13:00-04:00">Jul 22, 2019</time>
 
             <h4>Category</h4>
             <a class="category-link" href="https://abarker.github.io/categories.html#programming-ref">programming</a>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/all.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-20T12:13:00-04:00</updated><entry><title>Setting Up Spellchecking in Vim</title><link href="https://abarker.github.io/setting_up_vim_spellchecking/" rel="alternate"></link><published>2019-07-16T14:13:00-04:00</published><updated>2019-07-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-16:/setting_up_vim_spellchecking/</id><summary type="html">&lt;p class="first last"&gt;Short instructions for setting up Vim for&amp;nbsp;spellchecking.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/all.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-22T12:13:00-04:00</updated><entry><title>Setting Up Spellchecking in Vim</title><link href="https://abarker.github.io/setting_up_vim_spellchecking/" rel="alternate"></link><published>2019-07-16T14:13:00-04:00</published><updated>2019-07-16T14:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-16:/setting_up_vim_spellchecking/</id><summary type="html">&lt;p class="first last"&gt;Short instructions for setting up Vim for&amp;nbsp;spellchecking.&lt;/p&gt;
 </summary><content type="html">&lt;p&gt;These are short instructions for setting up the Vim or Gvim editor to do spellchecking.
 A Unix-type shell is&amp;nbsp;assumed.&lt;/p&gt;
 &lt;ol class="arabic"&gt;
@@ -56,7 +56,7 @@ commands are&amp;nbsp;available:&lt;/p&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;The misspelled words should be highlighted when spellchecking is turned&amp;nbsp;on.&lt;/p&gt;
-</content><category term="vim"></category><category term="editor"></category><category term="linux"></category></entry><entry><title>Understanding Python Imports</title><link href="https://abarker.github.io/understanding_python_imports/" rel="alternate"></link><published>2019-07-12T14:13:00-04:00</published><updated>2019-07-20T12:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-12:/understanding_python_imports/</id><summary type="html">&lt;p class="first last"&gt;Description of modern Python&amp;nbsp;imports.&lt;/p&gt;
+</content><category term="vim"></category><category term="editor"></category><category term="linux"></category></entry><entry><title>Understanding Python Imports</title><link href="https://abarker.github.io/understanding_python_imports/" rel="alternate"></link><published>2019-07-12T14:13:00-04:00</published><updated>2019-07-22T12:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-12:/understanding_python_imports/</id><summary type="html">&lt;p class="first last"&gt;Description of modern Python&amp;nbsp;imports.&lt;/p&gt;
 </summary><content type="html">
 &lt;p&gt;Python has many strong points and tends to have a learning curve that is
 friendly to beginners.  The import system, however, is one part of the
@@ -180,10 +180,11 @@ represented as strings.&lt;/p&gt;
 &lt;p&gt;All standard, non-library imports have the &lt;code&gt;sys.path&lt;/code&gt; list at their root:  &lt;strong&gt;A
 standalone module cannot be imported if its containing directory is not on
 the&lt;/strong&gt; &lt;code&gt;sys.path&lt;/code&gt; &lt;strong&gt;list, and a package cannot be imported if the parent
-directory of its top-level directory (the top directory containing an&lt;/strong&gt;
-&lt;code&gt;__init__.py&lt;/code&gt; &lt;strong&gt;file) is not on the&lt;/strong&gt; &lt;code&gt;sys.path&lt;/code&gt; &lt;strong&gt;list.&lt;/strong&gt; Note that when
-external packages are installed with &lt;code&gt;pip&lt;/code&gt; or similar programs they are placed
-in the system &lt;code&gt;site-packages&lt;/code&gt; directory, which is on &lt;code&gt;sys.path&lt;/code&gt; by default.&lt;/p&gt;
+directory of its top-level directory (the parent of the top directory
+containing an&lt;/strong&gt; &lt;code&gt;__init__.py&lt;/code&gt; &lt;strong&gt;file) is not on the&lt;/strong&gt; &lt;code&gt;sys.path&lt;/code&gt; &lt;strong&gt;list.&lt;/strong&gt; Note
+that when external packages are installed with &lt;code&gt;pip&lt;/code&gt; or similar programs they
+are placed in the system &lt;code&gt;site-packages&lt;/code&gt; directory, which is on &lt;code&gt;sys.path&lt;/code&gt; by
+default.  That is what allows them to be discovered and imported.&lt;/p&gt;
 &lt;p&gt;Ordering in the &lt;code&gt;sys.path&lt;/code&gt; list is important: The first match found in the list
 is the one that is used.  The paths themselves are strings which can represent
 relative or absolute pathnames for the underlying operating system.  Any
@@ -273,16 +274,16 @@ list.&lt;/p&gt;
 &lt;p&gt;Absolute imports for modules inside packages use a dotted-path syntax.  For example:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package.foo&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;This statement imports the module &lt;code&gt;foo&lt;/code&gt;, located in the &lt;code&gt;foo.py&lt;/code&gt; file.  The
-&lt;code&gt;foo&lt;/code&gt; module is accessible under the name &lt;code&gt;my_package.foo&lt;/code&gt;.  An &lt;code&gt;as&lt;/code&gt; keyword
-could have been used to create an alias if desired.  The next subsection covers
-the syntax of these dotted paths and their relation to the files and
-directories of the filesystem.  Once dotted paths are understood absolute
-imports will be much easier to discuss.&lt;/p&gt;
+&lt;p&gt;This statement imports the module &lt;code&gt;foo&lt;/code&gt;, located in the file
+&lt;code&gt;my_package/foo.py&lt;/code&gt;.  After this import the &lt;code&gt;foo&lt;/code&gt; module is accessible under
+the name &lt;code&gt;my_package.foo&lt;/code&gt;.  An &lt;code&gt;as&lt;/code&gt; keyword could have been used to create an
+alias, if desired.  The next subsection covers the syntax of these dotted paths
+and their relation to the files and directories of the filesystem.  Once dotted
+paths are understood absolute imports will be much easier to discuss.&lt;/p&gt;
 &lt;div class="section" id="absolute-dotted-paths-and-the-filesystem"&gt;
 &lt;h3&gt;3.1. &lt;a class="toc-backref" href="#id5"&gt;Absolute dotted paths and the filesystem&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;For any package which can be discovered by looking in the directories on the
-&lt;code&gt;sys.path&lt;/code&gt; list there is corresponding &lt;strong&gt;dotted path&lt;/strong&gt; to specify modules
+&lt;code&gt;sys.path&lt;/code&gt; list there is a corresponding &lt;strong&gt;dotted path&lt;/strong&gt; to specify modules
 (files) and subpackages (subdirectories) located inside the package (inside the
 package’s directory subtree).  The slashes in operating-system pathnames are
 essentially replaced with dots.  These dotted paths are always relative to the
@@ -319,10 +320,11 @@ correspondence is fairly simple.  In an import statement these dotted paths
 &lt;h3&gt;3.2. &lt;a class="toc-backref" href="#id6"&gt;Absolute imports of subpackages and modules in packages&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Now that dotted paths have been covered the discussion of importing modules
 that are inside packages is fairly simple: just put the dotted path after the
-import statement.  The first component of the dotted path is &lt;em&gt;always&lt;/em&gt; the
-top-level package name (i.e., the name of the directory which is the root of
-the package subtree).  For package &lt;code&gt;my_package&lt;/code&gt; in the skeleton given earlier
-these are all valid bare &lt;code&gt;import&lt;/code&gt; statements:&lt;/p&gt;
+&lt;code&gt;import&lt;/code&gt; or &lt;code&gt;from&lt;/code&gt; statement.  The first component of the dotted path for an
+absolute import is &lt;em&gt;always&lt;/em&gt; the top-level package name (i.e., the name of the
+top-level directory of the package subtree).&lt;/p&gt;
+&lt;p&gt;For package &lt;code&gt;my_package&lt;/code&gt; in the skeleton given earlier these are all valid bare
+&lt;code&gt;import&lt;/code&gt; statements:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package.foo&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package.my_subpackage&lt;/span&gt;
@@ -333,7 +335,7 @@ used in an expression, syntactically matches the dotted path in the import
 statement.  The syntax looks the same but in an expression the dots are
 attribute accesses on &lt;code&gt;module&lt;/code&gt; objects.  For example, the second import does
 not actually add anything to the namespace of the module doing the import.  The
-module for &lt;code&gt;my_package&lt;/code&gt; is already in the namespace after the first import.
+module for &lt;code&gt;my_package&lt;/code&gt; is already in the namespace due to the first import.
 The second import just adds the module attribute &lt;code&gt;foo&lt;/code&gt; to the &lt;code&gt;my_package&lt;/code&gt;
 namespace so that &lt;code&gt;my_package.foo&lt;/code&gt; works in expressions.&lt;/p&gt;
 &lt;p&gt;This is a general property of bare &lt;code&gt;import&lt;/code&gt; statements: After a bare &lt;code&gt;import&lt;/code&gt;
@@ -346,18 +348,19 @@ the names on the dotted path and if it finds one that has not previously been
 imported then it imports the remainder of the dotted path from the filesystem.
 Any previously-imported packages or modules are taken from the cache.&lt;/p&gt;
 &lt;p&gt;Imports using &lt;code&gt;from&lt;/code&gt; also work for dotted paths.  The imports below are all
-valid imports for package &lt;code&gt;my_package&lt;/code&gt;.  They correspond to the imports above
-(except the first one above, which has no corresponding &lt;code&gt;from&lt;/code&gt; import).  After
-a &lt;code&gt;from&lt;/code&gt; import, though, only the package or module following the &lt;code&gt;import&lt;/code&gt; keyword
-is added to the namespace of the importing module (as a &lt;code&gt;module&lt;/code&gt; object):&lt;/p&gt;
+valid imports from the example package &lt;code&gt;my_package&lt;/code&gt;.  They correspond to the
+imports above (except the first one above, which has no corresponding &lt;code&gt;from&lt;/code&gt;
+import).  After a &lt;code&gt;from&lt;/code&gt; import, though, only the package or module following
+the &lt;code&gt;import&lt;/code&gt; keyword is added to the namespace of the importing module (as a
+reference to a &lt;code&gt;module&lt;/code&gt; object):&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;my_subpackage&lt;/span&gt;
 &lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_package.my_subpackage&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;baz&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;Imports using &lt;code&gt;from&lt;/code&gt; can also be used to import particular attributes from the
-namespaces of packages and modules.  For example, if the namespace of module
-&lt;code&gt;foo&lt;/code&gt; contains a variable &lt;code&gt;foo_var&lt;/code&gt; then that variable can be imported with
-this statement:&lt;/p&gt;
+&lt;p&gt;Imports using &lt;code&gt;from&lt;/code&gt; can also be used to import particular attributes from
+inside the namespaces of packages and modules.  For example, if the namespace
+of module &lt;code&gt;foo&lt;/code&gt; contains a variable &lt;code&gt;foo_var&lt;/code&gt; then that variable can be
+imported with this statement:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_package.foo&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;foo_var&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;In fact, attributes inside package and module namespaces can &lt;em&gt;only&lt;/em&gt; be imported
@@ -375,7 +378,7 @@ exception in that they are the only statements where the dot syntax means
 something other than attribute access.  In import statements the dot can &lt;em&gt;only&lt;/em&gt;
 be part of a dotted path.&lt;/p&gt;
 &lt;p&gt;Consider these valid import statements, assuming that &lt;code&gt;foo_var&lt;/code&gt; is a variable
-assigned in &lt;code&gt;foo.py&lt;/code&gt;:&lt;/p&gt;
+assigned in module &lt;code&gt;foo.py&lt;/code&gt;:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;foo&lt;/span&gt; &lt;span class="c1"&gt;# Works.&lt;/span&gt;
 &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;my_package.foo&lt;/span&gt; &lt;span class="c1"&gt;# Works.&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
@@ -572,12 +575,12 @@ Python to discover the necessary modules and packages to import.&lt;/p&gt;
 added to a project&lt;/a&gt;
 by using the &lt;code&gt;scripts&lt;/code&gt; keyword argument.  For development this would involve
 setting up the project with a &lt;code&gt;setup.py&lt;/code&gt; and then installing the project in
-development mode, such as by running &lt;code&gt;pip install -e .&lt;/code&gt; in the directory with
+editable mode, such as by running &lt;code&gt;pip install -e .&lt;/code&gt; in the directory with
 &lt;code&gt;setup.py&lt;/code&gt;.  (The &lt;code&gt;setup.py&lt;/code&gt; file is usually placed in the project’s root
 directory, which is &lt;code&gt;my_project&lt;/code&gt; in the project skeleton given earlier).  This
-provides a shell command in the shell’s search path to run the script.  To add
-or remove scripts from the project the &lt;code&gt;setup.py&lt;/code&gt; would have to be modified and
-the package reinstalled.  A similar thing can be done using the more-recent
+provides a shell command, in the shell’s search path, to run the script.  To
+add or remove scripts from the project the &lt;code&gt;setup.py&lt;/code&gt; would have to be modified
+and the package reinstalled.  A similar thing can be done using the more-recent
 &lt;code&gt;pyproject.toml&lt;/code&gt; files if you use that method to set up projects rather than
 using a &lt;code&gt;setup.py&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
@@ -587,11 +590,11 @@ using a &lt;code&gt;setup.py&lt;/code&gt;.&lt;/p&gt;
 listed above have some side-effects which need to be taken into account.&lt;/p&gt;
 &lt;p&gt;Property 3 means that the package the script is inside of is not automatically
 imported when the script runs.  To import modules from the package the script
-can only use non-dotted absolute imports (based on Property 1).  This only
-works correctly in simple cases where the imported modules are essentially
-standalone modules themselves.  Even if the script itself imports the full
-package in the usual way the running script is still not correctly set up as a
-module of the package.&lt;/p&gt;
+will by default use non-dotted absolute imports (based on Property 1, that the
+directory is added to &lt;code&gt;sys.path&lt;/code&gt;).  This only works correctly in simple cases
+where the imported modules are essentially standalone modules themselves.  Even
+if the script itself imports the full package in the usual way, the running
+script is still not correctly set up as a module of the package.&lt;/p&gt;
 &lt;p&gt;If the script does explicitly import its containing package then dotted
 absolute imports from the package will work.  But the script module itself
 should never be imported by any other module in the package since it is cached
@@ -605,14 +608,15 @@ script as a part of the package.  There are several possible ways to do this:&l
 package (i.e., its absolute dotted path).  Note that the directory
 containing the top-level package directory must be in &lt;code&gt;sys.path&lt;/code&gt; or the
 command will fail.  You could write a shell script wrapper for the &lt;code&gt;python&lt;/code&gt;
-command to modify &lt;code&gt;PYTHONPATH&lt;/code&gt;, calculate the qualified name, and then
-invoke &lt;code&gt;python -m&lt;/code&gt;.  Generally, though, the invocation differs from that of
+command to calculate a &lt;code&gt;PYTHONPATH&lt;/code&gt; and qualified name and then invoke
+&lt;code&gt;python -m&lt;/code&gt;.  Generally, though, the invocation method differs from that of
 other Python scripts.&lt;/li&gt;
-&lt;li&gt;Set the &lt;code&gt;__package__&lt;/code&gt; attribute of the script to the fully-qualified name
-and then import the package in the correct way.  This is more complex than
-you might expect, but fortunately there is a &lt;a class="reference external" href="https://abarker.github.io/set-package-attribute/"&gt;package on PyPI&lt;/a&gt; which can do this for
-you automatically (and optionally also remove the directory’s &lt;code&gt;sys.path&lt;/code&gt;
-entry).&lt;/li&gt;
+&lt;li&gt;Set the &lt;code&gt;__package__&lt;/code&gt; attribute of the script, in the script, to the
+fully-qualified name and then import the package in the correct way.  This
+is more complex than you might expect, but fortunately there is a &lt;a class="reference external" href="https://abarker.github.io/set-package-attribute/"&gt;package
+on PyPI&lt;/a&gt; which can do
+this for you automatically (and optionally also remove the directory’s
+&lt;code&gt;sys.path&lt;/code&gt; entry).&lt;/li&gt;
 &lt;li&gt;Create a &lt;code&gt;setup.py&lt;/code&gt; file and &lt;a class="reference external" href="http://www.python.org/"&gt;create an entry point&lt;/a&gt; for the script via the &lt;code&gt;console_scripts&lt;/code&gt; keyword.
 This is similar to the &lt;code&gt;scripts&lt;/code&gt; keyword described above, but it allows
 modules inside packages to be run via an entry-point function.  To add or
