@@ -116,7 +116,7 @@ in this context packages and modules will be considered to be distinct.)&lt;/li
 &lt;li&gt;&lt;strong&gt;Subpackages&lt;/strong&gt; are defined similarly to packages, as subdirectories of a
 package directory which also contain an &lt;code&gt;__init__.py&lt;/code&gt; file.  Subpackages can
 have their own subpackages, and so forth.  They are members of the package
-corresponding to the top-level directory of the subtree of directories
+corresponding to the top-level directory of their subtree of directories
 containing &lt;code&gt;__init__.py&lt;/code&gt; files.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;A module with no &lt;code&gt;__init__.py&lt;/code&gt; in its directory is not part of any package or
