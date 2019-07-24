@@ -84,7 +84,7 @@ one or more modules.
 * **Subpackages** are defined similarly to packages, as subdirectories of a
   package directory which also contain an `__init__.py` file.  Subpackages can
   have their own subpackages, and so forth.  They are members of the package
-  corresponding to the top-level directory of the subtree of directories
+  corresponding to the top-level directory of their subtree of directories
   containing `__init__.py` files.
 
 A module with no `__init__.py` in its directory is not part of any package or

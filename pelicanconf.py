@@ -280,8 +280,19 @@ PROJECTS = [
               "url": "https://abarker.github.io/set-package-attribute",
               "description": "Automatically set the __package__ attribute for a "
                   "Python module run as a script."
-
              },
+
+             {"name": "camel-snake-pep8",
+              "url": "https://github.com/abarker/camel-snake-pep8",
+              "description": "A tool that uses Rope to help safely refactor "
+                   "Python projects to use PEP-8 naming conventions."
+             },
+
+             {"name": "strip-hints",
+              "url": "https://github.com/abarker/strip-hints",
+              "description": "Strip type hints from Python code."
+             },
+
              {"name": "Lyx Notebook",
               "url": "https://github.com/abarker/lyxNotebook",
               "description": "Use the Lyx word processor as a code-evaluating "
@@ -294,11 +305,6 @@ PROJECTS = [
                    "to display them on multiple monitors."
              },
 
-             {"name": "camel-snake-pep8",
-              "url": "https://github.com/abarker/camel-snake-pep8",
-              "description": "A tool that uses Rope to help safely refactor "
-                   "Python projects to use PEP-8 naming conventions."
-             },
 
            ]
 
