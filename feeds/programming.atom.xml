@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io - programming</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-07-22T12:13:00-04:00</updated><entry><title>Understanding Python Imports</title><link href="https://abarker.github.io/understanding_python_imports/" rel="alternate"></link><published>2019-07-12T14:13:00-04:00</published><updated>2019-07-22T12:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-12:/understanding_python_imports/</id><summary type="html">&lt;p class="first last"&gt;Description of modern Python&amp;nbsp;imports.&lt;/p&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io - programming</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/programming.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2019-08-12T12:13:00-04:00</updated><entry><title>Understanding Python Imports</title><link href="https://abarker.github.io/understanding_python_imports/" rel="alternate"></link><published>2019-07-12T14:13:00-04:00</published><updated>2019-08-12T12:13:00-04:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2019-07-12:/understanding_python_imports/</id><summary type="html">&lt;p class="first last"&gt;Description of modern Python&amp;nbsp;imports.&lt;/p&gt;
 </summary><content type="html">
 &lt;p&gt;Python has many strong points and tends to have a learning curve that is
 friendly to beginners.  The import system, however, is one part of the
@@ -184,8 +184,8 @@ objects in the &lt;code&gt;sys.modules&lt;/code&gt; dict, keyed by the fully-qua
 package or module.  When an import statement is executed Python first looks in
 that dict to see if the package or module has previously been imported.  If so
 it returns the previously-imported object.  Otherwise it tries to import from
-the filesystem.  Re-importing a module requires the explicit use of the builtin
-&lt;code&gt;reload&lt;/code&gt; function.&lt;/p&gt;
+the filesystem.  Re-importing a module requires the explicit use of the
+&lt;code&gt;reload&lt;/code&gt; function from the Python &lt;code&gt;importlib&lt;/code&gt; library.&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;from&lt;/code&gt; statement can be used to import subpackages as well as to import
 particular attributes defined in a package or module:&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;my_package&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="n"&gt;init_var&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;iv&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;my_subpackage&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;msp&lt;/span&gt;

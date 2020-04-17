@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>abarker.github.io - linux</title><link href="https://abarker.github.io/" rel="alternate"></link><link href="https://abarker.github.io/feeds/linux.atom.xml" rel="self"></link><id>https://abarker.github.io/</id><updated>2020-01-16T16:37:00-05:00</updated><entry><title>Night mode for Linux</title><link href="https://abarker.github.io/night_mode_for_linux/" rel="alternate"></link><published>2020-01-16T16:37:00-05:00</published><updated>2020-01-16T16:37:00-05:00</updated><author><name>Allen Barker</name></author><id>tag:abarker.github.io,2020-01-16:/night_mode_for_linux/</id><summary type="html">&lt;p class="first last"&gt;A simple script for night mode in Linux with multiple monitors, using&amp;nbsp;XRandR.&lt;/p&gt;
+</summary><content type="html">
+&lt;div class="section" id="first"&gt;
+&lt;h2&gt;1. &lt;a class="toc-backref" href="#id1"&gt;first&lt;/a&gt;&lt;/h2&gt;
+&lt;/div&gt;
+</content><category term="linux"></category><category term="bash"></category><category term="shell"></category></entry></feed>
