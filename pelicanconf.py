@@ -258,10 +258,16 @@ LANDING_PAGE_ABOUT = { "title": title,
 
 PROJECTS = [
 
+             {"name": "Cyfolds",
+              "url": "https://github.com/abarker/cyfolds",
+              "description": "Fast, correct syntax-based Python folding for Vim,"
+                             " written in Cython for speed."
+             },
+
              {"name": "pdfCropMargins",
               "url": "https://github.com/abarker/pdfCropMargins",
-              "description": "A command-line utility to crop PDF files.  Like "
-                   "the pdfcrop program on steroids."
+              "description": "A command-line utility to crop PDF files, with an optional"
+              " GUI.  Like the pdfcrop program on steroids."
              },
 
              {"name": "pytest-helper",

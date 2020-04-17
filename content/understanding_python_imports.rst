@@ -2,7 +2,7 @@ Understanding Python Imports
 ############################
 
 :date: 2019-07-12 14:13
-:modified: 2019-07-22 12:13
+:modified: 2019-08-12 12:13
 :category: programming
 :tags: programming, python
 :authors: Allen Barker
@@ -239,8 +239,8 @@ objects in the `sys.modules` dict, keyed by the fully-qualified name of the
 package or module.  When an import statement is executed Python first looks in
 that dict to see if the package or module has previously been imported.  If so
 it returns the previously-imported object.  Otherwise it tries to import from
-the filesystem.  Re-importing a module requires the explicit use of the builtin
-`reload` function.
+the filesystem.  Re-importing a module requires the explicit use of the
+`reload` function from the Python `importlib` library.
 
 The `from` statement can be used to import subpackages as well as to import
 particular attributes defined in a package or module:
