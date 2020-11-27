@@ -204,9 +204,9 @@ READERS = {"html": None} # Don't process content HTML files, just copy over.
 EXTRA_PATH_METADATA = {}
 EXTRA_PATH_METADATA['static/'+google_file] = {'path': google_file}
 
-# Copy favicon.ico to the root dir.
+# Copy favicon.ico to the theme/images dir.
 # TODO: Make a "copy to root dir from static" list and have a fun do it.
-EXTRA_PATH_METADATA['static/favicon.ico'] = {'path': "favicon.ico"} # rootlevel
+EXTRA_PATH_METADATA['static/favicon.ico'] = {'path': "theme/images/favicon.ico"}
 
 # Setting below is needed with Elegant theme to get icons for email, GitHub, etc.,
 # to display on article pages.
@@ -234,9 +234,7 @@ SITE_DESCRIPTION = "Site description string."
 title = "Articles on various topics."
 details = """
 
-   I am a computer scientist (PhD, UVA) with interests in machine learning,
-   data analysis, mathematical logic systems, user interfaces for mathematics
-   and data analysis, and quantum computing.
+   I am a computer scientist (PhD, UVA).
 
    <p>
 
@@ -270,12 +268,6 @@ PROJECTS = [
               " GUI.  Like the pdfcrop program on steroids."
              },
 
-             {"name": "pytest-helper",
-              "url": "https://abarker.github.io/pytest-helper",
-              "description": "Functions to help in using py.test (for example, easily"
-                   " make modules self-testing when run as scripts)."
-             },
-
              {"name": "typped",
               "url": "https://abarker.github.io/typped",
               "description": "A framework for generalized Pratt parsing with optional"
@@ -297,6 +289,12 @@ PROJECTS = [
              {"name": "strip-hints",
               "url": "https://github.com/abarker/strip-hints",
               "description": "Strip type hints from Python code."
+             },
+
+             {"name": "pytest-helper",
+              "url": "https://abarker.github.io/pytest-helper",
+              "description": "Functions to help in using py.test (for example, easily"
+                   " make modules self-testing when run as scripts)."
              },
 
              {"name": "Lyx Notebook",
